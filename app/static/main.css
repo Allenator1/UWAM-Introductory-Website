@@ -22,6 +22,7 @@ body, html {
     padding: 16px;
     height: inherit;
     display: flex;
+    width: 100%;
     align-items: center;
 }
 
@@ -30,36 +31,117 @@ body, html {
     color: #dda74f;
 }
 
+.jumbotron_heading {
+    font-size: small;
+}
+
+.jumbotron_heading {
+    font-size: x-large;
+}
+
 @media (min-width: 1800px) {
     .heading {
         font-size: xx-large;
     }
-    .subheading {
+    .subheading, text {
         font-size: medium;
     }
 }
 
 @media (max-width: 1800px) {
     .heading {
-        font-size: large;
+        font-size: x-large;
     }
-    .subheading {
+
+    .subheading, .jumbotron_text {
         font-size: small;
     }
 }
 
-@media (max-width: 1000px) {
-    .heading {
-        font-size: medium;
-    }
+@media (max-width: 800px) {
     .subheading {
-        font-size: x-small;
+        display: none;
     }
 }
 
 @media (max-width: 600px) {
-    .subheading {
-        display: none;
+    .heading {
+        font-size: large;
     }
+}
+
+/* Styles for index.html */
+
+.bg {
+    width: 110%;
+    height: 100%;
+    background-image: url(../static/f1_car.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}   
+
+#website_title {
+    float: left;
+    padding: 5px;
+    display: block;
+}
+
+#author {
+    float: right;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+#signup_button, #signout_button {
+    margin: 16px;
+    float: left;
+}
+
+#profile_button, #login_button {
+    margin: 16px;
+    float: right;
+}
+
+#login_button, #signup_button, #signout_button {
+    background-color: #a76b09;
+    border-color: #ffae00;
+    color: black;
+    box-shadow: none;
+}
+
+#tutorial_start_button {
+    background-color: rgb(31, 31, 31);
+    border: none;
+    color: #dda74f;
+}
+
+#login_button:focus, #signup_button:focus, #signout_button:focus {
+    box-shadow: 0 0 0 0.1rem goldenrod;
+}
+
+#tutorial_start_button:focus {
+    box-shadow: 0 0 0 0.1rem darkgrey;
+}
+
+#login_button:active, #signup_button:active, #signout_button:active, #tutorial_start_button:active {
+    box-shadow: 0 0 0 0.1rem ivory;
+}
+
+#login_button:hover, #signup_button:hover, #signout_button:hover, #tutorial_start_button:hover {
+    color: ivory;
+}
+
+.banner_buttons {
+    position: absolute;
+    right: 0;
+    margin: 16px;
+}
+
+#opening_message {
+    font-family: 'Quicksand', sans-serif;
+    padding: 16px;
+    margin: 3px 32px 32px 32px;
+    position: absolute;
+    background: linear-gradient(to right, ivory, #ffae00, #a76b09); 
 }
 
