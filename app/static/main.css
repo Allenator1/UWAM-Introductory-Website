@@ -30,3 +30,36 @@ body, html {
     color: #dda74f;
 }
 
+@media (min-width: 1800px) {
+    .heading {
+        font-size: xx-large;
+    }
+    .subheading {
+        font-size: medium;
+    }
+}
+
+@media (max-width: 1800px) {
+    .heading {
+        font-size: large;
+    }
+    .subheading {
+        font-size: small;
+    }
+}
+
+@media (max-width: 1000px) {
+    .heading {
+        font-size: medium;
+    }
+    .subheading {
+        font-size: x-small;
+    }
+}
+
+@media (max-width: 600px) {
+    .subheading {
+        display: none;
+    }
+}
+
