@@ -7,6 +7,24 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
         <title> Vehicle Dynamics Tutorial </title>
+
+        <style>
+        #welcome_message {
+            color: #dda74f;
+            font-size: 24px;
+        }
+        #tutorial_startover {
+            width: 49%;
+            float: left;
+            margin: auto;
+        }
+        #tutorial_continue {
+            width: 49%;
+            float: right;
+            margin: auto;
+        }
+        </style>
+
     </head>
     
     <body>
@@ -23,9 +41,13 @@
                         </h1>
                     </div>
                     <div class="banner_buttons">
+                        {% if user.preferred_name %}
+                        <span id="welcome_message"> Welcome back, {{ user.preferred_name }}! </span>
+                        {% else %}
                         <a class="gold_button btn" id="login_button" href="#" role="button"> 
                             Login / Register
                         </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -41,9 +63,18 @@
                     Class aptent taciti sociosqu ad litora torquent per conubia 
                     nostra, per inceptos himenaeos. Aenean non mi vel risus dictum porta.
                 </p>
+                {% if user.username %}
+                <a class="black_button btn btn-block" id="tutorial_continue" href="#" role="button"> 
+                    Resume your progress
+                </a>
+                <a class="black_button btn btn-block" id="tutorial_startover" href="#" role="button"> 
+                    Start a new lesson
+                </a>
+                {% else %}
                 <a class="black_button btn btn-lg btn-block" id="tutorial_start_button" href="#" role="button"> 
                     Start the tutorial!
                 </a>
+                {% endif %}
             </div>
         </div>
 
