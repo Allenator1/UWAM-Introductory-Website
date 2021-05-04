@@ -4,12 +4,12 @@ from app.forms import LoginForm
 
 @app.route('/')
 def index():
-    user = {'username': 'Allenator', 'preferred_name': 'Allen'}
+    user = {'username': None, 'preferred_name': None}
     return render_template('index.html', user=user)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        return redirect('/index')
-    return render_template(url_for('login_or_register'), type="login", form=form)
+        return redirect('/')
+    return render_template('login_or_register.html', type="login", form=form)

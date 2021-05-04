@@ -15,8 +15,9 @@
 
         <div class="banner">
             <div class="banner_content">
-                <div class="banner_buttons">
+                <div class="banner_right">
                     <a class="gold_button btn" id="homepage_button" href="#" role="button"> Return to Homepage </a>
+                </div>
             </div>
         </div>
         <div class="gold_bar"></div>
@@ -24,12 +25,18 @@
         <div class="jumbotron" id="login_box">
             <div class="form_heading"> Login </div>
             <div class="divider"></div>
-            <form id="#login_form">
-                <label class="form_label" for="username">Username:</label><br>
-                <input class="input_field" type="text" id="username" name="username" value=""><br><br>
-                <label class="form_label" for="password">Password:</label><br>
-                <input class="input_field" type="text" id="password" name="password" value=""><br> <br>
-                <input class="form_submit black_button btn" id="login_submit_button" type="submit" value="Login">
+            <form action="" method="post" id="#login_form">
+                
+                {{ form.hidden_tag() }}
+
+                {{ form.username.label(class_="form_label") }} <br>
+                {{ form.username(size=32, class_="input_field") }} <br><br>
+
+                {{ form.password.label(class_="form_label") }} <br>
+                {{ form.password(size=32, class_="input_field") }} <br><br>
+
+                {{ form.submit(class_="form_submit black_button btn", id="login_submit_button") }}
+
             </form>
             <br>
             <div class="divider"></div>
