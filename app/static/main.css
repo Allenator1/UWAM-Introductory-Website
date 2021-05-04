@@ -2,7 +2,10 @@ body, html {
     height: 100%;
     overflow-x: hidden;
     margin: 0;
+    font-family: 'Quicksand';
 }
+
+/* Styles to create the iconic top banner */
 
 .banner {
     height: 80px;
@@ -11,7 +14,7 @@ body, html {
     background-repeat: repeat;
 }
 
-.bottom_bar {
+.gold_bar {
     height: 10px;
     background-image: url(../static/brushed_gold.jpg);
     background-size: 100% auto;
@@ -31,117 +34,112 @@ body, html {
     color: #dda74f;
 }
 
-.jumbotron_heading {
-    font-size: small;
-}
-
-.jumbotron_heading {
-    font-size: x-large;
-}
-
-@media (min-width: 1800px) {
-    .heading {
-        font-size: xx-large;
-    }
-    .subheading, text {
-        font-size: medium;
-    }
-}
-
-@media (max-width: 1800px) {
-    .heading {
-        font-size: x-large;
-    }
-
-    .subheading, .jumbotron_text {
-        font-size: small;
-    }
-}
-
-@media (max-width: 800px) {
-    .subheading {
-        display: none;
-    }
-}
-
-@media (max-width: 600px) {
-    .heading {
-        font-size: large;
-    }
-}
-
-/* Styles for index.html */
-
-.bg {
-    width: 110%;
-    height: 100%;
-    background-image: url(../static/f1_car.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}   
-
-#website_title {
-    float: left;
-    padding: 5px;
-    display: block;
-}
-
-#author {
-    float: right;
-    padding: 5px;
-    margin-top: 15px;
-}
-
-#signup_button, #signout_button {
-    margin: 16px;
-    float: left;
-}
-
-#profile_button, #login_button {
-    margin: 16px;
-    float: right;
-}
-
-#login_button, #signup_button, #signout_button {
-    background-color: #a76b09;
-    border-color: #ffae00;
-    color: black;
-    box-shadow: none;
-}
-
-#tutorial_start_button {
-    background-color: rgb(31, 31, 31);
-    border: none;
-    color: #dda74f;
-}
-
-#login_button:focus, #signup_button:focus, #signout_button:focus {
-    box-shadow: 0 0 0 0.1rem goldenrod;
-}
-
-#tutorial_start_button:focus {
-    box-shadow: 0 0 0 0.1rem darkgrey;
-}
-
-#login_button:active, #signup_button:active, #signout_button:active, #tutorial_start_button:active {
-    box-shadow: 0 0 0 0.1rem ivory;
-}
-
-#login_button:hover, #signup_button:hover, #signout_button:hover, #tutorial_start_button:hover {
-    color: ivory;
-}
-
 .banner_buttons {
     position: absolute;
     right: 0;
     margin: 16px;
 }
 
-#opening_message {
-    font-family: 'Quicksand', sans-serif;
-    padding: 16px;
-    margin: 3px 32px 32px 32px;
-    position: absolute;
-    background: linear-gradient(to right, ivory, #ffae00, #a76b09); 
+/* Button styling: overriding bootstrap button styles */
+
+.btn.gold_button {
+    background-color: #a76b09;
+    border-color: #ffae00;
+    color: black;
+    box-shadow: none;
 }
+
+.btn.black_button {
+    background-color: rgb(31, 31, 31);
+    border: none;
+    color: #dda74f;
+}
+
+.btn.gold_button:focus, .btn.black_button:focus, .btn.gold_button:active, .btn.black_button:active {
+    box-shadow: 0 0 0 0.1rem ivory;
+    color: ivory;
+}
+
+.btn.gold_button:hover, .btn.black_button:hover {
+    color: ivory;
+}
+
+/* CSS for styling forms */
+
+form .form_submit {
+    font-size: 18px;
+    border-radius: 10px;
+    width:40%; 
+}
+
+form .input_field {
+    background-color: rgb(50, 50, 50);
+    color: ivory;
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+form .input_field:hover {
+    box-shadow: 0 0 0 0.05rem ivory;
+}
+
+.form_heading {
+    color: black;
+    font-size: 40px;
+    display: inline-block;
+    margin: 8px;
+}
+
+/* Black divider */
+
+.divider {
+    width: 400px;
+    border-bottom: 1px solid black;
+    margin:20px auto;
+}
+
+/* Controlling font-sizes depending on the page width */
+
+@media (min-width: 1800px) {
+    .banner .heading {
+        font-size: xx-large;
+    }
+    .banner .subheading{
+        font-size: medium;
+    }
+}
+
+@media (max-width: 1800px) {
+    .banner .heading {
+        font-size: x-large;
+    }
+
+    .banner .subheading, .jumbotron_text {
+        font-size: small;
+    }
+
+    .divider {
+        width: 300px
+    }
+}
+
+@media (max-width: 800px) {
+    .banner .subheading {
+        display: none;
+    }
+
+    .banner .btn {
+        font-size: small;
+    }
+
+    .divider {
+        width: 200px
+    }
+}
+
+
+
 
