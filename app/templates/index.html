@@ -7,6 +7,40 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
         <title> Vehicle Dynamics Tutorial </title>
+
+        <style>
+            .bg {
+                width: 110%;
+                height: 100%;
+                background-image: url(../static/f1_car.jpg);
+                background-repeat: no-repeat;
+                background-size: cover;
+            }   
+
+            #home_title {
+                float: left;
+                padding: 5px;
+                display: block;
+            }
+
+            #author {
+                float: right;
+                padding: 5px;
+                margin-top: 15px;
+            }
+
+            #opening_message {
+                font-family: 'Quicksand', sans-serif;
+                padding: 16px;
+                margin: 3px 32px 32px 32px;
+                position: absolute;
+                background: linear-gradient(to right, ivory, #ffae00, #a76b09); 
+            }
+
+            #opening_msg_heading {
+                font-size: x-large;
+            }
+        </style>
     </head>
     
     <body>
@@ -17,24 +51,23 @@
             <div class="banner">
                 <div class="banner_content">
                     <div class="banner_text">
-                        <h1 class="heading" id="website_title"> 
+                        <h1 class="heading" id="homepage_title"> 
                             Vechicle Dynamics Tutorial 
                             <span class="subheading" id="author"> by Allen Antony and Mikayil Aliyev </span>
-                        <h1>
+                        </h1>
                     </div>
                     <div class="banner_buttons">
-                        <a class="gold_button btn btn-primary" id="login_button" href="#" role="button"> Login </a>
-                        <a class="gold_button btn btn-primary" id="signup_button" href="#" role="button"> Sign up </a>
-                        <!-- <a class="gold_button btn btn-primary" id="signout_button" href="#" role="button"> Sign out </a>
-                            <a class="btn btn-primary" id="profile_button" href="#" role="button"></a> -->
+                        <a class="gold_button btn" id="login_button" href="#" role="button"> 
+                            Login / Register
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="bottom_bar"></div>
+            <div class="gold_bar"></div>
 
             <div class="jumbotron" id="opening_message">
-                <h1 class="jumbotron_heading"> Welcome to our tutorial </h1>
+                <h1 id="opening_msg_heading"> Welcome to our tutorial </h1>
                 <p class="jumbotron_text"> 
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Donec lacinia scelerisque odio, eu sodales enim blandit ac. 
@@ -42,7 +75,7 @@
                     Class aptent taciti sociosqu ad litora torquent per conubia 
                     nostra, per inceptos himenaeos. Aenean non mi vel risus dictum porta.
                 </p>
-                <a class="black_button btn btn-primary btn-lg btn-block" id="tutorial_start_button" href="#" role="button"> 
+                <a class="black_button btn btn-lg btn-block" id="tutorial_start_button" href="#" role="button"> 
                     Start the tutorial!
                 </a>
             </div>
