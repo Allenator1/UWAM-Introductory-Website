@@ -3,6 +3,7 @@ body, html {
     overflow-x: hidden;
     margin: 0;
     font-family: 'Quicksand';
+    background-image: linear-gradient(black, grey); 
 }
 
 /* Styles to create the iconic top banner */
@@ -86,6 +87,11 @@ form .input_field:hover {
     box-shadow: 0 0 0 0.05rem ivory;
 }
 
+form .form_label {
+    color: black;
+    font-size: 18px;
+}
+
 .form_heading {
     color: black;
     font-size: 40px;
@@ -138,6 +144,66 @@ form .input_field:hover {
     .divider {
         width: 200px
     }
+}
+
+/* Index.html specific css */
+
+.bg {
+    width: 110%;
+    height: 100%;
+    background-image: url(../static/f1_car.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+}   
+
+#home_title {
+    float: left;
+    padding: 5px;
+    display: block;
+}
+
+#author {
+    float: right;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+#opening_message {
+    font-family: 'Quicksand', sans-serif;
+    padding: 16px;
+    margin: 3px 32px 32px 32px;
+    position: absolute;
+    background: linear-gradient(to right, ivory, #ffae00, #a76b09); 
+}
+
+#opening_msg_heading {
+    font-size: x-large;
+}
+
+/* login_or_register.html specific css */
+
+#loginpage_banner {
+    height: 60px;
+}
+
+#login_box {
+    width: 80%;
+    margin: 100px auto;
+    background-color: rgb(253, 203, 76);
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: #a76b09;
+}
+
+#login_submit_button, #login_signup_link {
+    background-color: rgb(40, 40, 40);
+}
+
+#login_form {
+    margin: 16px auto;
 }
 
 
