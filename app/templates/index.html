@@ -7,40 +7,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
         <title> Vehicle Dynamics Tutorial </title>
-
-        <style>
-            .bg {
-                width: 110%;
-                height: 100%;
-                background-image: url(../static/f1_car.jpg);
-                background-repeat: no-repeat;
-                background-size: cover;
-            }   
-
-            #home_title {
-                float: left;
-                padding: 5px;
-                display: block;
-            }
-
-            #author {
-                float: right;
-                padding: 5px;
-                margin-top: 15px;
-            }
-
-            #opening_message {
-                font-family: 'Quicksand', sans-serif;
-                padding: 16px;
-                margin: 3px 32px 32px 32px;
-                position: absolute;
-                background: linear-gradient(to right, ivory, #ffae00, #a76b09); 
-            }
-
-            #opening_msg_heading {
-                font-size: x-large;
-            }
-        </style>
     </head>
     
     <body>
@@ -82,16 +48,20 @@
         </div>
 
         <script>
+            var isAtMaxWidth = screen.availWidth - window.innerWidth === 0;
+
             function parallax(event){
                 let xPos = event.pageX * -1 / 50;
                 $('.bg').css('background-position-x', xPos + 'px');
             }
 
-            if (window.innerWidth > window.innerHeight) {
+            if (isAtMaxWidth) {
                 $('body').mousemove(parallax);
             }
+            
             $(window).resize(function(){
-                if (window.innerWidth > 1.5 * window.innerHeight) {
+                isAtMaxWidth = screen.availWidth - window.innerWidth === 0;
+                if (isAtMaxWidth) {
                     $('body').mousemove(parallax);
                 }
                 else {
