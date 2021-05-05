@@ -9,6 +9,7 @@ body, html {
 /* Styles to create the iconic top banner */
 
 .banner {
+    position: relative;
     height: 80px;
     background-image: url(../static/black_marble.jpg);
     background-size: 30% auto;
@@ -30,15 +31,15 @@ body, html {
     align-items: center;
 }
 
-.banner_text {
+.banner_left {
     font-family: 'Quicksand', sans-serif;
     color: #dda74f;
 }
 
-.banner_buttons {
+.banner_right {
     position: absolute;
     right: 0;
-    margin: 16px;
+    margin: 32px;
 }
 
 /* Button styling: overriding bootstrap button styles */
@@ -132,7 +133,7 @@ form .form_label {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .banner .subheading {
         display: none;
     }
@@ -155,7 +156,7 @@ form .form_label {
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: center;
-}   
+}  
 
 #home_title {
     float: left;
@@ -169,11 +170,38 @@ form .form_label {
     margin-top: 15px;
 }
 
+#homepage_banner {
+    width: 92%;
+}
+
+#welcome_message {
+    float: left;
+    color: #dda74f;
+    font-size: 24px;
+    margin: 16px;
+}
+
+#signout_button {
+    float: right;
+    margin: 16px;
+}
+
+#tutorial_startover {
+    width: 49%;
+    float: left;
+    margin: auto;
+}
+
+#tutorial_continue {
+    width: 49%;
+    float: right;
+    margin: auto;
+} 
+
 #opening_message {
-    font-family: 'Quicksand', sans-serif;
-    padding: 16px;
-    margin: 3px 32px 32px 32px;
     position: absolute;
+    padding: 16px;
+    margin: 16px 32px 32px 32px;
     background: linear-gradient(to right, ivory, #ffae00, #a76b09); 
 }
 
