@@ -9,22 +9,10 @@
         <title> Vehicle Dynamics Tutorial </title>
 
         <style>
-        #welcome_message {
-            color: #dda74f;
-            font-size: 24px;
-        }
-        #tutorial_startover {
-            width: 49%;
-            float: left;
-            margin: auto;
-        }
-        #tutorial_continue {
-            width: 49%;
-            float: right;
-            margin: auto;
+        .gold_button {
+            margin: 8px;
         }
         </style>
-
     </head>
     
     <body>
@@ -32,20 +20,26 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
         <div class="bg" id="black-f1">
-            <div class="banner">
+            <div class="banner" id="homepage_banner">
                 <div class="banner_content">
-                    <div class="banner_text">
+                    <div class="banner_left">
                         <h1 class="heading" id="homepage_title"> 
                             Vechicle Dynamics Tutorial 
                             <span class="subheading" id="author"> by Allen Antony and Mikayil Aliyev </span>
                         </h1>
                     </div>
-                    <div class="banner_buttons">
+                    <div class="banner_right">
                         {% if user.preferred_name %}
-                        <span id="welcome_message"> Welcome back, {{ user.preferred_name }}! </span>
+                        <a class="gold_button btn" id="signout_button" href={{ url_for('index') }} role="button"> 
+                            Sign out
+                        </a>
+                        <span id="welcome_message" class="subheading"> Welcome back, {{ user.preferred_name }}! </span>
                         {% else %}
-                        <a class="gold_button btn" id="login_button" href="#" role="button"> 
-                            Login / Register
+                        <a class="gold_button btn" href={{ url_for('login') }} role="button"> 
+                            Login
+                        </a>
+                        <a class="gold_button btn" href={{ url_for('register') }} role="button"> 
+                            Register
                         </a>
                         {% endif %}
                     </div>

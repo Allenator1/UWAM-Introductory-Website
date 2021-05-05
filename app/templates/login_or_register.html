@@ -13,17 +13,19 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        <div class="banner">
+        <div class="banner" id="loginpage_banner">
             <div class="banner_content">
                 <div class="banner_right">
-                    <a class="gold_button btn" id="homepage_button" href="#" role="button"> Return to Homepage </a>
+                    <a class="gold_button btn" id="homepage_button" href= {{ url_for('index') }} role="button"> Return to Homepage </a>
                 </div>
             </div>
         </div>
         <div class="gold_bar"></div>
 
         <div class="jumbotron" id="login_box">
-            <div class="form_heading"> Login </div>
+            <div class="form_heading"> 
+            {{ type }}
+            </div>
             <div class="divider"></div>
             <form action="" method="post" id="#login_form">
                 
@@ -31,6 +33,11 @@
 
                 {{ form.username.label(class_="form_label") }} <br>
                 {{ form.username(size=32, class_="input_field") }} <br><br>
+
+                {% if type == "Register" %}
+                {{ form.preferred_name.label(class_="form_label") }} <br>
+                {{ form.preferred_name(size=32, class_="input_field") }} <br><br>
+                {% endif %}
 
                 {{ form.password.label(class_="form_label") }} <br>
                 {{ form.password(size=32, class_="input_field") }} <br><br>
@@ -40,6 +47,10 @@
             </form>
             <br>
             <div class="divider"></div>
-            <a class="black_button btn" id="login_signup_link" href="#" role="button"> Or click this link to sign up </a>
+            {% if type == "Register" %}
+            <a class="black_button btn" id="login_signup_link" href= {{ url_for('login') }} role="button"> Or click this link to login</a>
+            {% else %}
+            <a class="black_button btn" id="login_signup_link" href= {{ url_for('register') }} role="button"> Or click this link to register</a>
+            {% endif %}
         </div>
     </body>
