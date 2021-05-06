@@ -48,13 +48,14 @@ body, html {
     background-color: #a76b09;
     border-color: #ffae00;
     color: black;
-    box-shadow: none;
+    margin: 8px;
 }
 
 .btn.black_button {
     background-color: rgb(31, 31, 31);
     border: none;
     color: #dda74f;
+    margin: 8px;
 }
 
 .btn.gold_button:focus, .btn.black_button:focus, .btn.gold_button:active, .btn.black_button:active {
