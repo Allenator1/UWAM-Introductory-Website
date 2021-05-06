@@ -7,12 +7,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
         <title> Vehicle Dynamics Tutorial </title>
-
-        <style>
-        .gold_button {
-            margin: 8px;
-        }
-        </style>
     </head>
     
     <body>
@@ -29,11 +23,11 @@
                         </h1>
                     </div>
                     <div class="banner_right">
-                        {% if user.preferred_name %}
-                        <a class="gold_button btn" id="signout_button" href={{ url_for('index') }} role="button"> 
+                        {% if current_user.is_authenticated %}
+                        <a class="gold_button btn" id="signout_button" href={{ url_for('logout') }} role="button"> 
                             Sign out
                         </a>
-                        <span id="welcome_message" class="subheading"> Welcome back, {{ user.preferred_name }}! </span>
+                        <span id="welcome_message" class="subheading"> Welcome back, {{ current_user.preferred_name }}! </span>
                         {% else %}
                         <a class="gold_button btn" href={{ url_for('login') }} role="button"> 
                             Login
@@ -57,7 +51,7 @@
                     Class aptent taciti sociosqu ad litora torquent per conubia 
                     nostra, per inceptos himenaeos. Aenean non mi vel risus dictum porta.
                 </p>
-                {% if user.username %}
+                {% if current_user.is_authenticated %}
                 <a class="black_button btn btn-block" id="tutorial_continue" href="#" role="button"> 
                     Resume your progress
                 </a>
