@@ -35,6 +35,9 @@
                 {{ form.username(size=32, class_="input_field") }} <br><br>
 
                 {% if type == "Register" %}
+                {{ form.email.label(class_="form_label") }} <br>
+                {{ form.email(size=32, class_="input_field") }} <br><br>
+
                 {{ form.preferred_name.label(class_="form_label") }} <br>
                 {{ form.preferred_name(size=32, class_="input_field") }} <br><br>
                 {% endif %}
