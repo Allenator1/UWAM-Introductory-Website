@@ -58,3 +58,12 @@ def register():
         return redirect(url_for('index'))
     return render_template('login&register.html', type="Register", form=form)
 
+
+@app.route('/submissions')
+def submissions():
+    submissions = []
+    for i in range(0, 12):
+        submissions.append({'date': str(date.today()), 'accuracy': round(random.randint(0, 10) / 10, 2), 
+            'time_taken': round(random.uniform(0.0, 30.0), 2)})
+    return render_template('submissions.html', submissions=submissions)
+
