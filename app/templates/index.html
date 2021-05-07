@@ -24,15 +24,18 @@
                     </div>
                     <div class="banner_right">
                         {% if current_user.is_authenticated %}
-                        <a class="gold_button btn" id="signout_button" href={{ url_for('logout') }} role="button"> 
+                        <a class="logout_button gold_button btn" href={{ url_for('logout') }} role="button"> 
                             Sign out
                         </a>
-                        <span id="welcome_message" class="subheading"> Welcome back, {{ current_user.preferred_name }}! </span>
+                        <a class="submissions_button gold_button btn" href={{ url_for('submissions') }} role="button"> 
+                            Submissions
+                        </a>
+                        <span class="subheading" id="welcome_message"> Welcome back, {{ current_user.preferred_name }}! </span>
                         {% else %}
-                        <a class="gold_button btn" href={{ url_for('login') }} role="button"> 
+                        <a class="login_button gold_button btn" href={{ url_for('login') }} role="button"> 
                             Login
                         </a>
-                        <a class="gold_button btn" href={{ url_for('register') }} role="button"> 
+                        <a class="register_button gold_button btn" href={{ url_for('register') }} role="button"> 
                             Register
                         </a>
                         {% endif %}
