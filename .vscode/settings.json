@@ -1,15 +1,6 @@
 {
     "python.pythonPath": "venv/bin/python3.8",
     "files.exclude": {
-      "**/.git": true,
-      "**/.svn": true,
-      "**/.hg": true,
-      "**/CVS": true,
-      "**/.DS_Store": true,
-      ".flaskenv": true,
-      "venv": true,
-      "README.md": true,
-      "**/__pycache__": true
     },
     "explorerExclude.backup": null
 }
