@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="../static/main.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-        <title> Tutorial Login </title>
+        <title> Tutorial {{ type }} </title>
     </head>
 
     <body>
@@ -16,7 +16,9 @@
         <div class="banner" id="loginpage_banner">
             <div class="banner_content">
                 <div class="banner_right">
-                    <a class="gold_button btn" id="homepage_button" href= {{ url_for('index') }} role="button"> Return to Homepage </a>
+                    <a class="homepage_button gold_button btn" id="homepage_button" href= {{ url_for('index') }} role="button">
+                         Return to Homepage 
+                    </a>
                 </div>
             </div>
         </div>
@@ -44,6 +46,14 @@
 
                 {{ form.password.label(class_="form_label") }} <br>
                 {{ form.password(size=32, class_="input_field") }} <br><br>
+
+                {% if type == "Register" %}
+                {{ form.confirm_password.label(class_="form_label") }} <br>
+                {{ form.confirm_password(size=32, class_="input_field") }} <br><br>
+                {% endif %}
+
+                {{form.remember_me.label(class_="form_label")}}
+                {{form.remember_me}} <br><br>
 
                 {{ form.submit(class_="form_submit black_button btn", id="login_submit_button") }}
 
