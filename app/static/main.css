@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body, html {
     height: 100%;
     overflow-x: hidden;
@@ -24,7 +28,6 @@ body, html {
 }
 
 .banner_content {
-    padding: 16px;
     height: inherit;
     display: flex;
     width: 100%;
@@ -32,6 +35,7 @@ body, html {
 }
 
 .banner_left {
+    margin: 16px;
     font-family: 'Quicksand', sans-serif;
     color: #dda74f;
 }
@@ -44,21 +48,29 @@ body, html {
 
 /* Button styling: overriding bootstrap button styles */
 
+.logout_button, .register_button {
+    float: right;
+}
+
+.login_button, .homepage_button {
+    float: left;
+}
+
 .btn.gold_button {
     background-color: #a76b09;
     border-color: #ffae00;
     color: black;
-    margin: 8px;
+    margin: 12px;
 }
 
 .btn.black_button {
-    background-color: rgb(31, 31, 31);
-    border: none;
     color: #dda74f;
-    margin: 8px;
+    background-color: rgb(31, 31, 31);
+    margin: 12px;
 }
 
-.btn.gold_button:focus, .btn.black_button:focus, .btn.gold_button:active, .btn.black_button:active {
+.btn.gold_button:focus, .btn.black_button:focus,
+.btn.gold_button:active, .btn.black_button:active {
     box-shadow: 0 0 0 0.1rem ivory;
     color: ivory;
 }
@@ -115,8 +127,11 @@ form .form_label {
     .banner .heading {
         font-size: xx-large;
     }
-    .banner .subheading{
+    #author {
         font-size: medium;
+    }
+    #welcome_message {
+        font-size: 24px;
     }
 }
 
@@ -124,27 +139,45 @@ form .form_label {
     .banner .heading {
         font-size: x-large;
     }
-
-    .banner .subheading, .jumbotron_text {
-        font-size: small;
+    #author {
+        font-size: medium;
     }
-
     .divider {
         width: 300px
     }
+    #welcome_message {
+        font-size: 18px;
+    }
 }
 
-@media (max-width: 900px) {
-    .banner .subheading {
-        display: none;
-    }
-
-    .banner .btn {
+@media (max-width: 1200px) {
+    #author, .jumbotron_text {
         font-size: small;
     }
+    #welcome_message {
+        font-size: 16px;
+    }
+    .banner .btn {
+        font-size: small;
+        margin: 5px;
+    }
+}
 
+@media (max-width: 950px) {
+    .banner .heading {
+        font-size: large;
+    }
+    #author {
+        display: none;
+    }
     .divider {
         width: 200px
+    }
+}
+
+@media (max-width: 700px) {
+    #welcome_message {
+        display: none;
     }
 }
 
@@ -178,12 +211,6 @@ form .form_label {
 #welcome_message {
     float: left;
     color: #dda74f;
-    font-size: 24px;
-    margin: 16px;
-}
-
-#signout_button {
-    float: right;
     margin: 16px;
 }
 
@@ -212,10 +239,6 @@ form .form_label {
 
 /* login_or_register.html specific css */
 
-#loginpage_banner {
-    height: 60px;
-}
-
 #login_box {
     width: 80%;
     margin: 100px auto;
@@ -233,6 +256,47 @@ form .form_label {
 
 #login_form {
     margin: 16px auto;
+}
+
+/* submissions.html specific css */
+#submissions_container {
+    margin-top: 32px;
+}
+
+.submission_box.jumbotron {
+    background-color: rgb(39, 39, 39);
+    border-style: groove;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: rgb(253, 203, 76);
+    color: #dda74f;
+    margin: 12px;
+    padding: 30px;
+}
+
+.submission_box.jumbotron:hover {
+    background-color: rgb(42, 42, 42);
+} 
+
+#submissions_container .submission_btn, 
+#submissions_container .del_submission_btn {
+    margin: 8px auto;
+}
+
+#submissions_container .submission_btn {
+    border-style: groove;
+    border-width: 1px;
+    border-color: rgb(253, 203, 76);
+}
+
+.quiz_stat_label {
+    font-size: 16px;
+    color: ivory;
+}
+
+.quiz_stat {
+    font-size: 16px;
+    color: #dda74f;
 }
 
 
