@@ -3,7 +3,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 class User(UserMixin, db.Model):
-    primary_id = db.Column(db.Integer, primary_key=True)
+    __tablename__ = 'user'
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     email = db.Column(db.String(128), index=True, unique=True)
     preferred_name = db.Column(db.String(64))
@@ -22,13 +23,15 @@ class User(UserMixin, db.Model):
 
 
 class Quiz(db.Model):
-    primary_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.primary_id'), nullable=False)
+    __tablename__ = 'quiz'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
 class Tutorial(db.Model):
-    primary_id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.primary_id'), nullable=False)
+    __tablename__ = 'tutorial'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
 @login.user_loader
