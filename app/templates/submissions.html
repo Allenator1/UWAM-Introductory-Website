@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/main.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+        <title> Tutorial submissions </title>
+    </head>
+
+    <body>
+        <div class="banner" id="submissions_page_banner">
+            <div class="banner_content">
+                <div class="banner_left">
+                    <h1 class="heading"> Quiz Submissions </h1>
+                </div>
+                <div class="banner_right">
+                    <a class="homepage_button gold_button btn" href= {{ url_for('index') }} role="button"> Return to Homepage </a>
+                    <a class="logout_button gold_button btn" href={{ url_for('logout') }} role="button"> Sign out </a>
+                </div>
+            </div>
+        </div>
+        <div class="gold_bar"></div>
+
+        <div class="container-fluid" id="submissions_container"> 
+            <div class="row">
+            {% for quiz in submissions[0:6] %}
+                <div class="submission_box jumbotron col-sm">
+                    <p class="quiz_stat_label"> Date Submitted: </p>
+                    <p class="quiz_stat"> {{ quiz.date }} </p>
+                    <p class="quiz_stat_label"> Accuracy: </p>
+                    <p class="quiz_stat"> {{ quiz.accuracy * 100 }}% </p>
+                    <p class="quiz_stat_label"> Time taken to finish: </p>
+                    <p class="quiz_stat">{{ quiz.time_taken }} minutes </p>
+                    <button class="submission_btn black_button btn btn-block"> 
+                        View Submission 
+                    </button>
+                    <button class="del_submission_btn gold_button btn"> 
+                        Delete Submission 
+                    </button>
+                </div>
+            {% endfor %}
+            </div>
+
+            <div class="row">
+            {% for quiz in submissions[6:12] %}
+                <div class="submission_box jumbotron col-sm">
+                    <p class="quiz_stat_label"> Date Submitted: </p>
+                    <p class="quiz_stat"> {{ quiz.date }} </p>
+                    <p class="quiz_stat_label"> Accuracy: </p>
+                    <p class="quiz_stat"> {{ quiz.accuracy * 100 }}% </p>
+                    <p class="quiz_stat_label"> Time taken to finish: </p>
+                    <p class="quiz_stat">{{ quiz.time_taken }} minutes </p>
+                    <button class="submission_btn black_button btn btn-block"> 
+                        View Submission 
+                    </button>
+                    <button class="del_submission_btn gold_button btn"> 
+                        Delete Submission 
+                    </button>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
