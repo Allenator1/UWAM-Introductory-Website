@@ -104,21 +104,22 @@ form .input_field:hover {
 form .form_label {
     color: black;
     font-size: 18px;
+    margin: 8px 32px;
 }
 
 .form_heading {
     color: black;
     font-size: 40px;
     display: inline-block;
-    margin: 8px;
+    margin: 8px 48px;
 }
 
 /* Black divider */
 
 .divider {
-    width: 400px;
+    width: 1000px;
     border-bottom: 1px solid black;
-    margin:20px auto;
+    margin: 20px;
 }
 
 /* Controlling font-sizes depending on the page width */
@@ -142,11 +143,17 @@ form .form_label {
     #author {
         font-size: medium;
     }
-    .divider {
-        width: 300px
-    }
     #welcome_message {
         font-size: 18px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .divider {
+        width: 800px
+    }
+    form .input_field {
+        width: 60%;
     }
 }
 
@@ -160,6 +167,12 @@ form .form_label {
     .banner .btn {
         font-size: small;
         margin: 5px;
+    }
+    .divider {
+        width: 500px;
+    }
+    form .input_field {
+        width: 90%;
     }
 }
 
@@ -243,7 +256,7 @@ form .form_label {
     width: 80%;
     margin: 100px auto;
     background-color: rgb(253, 203, 76);
-    text-align: center;
+    text-align: left;
     border-style: solid;
     border-width: 2px;
     border-radius: 20px;
@@ -255,7 +268,7 @@ form .form_label {
 }
 
 #login_form {
-    margin: 16px auto;
+    margin: 16px 32px;
 }
 
 /* submissions.html specific css */
