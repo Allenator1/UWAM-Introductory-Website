@@ -10,8 +10,10 @@
     </head>
 
     <body>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
 
         <div class="banner" id="loginpage_banner">
             <div class="banner_content">
@@ -29,34 +31,32 @@
             {{ type }}
             </div>
             <div class="divider"></div>
-            <form action="" method="post" id="#login_form">
-                
+            <form action="" method="post" id="login_form">  
                 {{ form.hidden_tag() }}
 
                 {{ form.username.label(class_="form_label") }} <br>
-                {{ form.username(size=32, class_="input_field") }} <br><br>
+                {{ form.username(size=32, class_="input_field") }} <br id="username_br">
 
                 {% if type == "Register" %}
                 {{ form.email.label(class_="form_label") }} <br>
-                {{ form.email(size=32, class_="input_field") }} <br><br>
+                {{ form.email(size=32, class_="input_field") }} <br id="email_br">
 
                 {{ form.preferred_name.label(class_="form_label") }} <br>
-                {{ form.preferred_name(size=32, class_="input_field") }} <br><br>
+                {{ form.preferred_name(size=32, class_="input_field") }} <br>
                 {% endif %}
 
                 {{ form.password.label(class_="form_label") }} <br>
-                {{ form.password(size=32, class_="input_field") }} <br><br>
+                {{ form.password(size=32, class_="input_field") }} <br>
 
                 {% if type == "Register" %}
                 {{ form.confirm_password.label(class_="form_label") }} <br>
-                {{ form.confirm_password(size=32, class_="input_field") }} <br><br>
+                {{ form.confirm_password(size=32, class_="input_field") }} <br>
                 {% endif %}
 
                 {{form.remember_me.label(class_="form_label")}}
                 {{form.remember_me}} <br><br>
 
                 {{ form.submit(class_="form_submit black_button btn", id="login_submit_button") }}
-
             </form>
             <br>
             <div class="divider"></div>
@@ -66,4 +66,65 @@
             <a class="black_button btn" id="login_signup_link" href= {{ url_for('register') }} role="button"> Or click this link to register</a>
             {% endif %}
         </div>
+
+        <script>
+            let password_val = $('input[name=password').text()
+            $().ready(function() {
+                $('#login_form').validate({
+                    rules: {
+                        username: {
+                            required: true,
+                            minlength: 2,
+                            alphanumeric: true
+                        },
+                        password: {
+                            required: true,
+                            minlength: 5,
+                        },
+                        email: {
+                            required: false,
+                            email: true
+                        },
+                        preferred_name: {
+                            required: false,
+                        },
+                        confirm_password: {
+                            required: true,
+                            equalTo: "#password"
+                        }
+                    }
+                });
+            });
+
+            function validateUsername() {
+                $.post('/validate_registration', {'username': $('#username').val()}).done(function(response) {
+                    if (!response['available']) {
+                        let error = '<p id="username_exists_error"> This username is already taken. Please choose another </p>'
+                        $('#username_br').replaceWith(error)
+                    }
+                    else {
+                        $('#username_exists_error').replaceWith('<br id="username_br">')
+                    }
+                }).fail(function() {
+                    return;
+                });
+            }
+
+            function validateEmail() {
+                $.post('/validate_registration', {'email': $('#email').val()}).done(function(response) {
+                    if (!response['available']) {
+                        let error = '<p id="email_exists_error"> This email already has a registered account </p>'
+                        $('#email_br').replaceWith(error)
+                    }
+                    else {
+                        $('#email_exists_error').replaceWith('<br id="email_br">')
+                    }
+                }).fail(function() {
+                    return;
+                });
+            }
+
+            $('#username').blur(validateUsername);
+            $('#email').blur(validateEmail);
+        </script>
     </body>
