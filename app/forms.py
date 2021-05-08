@@ -13,12 +13,13 @@ class LoginForm(FlaskForm):
 
 
 class RegisterForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=2), 
+    username = StringField('Username', validators=[DataRequired(), 
         Regexp("[[a-zA-Z\_\d]{2,32}")])
     email = StringField('Email', validators=[DataRequired(), Email()])
     preferred_name = StringField('Preferred Name')
     password = StringField('Password', validators=[DataRequired(), Length(min=5)])
-    confirm_password = StringField('Confirm Password', validators=[DataRequired(), EqualTo(password)])
+    confirm_password = StringField('Confirm Password', validators=[DataRequired(), 
+        EqualTo(password)])
     remember_me = BooleanField('Remember Me!')
     submit = SubmitField('Register')
 
