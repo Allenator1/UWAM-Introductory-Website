@@ -1,13 +1,14 @@
 import random
-from datetime import date
+from datetime import date, timedelta
 from flask import render_template, redirect, url_for, flash, request, jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
 from app.forms import LoginForm, RegisterForm
-from app.models import User
+from app.models import User, Quiz, Tutorial
+from app.controller import *
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
@@ -55,16 +56,6 @@ def register():
     return render_template('login&register.html', type="Register", form=form)
 
 
-@app.route('/submissions')
-@login_required
-def submissions():
-    submissions = []
-    for i in range(0, 12):
-        submissions.append({'date': str(date.today()), 'accuracy': round(random.randint(0, 10) / 10, 2), 
-            'time_taken': round(random.uniform(0.0, 30.0), 2)})
-    return render_template('submissions.html', submissions=submissions)
-
-
 @app.route('/validate_registration', methods=['POST'])
 def validate_registration():
     json = request.form
@@ -80,7 +71,52 @@ def validate_registration():
         email_available = User.query.filter_by(email=email).first() == None
         print(f'email available?: {email_available}')
         return jsonify({'available': email_available})
-    return redirect(url_for('login'))
+    return redirect(url_for('register'))
+
+
+@app.route('/tutorial', methods=['GET', 'POST'])
+def tutorial():
+    json = request.form
+    tutorial = current_user.tutorial
+    if json and 'fresh_tutorial' in json.keys():
+        tutorial.new_tutorial()
+        return redirect(url_for('tutorial'))
+    elif json:
+        question = list(json.keys())[0]
+        tutorial.questions[question] = json[question]
+        return jsonify({question: json[question]})
+    return render_template('tutorial.html', tutorial=tutorial.questions)
+
+
+@app.route('/feedback', methods=['GET'])
+@login_required
+def feedback():
+    quiz = db.session.query(Quiz).join(User).filter_by(Quiz.user_id == current_user.id).\
+        order_by(Quiz.finish_date).first()
+    totals = get_section_totals(quiz)
+    return render_template('feedback.html', totals=totals)
+
+
+@app.route('/submissions')
+@login_required
+def submissions():
+    submissions = db.query(Quiz).join(User).filter_by(Quiz.user_id == current_user.id).\
+        order_by(Quiz.finish_date).limit(12).all()
+    submissions_stats = []
+    for quiz in submissions:
+        stats = {}
+        stats['quiz'] = quiz.finish_date
+        totals = get_section_totals(quiz)
+        stats['section'] = totals.index(max(totals)) + 1
+        stats['accuracy'] = sum(totals) / 25
+        stats['time_taken'] = (quiz.finish_time - quiz.start_time).total_seconds() / 60
+        submissions_stats.append(stats)
+    return render_template('submissions.html', submissions=submissions_stats)
+    
+
+
+
+
 
 
 
