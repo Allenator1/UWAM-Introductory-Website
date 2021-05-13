@@ -29,21 +29,17 @@ class Quiz(db.Model):
     __tablename__ = 'quiz'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    date = db.Column(db.DateTime, default=datetime.utcnow)
-    started = db.Column(db.Boolean, default=False)
-    completed = db.Column(db.Boolean, default=False)
-    section1 = db.Column(db.JSON)
-    section2 = db.Column(db.JSON)
-    section3 = db.Column(db.JSON)
-    section4 = db.Column(db.JSON)
-    section5 = db.Column(db.JSON)
+    start_date = db.Column(db.DateTime, default=datetime.utcnow)
+    finish_date = db.Column(db.DateTime)
+    section1 = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 6)})
+    section2 = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 6)})
+    section3 = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 6)})
+    section4 = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 6)})
+    section5 = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 6)})
 
     def __repr__(self):
         user = User.query.get(self.user_id)
         return f'<Quiz by {user.username} on {self.date}>'
-
-    def get_associated_user(self):
-        return User.query.get(self.user_id)
 
 
 @login.user_loader
@@ -55,17 +51,14 @@ class Tutorial(db.Model):
     __tablename__ = 'tutorial'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    date = db.Column(db.DateTime, default=datetime.utcnow)
-    started = db.Column(db.Boolean, default=False)
-    completed = db.Column(db.Boolean, default=False)
-    questions = db.Column(db.JSON)
+    questions = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 26)})
 
     def __repr__(self):
         user = User.query.get(self.user_id)
-        return f'<Tutorial by {user.username} on {self.date}>'
+        return f'<Tutorial for {user.username}>'
 
-    def get_associated_user(self):
-        return User.query.get(self.user_id)
+    def new_tutorial(self):
+        self.questions = {'Q' + i : "" for i in range(1, 26)}
 
 
 
