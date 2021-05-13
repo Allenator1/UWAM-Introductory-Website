@@ -1,3 +1,4 @@
+from datetime import datetime
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -9,8 +10,9 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(128), index=True, unique=True, nullable=False)
     preferred_name = db.Column(db.String(64))
     password_hash = db.Column(db.String(128))
-    submissions = db.relationship('Quiz', backref='user', lazy=True)
-    tutorial = db.relationship('Tutorial', backref='user', lazy=True, uselist=False)
+    is_admin = db.Column(db.Boolean)
+    tutorial_progress = db.Column(db.Integer, default=0)
+    submissions = db.relationship('Quiz', backref='user', lazy='dynamic')
 
     def __repr__(self):
         return f'<User {self.username}>'
@@ -26,12 +28,20 @@ class Quiz(db.Model):
     __tablename__ = 'quiz'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    completed = db.Column(db.Boolean, default=False)
+    section1 = db.Column(db.JSON)
+    section2 = db.Column(db.JSON)
+    section3 = db.Column(db.JSON)
+    section4 = db.Column(db.JSON)
+    section5 = db.Column(db.JSON)
 
+    def __repr__(self):
+        user = User.query.get(self.user_id)
+        return f'<Quiz by {user.username} on {self.date}>'
 
-class Tutorial(db.Model):
-    __tablename__ = 'tutorial'
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    def get_associated_user(self):
+        return User.query.get(self.user_id)
 
 
 @login.user_loader
