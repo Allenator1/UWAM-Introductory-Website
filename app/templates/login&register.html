@@ -123,8 +123,9 @@
                     return;
                 });
             }
-
-            $('#username').blur(validateUsername);
-            $('#email').blur(validateEmail);
+            if ($('.form_heading').html == "Register") {
+                $('#username').blur(validateUsername);
+                $('#email').blur(validateEmail);
+            }
         </script>
     </body>
