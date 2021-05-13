@@ -3,6 +3,7 @@ from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
@@ -11,8 +12,8 @@ class User(UserMixin, db.Model):
     preferred_name = db.Column(db.String(64))
     password_hash = db.Column(db.String(128))
     is_admin = db.Column(db.Boolean)
-    tutorial_progress = db.Column(db.Integer, default=0)
-    submissions = db.relationship('Quiz', backref='user', lazy='dynamic')
+    tutorial = db.relationship('Tutorial', uselist=False, backref='user')
+    submissions = db.relationship('Quiz', backref='user')
 
     def __repr__(self):
         return f'<User {self.username}>'
@@ -29,6 +30,7 @@ class Quiz(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     date = db.Column(db.DateTime, default=datetime.utcnow)
+    started = db.Column(db.Boolean, default=False)
     completed = db.Column(db.Boolean, default=False)
     section1 = db.Column(db.JSON)
     section2 = db.Column(db.JSON)
@@ -47,6 +49,23 @@ class Quiz(db.Model):
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+
+class Tutorial(db.Model):
+    __tablename__ = 'tutorial'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    started = db.Column(db.Boolean, default=False)
+    completed = db.Column(db.Boolean, default=False)
+    questions = db.Column(db.JSON)
+
+    def __repr__(self):
+        user = User.query.get(self.user_id)
+        return f'<Tutorial by {user.username} on {self.date}>'
+
+    def get_associated_user(self):
+        return User.query.get(self.user_id)
 
 
 
