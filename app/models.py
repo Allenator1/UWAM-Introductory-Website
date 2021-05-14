@@ -2,6 +2,7 @@ from datetime import datetime
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.ext.mutable import MutableDict
 
 
 class User(UserMixin, db.Model):
@@ -31,15 +32,15 @@ class Quiz(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     start_date = db.Column(db.DateTime, default=datetime.utcnow)
     finish_date = db.Column(db.DateTime)
-    section1 = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 6)})
-    section2 = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 6)})
-    section3 = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 6)})
-    section4 = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 6)})
-    section5 = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 6)})
+    section1 = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 6)})
+    section2 = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 6)})
+    section3 = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 6)})
+    section4 = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 6)})
+    section5 = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 6)})
 
     def __repr__(self):
         user = User.query.get(self.user_id)
-        return f'<Quiz by {user.username} on {self.date}>'
+        return f'<Quiz by {user.username} on {self.start_date}>'
 
 
 @login.user_loader
@@ -51,7 +52,7 @@ class Tutorial(db.Model):
     __tablename__ = 'tutorial'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    questions = db.Column(db.JSON, default={'Q' + str(i) : "" for i in range(1, 26)})
+    questions = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 26)})
 
     def __repr__(self):
         user = User.query.get(self.user_id)
