@@ -46,6 +46,27 @@ body, html {
     margin: 32px;
 }
 
+/* Jumbotron styling */
+
+.black_jumbo.jumbotron {
+    background-color: rgb(39, 39, 39);
+    border-style: groove;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: rgb(253, 203, 76);
+    color: #dda74f;
+    margin: 12px;
+    padding: 30px;
+}
+
+.gold_jumbo.jumbotron {
+    background-color: rgb(253, 203, 76);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: #a76b09;
+}
+
 /* Button styling: overriding bootstrap button styles */
 
 .logout_button, .register_button {
@@ -77,6 +98,12 @@ body, html {
 
 .btn.gold_button:hover, .btn.black_button:hover {
     color: ivory;
+}
+
+.submission_btn.black_button {
+    border-style: groove;
+    border-width: 1px;
+    border-color: rgb(253, 203, 76);
 }
 
 /* CSS for styling forms */
@@ -255,12 +282,7 @@ form .form_label {
 #login_box {
     width: 80%;
     margin: 100px auto;
-    background-color: rgb(253, 203, 76);
     text-align: left;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 20px;
-    border-color: #a76b09;
 }
 
 #login_submit_button, #login_signup_link {
@@ -272,34 +294,14 @@ form .form_label {
 }
 
 /* submissions.html specific css */
+
 #submissions_container {
     margin-top: 32px;
 }
 
-.submission_box.jumbotron {
-    background-color: rgb(39, 39, 39);
-    border-style: groove;
-    border-width: 2px;
-    border-radius: 20px;
-    border-color: rgb(253, 203, 76);
-    color: #dda74f;
-    margin: 12px;
-    padding: 30px;
-}
-
-.submission_box.jumbotron:hover {
-    background-color: rgb(42, 42, 42);
-} 
-
 #submissions_container .submission_btn, 
 #submissions_container .del_submission_btn {
     margin: 8px auto;
-}
-
-#submissions_container .submission_btn {
-    border-style: groove;
-    border-width: 1px;
-    border-color: rgb(253, 203, 76);
 }
 
 .quiz_stat_label {
@@ -310,6 +312,42 @@ form .form_label {
 .quiz_stat {
     font-size: 16px;
     color: #dda74f;
+}
+
+.submission_box.black_jumbo.jumbotron:hover {
+    background-color: rgb(42, 42, 42);
+} 
+
+/* feedback.html specific css */
+
+#quiz_stats_bar {
+    width: 70%; 
+    height: 38px; 
+    margin: 32px auto;
+    border-radius: 20px;
+    font-family: 'Quicksand';
+    font-size: 18px;
+}
+
+#feedback_box {
+    color: rgb(253, 203, 76);
+}
+
+#congratz_box {
+    width: 60%;
+    margin: 64px auto;
+    color: ivory;
+    font-size: 28px;
+    text-align: center;
+}
+
+#congratz {
+    color: rgb(253, 203, 76);
+    font-style: italic;
+}
+
+#given_section {
+    font-size: 38px;
 }
 
 
