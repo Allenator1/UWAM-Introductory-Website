@@ -26,7 +26,7 @@
         <div class="container-fluid" id="submissions_container"> 
             <div class="row">
             {% for quiz in submissions[0:6] %}
-                <div class="submission_box jumbotron col-sm">
+                <div class="submission box black_jumbo jumbotron col-sm">
                     <p class="quiz_stat_label"> Date Submitted: </p>
                     <p class="quiz_stat"> {{ quiz.date }} </p>
                     <p class="quiz_stat_label"> Accuracy: </p>
@@ -45,7 +45,7 @@
 
             <div class="row">
             {% for quiz in submissions[6:12] %}
-                <div class="submission_box jumbotron col-sm">
+                <div class="submission_box black_jumbo jumbotron col-sm">
                     <p class="quiz_stat_label"> Date Submitted: </p>
                     <p class="quiz_stat"> {{ quiz.date }} </p>
                     <p class="quiz_stat_label"> Accuracy: </p>
