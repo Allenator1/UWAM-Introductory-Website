@@ -149,6 +149,20 @@ form .form_label {
     margin: 20px;
 }
 
+/* Progress bar to show quiz totals */
+
+.quiz_stats_bar.progress {
+    width: 70%; 
+    height: 38px; 
+    margin: 32px auto;
+    border-style: groove;
+    border-width: 1px;
+    border-radius: 20px;
+    border-color: rgb(253, 203, 76);
+    font-family: 'Quicksand';
+    font-size: 18px;
+}
+
 /* Controlling font-sizes depending on the page width */
 
 @media (min-width: 1800px) {
@@ -320,15 +334,6 @@ form .form_label {
 
 /* feedback.html specific css */
 
-#quiz_stats_bar {
-    width: 70%; 
-    height: 38px; 
-    margin: 32px auto;
-    border-radius: 20px;
-    font-family: 'Quicksand';
-    font-size: 18px;
-}
-
 #feedback_box {
     color: rgb(253, 203, 76);
 }
@@ -349,6 +354,7 @@ form .form_label {
 #given_section {
     font-size: 38px;
 }
+
 
 
 
