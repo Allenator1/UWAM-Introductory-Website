@@ -85,16 +85,18 @@ def tutorial():
         question = list(json.keys())[0]
         tutorial.questions[question] = json[question]
         return jsonify({question: json[question]})
-    return render_template('tutorial.html', tutorial=tutorial.questions)
+    return render_template('tutorial.html', questions=tutorial.questions)
 
 
 @app.route('/feedback', methods=['GET'])
 @login_required
 def feedback():
-    quiz = db.session.query(Quiz).join(User).filter_by(Quiz.user_id == current_user.id).\
+    quiz = db.session.query(Quiz).join(User).filter(Quiz.user_id == current_user.id).\
         order_by(Quiz.finish_date).first()
-    totals = get_section_totals(quiz)
-    return render_template('feedback.html', totals=totals)
+    section_totals = get_section_totals(quiz)
+    section_proportions = get_section_proportions(section_totals)
+    section = section_totals.index(max(section_totals)) + 1
+    return render_template('feedback.html', section_proportions=section_proportions, section=section)
 
 
 @app.route('/submissions')
@@ -105,7 +107,7 @@ def submissions():
     submissions_stats = []
     for quiz in submissions:
         stats = {}
-        stats['quiz'] = quiz.finish_date
+        stats['date'] = quiz.finish_date
         totals = get_section_totals(quiz)
         stats['section'] = totals.index(max(totals)) + 1
         stats['accuracy'] = sum(totals) / 25
