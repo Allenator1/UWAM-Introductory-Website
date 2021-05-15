@@ -19,10 +19,10 @@ def get_section_totals(quiz):
     return section_totals
 
 
-def get_section_proportions(section_totals):
+def get_proportions(totals):
     percents = []
-    num_marks = sum(section_totals)
-    for t in section_totals:
+    num_marks = sum(totals)
+    for t in totals:
         percents.append(t / num_marks * 100)
     return percents
 
