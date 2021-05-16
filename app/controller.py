@@ -1,29 +1,29 @@
 from app.models import User, Quiz
 from app import db
 
-SECTION1_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
-SECTION2_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)} 
-SECTION3_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
-SECTION4_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
-SECTION5_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
+FINANCE_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
+MARKETING_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)} 
+VD_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
+CHASSIS_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
+POWERTRAIN_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
 
 #--------------FUNCTIONS FOR ACCESSING QUIZ DATA------------------
 
 def get_section_totals(quiz):
-    section_totals = []
-    section_totals.append(get_total(quiz.section1, SECTION1_ANSWERS))
-    section_totals.append(get_total(quiz.section2, SECTION2_ANSWERS))
-    section_totals.append(get_total(quiz.section3, SECTION3_ANSWERS))
-    section_totals.append(get_total(quiz.section4, SECTION4_ANSWERS))
-    section_totals.append(get_total(quiz.section5, SECTION5_ANSWERS))
+    section_totals = {} 
+    section_totals['Finance'] = get_total(quiz.finance, FINANCE_ANSWERS)
+    section_totals['Marketing'] = get_total(quiz.marketing, MARKETING_ANSWERS)
+    section_totals['Chassis'] = get_total(quiz.chassis, VD_ANSWERS)
+    section_totals['Vehicle Dynamics'] = get_total(quiz.vehicle_dynamics, CHASSIS_ANSWERS)
+    section_totals['Powertrain'] = get_total(quiz.powertrain, POWERTRAIN_ANSWERS)
     return section_totals
 
 
 def get_proportions(totals):
-    percents = []
-    num_marks = sum(totals)
-    for t in totals:
-        percents.append(t / num_marks * 100)
+    num_marks = sum(totals.values())
+    percents = {}
+    for k in totals.keys():
+        percents[k] = totals[k] / num_marks * 100
     return percents
 
 

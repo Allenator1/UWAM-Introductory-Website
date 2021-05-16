@@ -32,11 +32,11 @@ class Quiz(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     start_date = db.Column(db.DateTime, default=datetime.utcnow)
     finish_date = db.Column(db.DateTime)
-    section1 = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 6)})
-    section2 = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 6)})
-    section3 = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 6)})
-    section4 = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 6)})
-    section5 = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 6)})
+    finance = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 4)})
+    marketing = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 4)})
+    chassis = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 4)})
+    vehicle_dynamics = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 4)})
+    powertrain = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 4)})
 
     def __repr__(self):
         user = User.query.get(self.user_id)
@@ -52,14 +52,14 @@ class Tutorial(db.Model):
     __tablename__ = 'tutorial'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    questions = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 26)})
+    questions = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 11)})
 
     def __repr__(self):
         user = User.query.get(self.user_id)
         return f'<Tutorial for {user.username}>'
 
     def new_tutorial(self):
-        self.questions = {'Q' + i : "" for i in range(1, 26)}
+        self.questions = {'Q' + i : "" for i in range(1, 11)}
 
 
 
