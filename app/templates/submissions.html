@@ -10,6 +10,9 @@
     </head>
 
     <body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+        
         <div class="banner" id="submissions_page_banner">
             <div class="banner_content">
                 <div class="banner_left">
@@ -23,44 +26,85 @@
         </div>
         <div class="gold_bar"></div>
 
+        <div class="quiz_stats_bar progress">
+            <div class="progress-bar" role="progressbar" style="width: {{section_proportions.Finance}}%"> Finance </div>
+            <div class="progress-bar bg-success" role="progressbar" style="width: {{section_proportions.Marketing}}%"> Marketing </div>
+            <div class="progress-bar bg-dark" role="progressbar" style="width: {{section_proportions.Chassis}}%"> Chassis </div>
+            <div class="progress-bar bg-danger" role="progressbar" style="width: {{section_proportions['Vehicle Dynamics']}}%"> Vehicle Dynamics </div>
+            <div class="progress-bar bg-info" role="progressbar" style="width: {{section_proportions.Powertrain}}%"> Powertrain </div>
+        </div>
+
+        {% if submission_stats|length == 0 %}
+        <div id="no_submissions_box">
+            <p id="no_submissions_message"> You have no submissions. Start a new tutorial or begin the quiz! </p>
+            <button class="gold_border left_btn black_button btn btn-block"> 
+                Start Tutorial
+            </button>
+            <button class="gold_border right_btn black_button btn btn-block"> 
+                Start Quiz
+            </button>
+        </div>
+        {% endif %}
+
         <div class="container-fluid" id="submissions_container"> 
             <div class="row">
-            {% for quiz in submissions[0:6] %}
-                <div class="submission_box jumbotron col-sm">
-                    <p class="quiz_stat_label"> Date Submitted: </p>
-                    <p class="quiz_stat"> {{ quiz.date }} </p>
-                    <p class="quiz_stat_label"> Accuracy: </p>
-                    <p class="quiz_stat"> {{ quiz.accuracy * 100 }}% </p>
-                    <p class="quiz_stat_label"> Time taken to finish: </p>
-                    <p class="quiz_stat">{{ quiz.time_taken }} minutes </p>
-                    <button class="submission_btn black_button btn btn-block"> 
-                        View Submission 
-                    </button>
-                    <button class="del_submission_btn gold_button btn"> 
-                        Delete Submission 
-                    </button>
-                </div>
+            {% if submission_stats|length > 0 %}
+            {% for quiz in submission_stats[0 : (submission_stats|length, 6)|min] %}
+            <div class="submission box black_jumbo jumbotron col-2-sm" data-id="{{quiz.quiz_id}}">
+                <p class="quiz_stat_label"> Date Submitted: </p>
+                <p class="quiz_stat"> {{ quiz.date }} </p>
+                <p class="quiz_stat_label"> Department </p>
+                <p class="quiz_stat"> {{ quiz.section }} </p>
+                <p class="quiz_stat_label"> Time taken to finish: </p>
+                <p class="quiz_stat">{{ quiz.time_taken }} minutes </p>
+                <button class="gold_border submission_btn black_button btn btn-block"> 
+                    View Submission 
+                </button>
+                <button class="gold_border del_submission_btn gold_button btn"> 
+                    Delete Submission 
+                </button>
+            </div>
             {% endfor %}
+            {% endif %}
             </div>
 
             <div class="row">
-            {% for quiz in submissions[6:12] %}
-                <div class="submission_box jumbotron col-sm">
-                    <p class="quiz_stat_label"> Date Submitted: </p>
-                    <p class="quiz_stat"> {{ quiz.date }} </p>
-                    <p class="quiz_stat_label"> Accuracy: </p>
-                    <p class="quiz_stat"> {{ quiz.accuracy * 100 }}% </p>
-                    <p class="quiz_stat_label"> Time taken to finish: </p>
-                    <p class="quiz_stat">{{ quiz.time_taken }} minutes </p>
-                    <button class="submission_btn black_button btn btn-block"> 
-                        View Submission 
-                    </button>
-                    <button class="del_submission_btn gold_button btn"> 
-                        Delete Submission 
-                    </button>
-                </div>
+            {% if submission_stats|length > 6 %}
+            {% for quiz in submission_stats[6:] %}
+            <div class="submission_box black_jumbo jumbotron col-2-sm" data-id="{{quiz.quiz_id}}">
+                <p class="quiz_stat_label"> Date Submitted: </p>
+                <p class="quiz_stat"> {{ quiz.date }} </p>
+                <p class="quiz_stat_label"> Accuracy: </p>
+                <p class="quiz_stat"> {{ quiz.accuracy * 100 }}% </p>
+                <p class="quiz_stat_label"> Time taken to finish: </p>
+                <p class="quiz_stat">{{ quiz.time_taken }} minutes </p>
+                <button class="gold_border submission_btn black_button btn btn-block"> 
+                    View Submission 
+                </button>
+                <button class="gold_border del_submission_btn gold_button btn"> 
+                    Delete Submission 
+                </button>
+            </div>
             {% endfor %}
+            {% endif %}
             </div>
         </div>
+
+        <script>
+            $(document).ready(function () {
+                $('.submission_btn').click(function() {
+                    let submission_id = $(this).parent().data('id');
+                    $.post('/old_quiz', {'get_submission': submission_id});
+                });
+            });
+
+            $(document).ready(function () {
+                $('.del_submission_btn').click(function() {
+                    let submission_id = $(this).parent().data('id');
+                    $.post('/submissions', {'del_submission': submission_id});
+                });
+            });
+        </script>
+
     </body>
 </html>

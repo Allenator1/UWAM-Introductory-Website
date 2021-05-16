@@ -55,14 +55,14 @@
                     nostra, per inceptos himenaeos. Aenean non mi vel risus dictum porta.
                 </p>
                 {% if current_user.is_authenticated %}
-                <a class="black_button btn btn-block" id="tutorial_continue" href="#" role="button"> 
+                <a class="left_btn black_button btn btn-block" href="#" role="button"> 
                     Resume your progress
                 </a>
-                <a class="black_button btn btn-block" id="tutorial_startover" href="#" role="button"> 
+                <a class="right_btn black_button btn btn-block" href="#" role="button"> 
                     Start a new lesson
                 </a>
                 {% else %}
-                <a class="black_button btn btn-lg btn-block" id="tutorial_start_button" href="#" role="button"> 
+                <a class="black_button btn btn-lg btn-block" href="#" role="button"> 
                     Start the tutorial!
                 </a>
                 {% endif %}

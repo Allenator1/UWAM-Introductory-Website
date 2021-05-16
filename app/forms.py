@@ -14,12 +14,12 @@ class LoginForm(FlaskForm):
 
 class RegisterForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), 
-        Regexp("[[a-zA-Z\_\d]{2,32}")])
-    email = StringField('Email', validators=[DataRequired(), Email()])
+        Regexp("[a-zA-Z\_\d]{2,32}")])
+    email = StringField('Email', validators=[DataRequired()])
     preferred_name = StringField('Preferred Name')
-    password = StringField('Password', validators=[DataRequired(), Length(min=5)])
-    confirm_password = StringField('Confirm Password', validators=[DataRequired(), 
-        EqualTo(password)])
+    password = StringField('Password', validators=[DataRequired(), Length(min=5), 
+        EqualTo('confirm_password', message="Passwords must match")])
+    confirm_password = StringField('Confirm Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me!')
     submit = SubmitField('Register')
 
@@ -29,7 +29,6 @@ class RegisterForm(FlaskForm):
             raise ValidationError('That username is already taken')
 
     def validate_email(self, email):
-        if email.data:
-            email = User.query.filter_by(email=email.data).first()
-            if email:
-                raise ValidationError('That email already has a registered account')
+        email = User.query.filter_by(email=email.data).first()
+        if email:
+            raise ValidationError('That email already has a registered account')

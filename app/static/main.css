@@ -46,6 +46,27 @@ body, html {
     margin: 32px;
 }
 
+/* Jumbotron styling */
+
+.black_jumbo.jumbotron {
+    background-color: rgb(39, 39, 39);
+    border-style: groove;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: rgb(253, 203, 76);
+    color: #dda74f;
+    margin: 12px;
+    padding: 30px;
+}
+
+.gold_jumbo.jumbotron {
+    background-color: rgb(253, 203, 76);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: #a76b09;
+}
+
 /* Button styling: overriding bootstrap button styles */
 
 .logout_button, .register_button {
@@ -77,6 +98,24 @@ body, html {
 
 .btn.gold_button:hover, .btn.black_button:hover {
     color: ivory;
+}
+
+.left_btn.btn.black_button {
+    width: 49%;
+    float: left;
+    margin: auto;
+}
+
+.right_btn.btn.black_button {
+    width: 49%;
+    float: right;
+    margin: auto;
+} 
+
+.gold_border.black_button {
+    border-style: groove;
+    border-width: 1px;
+    border-color: rgb(253, 203, 76);
 }
 
 /* CSS for styling forms */
@@ -120,6 +159,20 @@ form .form_label {
     width: 1000px;
     border-bottom: 1px solid black;
     margin: 20px;
+}
+
+/* Progress bar to show quiz totals */
+
+.quiz_stats_bar.progress {
+    width: 80%; 
+    height: 38px; 
+    margin: 32px auto;
+    border-style: groove;
+    border-width: 1px;
+    border-radius: 20px;
+    border-color: rgb(253, 203, 76);
+    font-family: 'Quicksand';
+    font-size: 18px;
 }
 
 /* Controlling font-sizes depending on the page width */
@@ -227,18 +280,6 @@ form .form_label {
     margin: 16px;
 }
 
-#tutorial_startover {
-    width: 49%;
-    float: left;
-    margin: auto;
-}
-
-#tutorial_continue {
-    width: 49%;
-    float: right;
-    margin: auto;
-} 
-
 #opening_message {
     position: absolute;
     padding: 16px;
@@ -255,12 +296,7 @@ form .form_label {
 #login_box {
     width: 80%;
     margin: 100px auto;
-    background-color: rgb(253, 203, 76);
     text-align: left;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 20px;
-    border-color: #a76b09;
 }
 
 #login_submit_button, #login_signup_link {
@@ -272,34 +308,14 @@ form .form_label {
 }
 
 /* submissions.html specific css */
+
 #submissions_container {
     margin-top: 32px;
 }
 
-.submission_box.jumbotron {
-    background-color: rgb(39, 39, 39);
-    border-style: groove;
-    border-width: 2px;
-    border-radius: 20px;
-    border-color: rgb(253, 203, 76);
-    color: #dda74f;
-    margin: 12px;
-    padding: 30px;
-}
-
-.submission_box.jumbotron:hover {
-    background-color: rgb(42, 42, 42);
-} 
-
 #submissions_container .submission_btn, 
 #submissions_container .del_submission_btn {
     margin: 8px auto;
-}
-
-#submissions_container .submission_btn {
-    border-style: groove;
-    border-width: 1px;
-    border-color: rgb(253, 203, 76);
 }
 
 .quiz_stat_label {
@@ -311,6 +327,51 @@ form .form_label {
     font-size: 16px;
     color: #dda74f;
 }
+
+.submission_box.black_jumbo.jumbotron:hover {
+    background-color: rgb(42, 42, 42);
+} 
+
+#no_submissions_box {
+    margin: 64px 32px;
+}
+
+#no_submissions_message {
+    display: block;
+    margin: 64px auto;
+    width: 50%;
+    text-align: center;
+    color: ivory;
+    font-size: 24px;
+    border-style: groove;
+    border-width: 1px;
+    border-radius: 20px;
+    border-color: rgb(253, 203, 76);
+}
+
+/* feedback.html specific css */
+
+#feedback_box {
+    color: rgb(253, 203, 76);
+}
+
+#congratz_box {
+    width: 60%;
+    margin: 64px auto;
+    color: ivory;
+    font-size: 28px;
+    text-align: center;
+}
+
+#congratz {
+    color: rgb(253, 203, 76);
+    font-style: italic;
+}
+
+#given_section {
+    font-size: 38px;
+}
+
 
 
 

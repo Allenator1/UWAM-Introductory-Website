@@ -137,10 +137,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-#vscode
-.vscode/
-/settings.json
-
 #db
 app.db
 migrations
