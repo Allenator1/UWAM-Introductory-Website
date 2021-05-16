@@ -124,9 +124,9 @@
                 });
             }
             
-            if ($('.form_heading').html == "Register") {
+            {% if type == "Register" %}
                 $('#username').blur(validateUsername);
                 $('#email').blur(validateEmail);
-            }
+            {% endif %}
         </script>
     </body>
