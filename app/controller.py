@@ -1,11 +1,11 @@
 from app.models import User, Quiz
 from app import db
 
-FINANCE_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
-MARKETING_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)} 
-VD_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
-CHASSIS_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
-POWERTRAIN_ANSWERS = {'Q' + str(i) : '' for i in range(1, 6)}
+FINANCE_ANSWERS = {'Q' + str(i) : '' for i in range(1, 4)}
+MARKETING_ANSWERS = {'Q' + str(i) : '' for i in range(1, 4)} 
+VD_ANSWERS = {'Q' + str(i) : '' for i in range(1, 4)}
+CHASSIS_ANSWERS = {'Q' + str(i) : '' for i in range(1, 4)}
+POWERTRAIN_ANSWERS = {'Q' + str(i) : '' for i in range(1, 4)}
 
 #--------------FUNCTIONS FOR ACCESSING QUIZ DATA------------------
 
@@ -33,5 +33,23 @@ def get_total(questions, answers):
         if answers[key].lower() == questions[key].lower():
             total += 1
     return total
+
+
+def is_completed(quiz):
+    finance = check_completion(quiz.finance)
+    marketing = check_completion(quiz.marketing)
+    chassis = check_completion(quiz.chassis)
+    vehicle_dynamics = check_completion(quiz.vehicle_dynamics)
+    powertrain = check_completion(quiz.powertrain)
+    return finance and marketing and chassis and vehicle_dynamics and powertrain
+
+
+def check_completion(section):
+    for k, v in section.items():
+        if v == '':
+            return False
+    return True
+
+
 
 
