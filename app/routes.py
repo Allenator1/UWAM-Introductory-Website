@@ -95,28 +95,44 @@ def feedback():
         order_by(Quiz.finish_date).first()
     section_totals = get_section_totals(quiz)
     section_proportions = get_proportions(section_totals)
-    section = section_totals.index(max(section_totals)) + 1
+    section = max(section_totals, key=section_totals.get)
     return render_template('feedback.html', section_proportions=section_proportions, section=section)
 
 
-@app.route('/submissions')
+@app.route('/submissions', methods=['GET', 'POST'])
 @login_required
 def submissions():
+    if request.form and 'del_submission' in request.form.keys():
+        submission_id = int(request.form['del_submission'])
+        if not Quiz.query.get(submission_id):
+            raise("Trying to delete submission that doesn't exist")
+        db.session.delete(Quiz.query.get(submission_id))
+        db.session.commit()
+        return redirect(url_for('submissions'))
+
     submissions = db.session.query(Quiz).join(User).\
         filter(Quiz.user_id == current_user.id, Quiz.finish_date != None).\
         order_by(Quiz.finish_date).limit(12).all()
+
     submission_stats = []
-    aggregate_section_totals = [0, 0, 0, 0, 0]
+    aggr_section_totals = {'Finance': 0, 'Marketing': 0, 'Chassis': 0, 'Vehicle Dynamics': 0, 'Powertrain': 0}
+
+    if submissions == []:
+        return render_template('submissions.html', submission_stats=submission_stats, 
+            section_proportions=aggr_section_totals, section="NIL")
+
     for quiz in submissions:
         stats = {}
         stats['date'] = quiz.finish_date
+        stats['quiz_id'] = quiz.id
         section_totals = get_section_totals(quiz)
-        aggregate_section_totals = list(map(add, aggregate_section_totals, section_totals))
-        stats['section'] = section_totals.index(max(section_totals)) + 1
+        aggr_section_totals = {k:(aggr_section_totals[k] + section_totals[k]) for k in section_totals.keys()}
+        stats['section'] = max(section_totals, key=section_totals.get)
         stats['time_taken'] = round((quiz.finish_date - quiz.start_date).total_seconds() / 60, 2)
         submission_stats.append(stats)
-    section = aggregate_section_totals.index(max(aggregate_section_totals)) + 1
-    return render_template('submissions.html', submission_stats=submission_stats, section_proportions=get_proportions(aggregate_section_totals),
+
+    section = max(section_totals, key=aggr_section_totals.get)
+    return render_template('submissions.html', submission_stats=submission_stats, section_proportions=get_proportions(aggr_section_totals),
         section=section)
 
 
@@ -124,6 +140,8 @@ def submissions():
 @login_required
 def old_quiz():
     pass
+
+
 
     
 
