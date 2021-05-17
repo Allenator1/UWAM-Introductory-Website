@@ -120,6 +120,7 @@ def submissions():
         aggr_section_totals = {k:(aggr_section_totals[k] + section_totals[k]) for k in section_totals.keys()}
         stats['section'] = max(section_totals, key=section_totals.get)
         stats['time_taken'] = round((quiz.finish_date - quiz.start_date).total_seconds() / 60, 2)
+        stats['score'] = sum(section_totals.values())
         submission_stats.append(stats)
 
     section = max(section_totals, key=aggr_section_totals.get)
@@ -213,33 +214,50 @@ def save_answer():
 
 @app.route('/tutorial1', methods=['GET'])
 def tutorial1():
-    current_user.current_module = 'tutorial1'
+    if current_user.is_authenticated:
+        current_user.current_module = 'tutorial1'
+        db.session.commit()
     return render_template('welcome.html')
 
 @app.route('/tutorial2', methods=['GET'])
 def tutorial2():
-    current_user.current_module = 'tutorial2'
-    return render_template('finance.html', answers=FINANCE_MODULE_ANS)
+    if current_user.is_authenticated:
+        current_user.current_module = 'tutorial2'
+        db.session.commit()
+    return render_template('finance.html.jinja', answers=FINANCE_MODULE_ANS)
 
 @app.route('/tutorial3', methods=['GET'])
 def tutorial3():
-    current_user.current_module = 'tutorial3'
-    return render_template('marketing.html', answers=MARKETING_MODULE_ANS)
+    if current_user.is_authenticated:
+        current_user.current_module = 'tutorial3'
+        db.session.commit()
+    return render_template('marketing.html.jinja', answers=MARKETING_MODULE_ANS)
 
 @app.route('/tutorial4', methods=['GET'])
 def tutorial4():
-    current_user.current_module = 'tutorial4'
-    return render_template('chassis.html', answers=CHASSIS_MODULE_ANS)
+    if current_user.is_authenticated:
+        current_user.current_module = 'tutorial4'
+        db.session.commit()
+    return render_template('chassis.html.jinja', answers=CHASSIS_MODULE_ANS)
 
 @app.route('/tutorial5', methods=['GET'])
 def tutorial5():
     current_user.current_module = 'tutorial5'
-    return render_template('vehicle_dynamics.html', answers=VD_MODULE_ANS)
+    db.session.commit()
+    return render_template('vehicle_dynamics.html.jinja', answers=VD_MODULE_ANS)
 
 @app.route('/tutorial6', methods=['GET'])
 def tutorial6():
-    current_user.current_module = 'tutorial6'
-    return render_template('powertrain.html', answers=POWERTRAIN_MODULE_ANS)
+    if current_user.is_authenticated:
+        current_user.current_module = 'tutorial6'
+        db.session.commit()
+    return render_template('powertrain.html.jinja', answers=POWERTRAIN_MODULE_ANS)
+
+@app.route('/continue_tutorial', methods=['GET'])
+@login_required
+def continue_tutorial():
+    print(current_user.current_module)
+    return redirect(url_for(current_user.current_module))
 
 
 
