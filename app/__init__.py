@@ -19,6 +19,7 @@ metadata = MetaData(naming_convention=convention)
 db = SQLAlchemy(app, metadata=metadata)
 migrate = Migrate(app, db)
 login = LoginManager(app)
+login.login_view = 'login'
 
 
 from app import routes, models
