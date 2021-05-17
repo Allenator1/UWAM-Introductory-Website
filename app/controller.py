@@ -3,9 +3,15 @@ from app import db
 
 FINANCE_ANSWERS = {'Q1':'c', 'Q2':'b', 'Q3':'a'}
 MARKETING_ANSWERS = {'Q1':'a', 'Q2':'d', 'Q3':'d'}
-VD_ANSWERS = {'Q1':'d', 'Q2':['a', 'b', 'c'], 'Q3':['c', 'd']}
 CHASSIS_ANSWERS = {'Q1':'b', 'Q2':'b', 'Q3':'a'}
+VD_ANSWERS = {'Q1':'d', 'Q2':['a', 'b', 'c'], 'Q3':['c', 'd']}
 POWERTRAIN_ANSWERS = {'Q1':['a', 'c'], 'Q2':'d', 'Q3':'c'}
+
+FINANCE_MODULE_ANS = {'Q1':'d', 'Q2':'c'}
+MARKETING_MODULE_ANS = {'Q1':'d', 'Q2':'b'}
+CHASSIS_MODULE_ANS = {'Q1':'b', 'Q2':'a'}
+VD_MODULE_ANS = {'Q1':'a', 'Q2':'d'}
+POWERTRAIN_MODULE_ANS = {'Q1':'a', 'Q2':'d'}
 
 #--------------FUNCTIONS FOR ACCESSING QUIZ DATA------------------
 
