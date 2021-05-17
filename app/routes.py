@@ -5,7 +5,6 @@ from app import app, db
 from app.forms import LoginForm, RegisterForm
 from app.models import User, Quiz
 from app.controller import *
-from operator import add
 
 
 @app.route('/', methods=['GET'])
@@ -92,8 +91,8 @@ def tutorial():
 @login_required
 def feedback():
     quiz = db.session.query(Quiz).join(User).\
-        filter(Quiz.user_id == current_user.id).\
-        order_by(Quiz.finish_date).first()
+        filter(Quiz.user_id == current_user.id, Quiz.finish_date != None).\
+        order_by(Quiz.finish_date.desc()).first()
     section_totals = get_section_totals(quiz)
     section_proportions = get_proportions(section_totals)
     section = max(section_totals, key=section_totals.get)
@@ -112,7 +111,7 @@ def submissions():
 
     submissions = db.session.query(Quiz).join(User).\
         filter(Quiz.user_id == current_user.id, Quiz.finish_date != None).\
-        order_by(Quiz.finish_date).limit(12).all()
+        order_by(Quiz.finish_date.desc()).limit(12).all()
 
     submission_stats = []
     aggr_section_totals = {'Finance': 0, 'Marketing': 0, 'Chassis': 0, 'Vehicle Dynamics': 0, 'Powertrain': 0}
@@ -136,50 +135,19 @@ def submissions():
         section=section)
 
 
-@app.route('/old_quiz', methods=['GET', 'POST'])
-@login_required
-def old_quiz():
-    if request.form:
-        quiz_id = request.form['get_submission']
-        quiz = Quiz.query.get(quiz_id)
-        assert(quiz.finish_date is not None)
-#       return render_template('old_quiz.html', finance_qs=old_quiz.finance, marketing_qs=old_quiz.marketing, 
-#           chassis_qs=old_quiz.chassis, vd_qs=old_quiz.vehicle_dynamics, powertrain_qs=old_quiz.powertrain)
-
-
 @app.route('/quiz', methods=['GET', 'POST'])
 @login_required
 def quiz():
-    if request.form and 'new_quiz' in request.form.keys():
-        assert(current_user.current_quiz is not None)
-        old_quiz = Quiz.query.get(current_user.current_quiz)
-        db.session.delete(old_quiz)
-        current_user.current_quiz = None
-
     quiz = None
     if not current_user.current_quiz:
         quiz = Quiz(user_id=current_user.id)
         db.session.add(quiz)
         db.session.commit()
+        current_user.current_quiz = quiz.id
     else:    
         quiz = Quiz.query.get(current_user.current_quiz)
 
-    if request.form and 'new_quiz' not in request.form.keys():
-        submission = request.form      
-        for key in submission.keys():
-            department = key.split('-')[0]
-            question = key.split('-')[1]
-            if department == "Finance":
-                quiz.finance[question] = submission[key]
-            elif department == "Marketing":
-                quiz.marketing[question] = submission[key]
-            elif department == "Chassis":
-                quiz.chassis[question] = submission[key]
-            elif department == "Vehicle Dynamics":
-                quiz.vehicle_dynamics[question] = submission[key]
-            elif department == "Powertrain":
-                quiz.powertrain[question] = submission[key]
-
+    if request.method == 'POST':
         if is_completed(quiz):
             quiz.finish_date = datetime.utcnow()
             current_user.current_quiz = None
@@ -187,8 +155,66 @@ def quiz():
             return redirect(url_for('feedback'))
 
     db.session.commit()
-#   return render_template('quiz.html', finance_qs=quiz.finance, marketing_qs=quiz.marketing, 
-#       chassis_qs=quiz.chassis, vd_qs=quiz.vehicle_dynamics, powertrain_qs=quiz.powertrain)
+    return render_template('quiz.html.jinja', finance_qs=quiz.finance, marketing_qs=quiz.marketing,
+        chassis_qs=quiz.chassis, vehicle_dynamics_qs=quiz.vehicle_dynamics, powertrain_qs=quiz.powertrain, 
+        old_submission=False)
+
+
+@app.route('/old_quiz', methods=['GET', 'POST'])
+@login_required
+def old_quiz():
+    if request.form:
+        quiz_id = request.form['get_submission']
+        quiz = Quiz.query.get(quiz_id)
+        assert(quiz.finish_date is not None)
+        return render_template('quiz.html.jinja', finance_qs=quiz.finance, marketing_qs=quiz.marketing, 
+            chassis_qs=quiz.chassis, vd_qs=quiz.vehicle_dynamics, powertrain_qs=quiz.powertrain, 
+            old_submission = True)
+
+
+@app.route('/new_quiz', methods=['POST'])
+@login_required
+def new_quiz():
+    if request.form:
+        assert(current_user.current_quiz is not None)
+        old_quiz = Quiz.query.get(current_user.current_quiz)
+        db.session.delete(old_quiz)
+        current_user.current_quiz = None
+        db.session.commit()
+        return redirect(url_for('quiz'))
+
+
+@app.route('/save_answer', methods=['POST'])
+@login_required
+def save_answer():
+    quiz = Quiz.query.get(current_user.current_quiz)
+    if request.method == 'POST' and request.form:
+        response = request.form  
+        key = list(response.keys())[0]
+        department = key.split('-')[0]
+        question = key.split('-')[1]
+
+        if len(key.split('-')) > 2:
+            response = request.form.getlist(key)
+            answer = response[1]
+            is_toggled = response[0] == "on"
+            current_ans_list = getattr(quiz, department)[question]
+            answer_exists = answer in current_ans_list
+
+            if current_ans_list == "" and is_toggled:
+                current_ans_list = [answer]
+            elif not answer_exists and is_toggled:
+                current_ans_list.append(answer)
+            elif answer_exists and not is_toggled:
+                current_ans_list.remove(answer)
+
+            getattr(quiz, department)[question] = current_ans_list
+        else:
+            getattr(quiz, department)[question] = response[key]
+
+        db.session.commit()
+        return jsonify(successful=True)
+    return redirect(url_for('quiz'))
 
 
 
