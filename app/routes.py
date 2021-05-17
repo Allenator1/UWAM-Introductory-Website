@@ -219,27 +219,27 @@ def tutorial1():
 @app.route('/tutorial2', methods=['GET'])
 def tutorial2():
     current_user.current_module = 'tutorial2'
-    return render_template('finance.html')
+    return render_template('finance.html', answers=FINANCE_MODULE_ANS)
 
 @app.route('/tutorial3', methods=['GET'])
 def tutorial3():
     current_user.current_module = 'tutorial3'
-    return render_template('marketing.html')
+    return render_template('marketing.html', answers=MARKETING_MODULE_ANS)
 
 @app.route('/tutorial4', methods=['GET'])
 def tutorial4():
     current_user.current_module = 'tutorial4'
-    return render_template('chassis.html')
+    return render_template('chassis.html', answers=CHASSIS_MODULE_ANS)
 
 @app.route('/tutorial5', methods=['GET'])
 def tutorial5():
     current_user.current_module = 'tutorial5'
-    return render_template('vehicle_dynamics.html')
+    return render_template('vehicle_dynamics.html', answers=VD_MODULE_ANS)
 
 @app.route('/tutorial6', methods=['GET'])
 def tutorial6():
     current_user.current_module = 'tutorial6'
-    return render_template('powertrain.html')
+    return render_template('powertrain.html', answers=POWERTRAIN_MODULE_ANS)
 
 
 
