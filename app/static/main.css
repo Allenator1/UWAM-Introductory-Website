@@ -442,6 +442,14 @@ form .form_label {
     width: 80%;
 }
 
+.tut_img {
+    margin: 32px;
+    border: solid;
+    border-color: ivory;
+    border-width: 4px;
+    border-radius: 20px;
+}
+
 
 
 
