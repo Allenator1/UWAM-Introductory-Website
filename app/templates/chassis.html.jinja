@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="../static/main.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
@@ -57,7 +58,8 @@
                     which we call the monocoque, and any structural frames associated with the body. The main work that is associated with the chassis <br>
                     department is the design of the body and its supporting frames on CAD (Computer Aided Design) software, sourcing materials <br>
                     from our partners / external businesses, conducting composite manufacturing work in order to convert the designs to reality, and <br>
-                    finally extensive testing of each manufactured piece, in order to comply with the governing regulations and prove equivalency with known safety standards. </p>
+                    finally extensive testing of each manufactured piece, in order to comply with the governing regulations and prove equivalency with known 
+                    safety standards. </p><br>
 
                 <h2 class="minor_heading">Design</h2>
                 <p>The design phase typically involves the computer conceptualisation and detailing of the years intended monocoque concept, and the <br>
@@ -69,7 +71,7 @@
                         <li>Front and Main Hoop and support structures</li>
                         <li>Subframe</li>
                     </ul>
-                <img src="chassis.jpg" width='500'>
+                <img class="tut_img" src="../static/chassis.jpg" width='500'>
                 <h2 class="minor_heading">Manufacturing</h2>
                 <p>The main materials and resources that the chassis team utilises to undergo successful production of the vehicle body:</p>
                 <ul>
@@ -89,8 +91,9 @@
                     cutting of the tubes and metal sheets, formed to the shapes they need to be in through means of basic metal working processes; laser cutting, <br>
                     grinding, bending, sanding, and then welded together to create the structures needed. Finally, once these elements have been completed, <br>
                     they are all attached to the car through means of nuts and bolts! Note: Before the whole chassis is manufactured, the team undergoes <br>
-                    manufacturing of various test pieces that we can test to prove structural and safety equivalency, see ‘Testing’ for more information.</p>
-
+                    manufacturing of various test pieces that we can test to prove structural and safety equivalency, see ‘Testing’ for more information.
+                </p><br>
+                
                 <h2 class="minor_heading">Testing</h2>
                 <p>In the typical chassis manufacturing process, there are additional sample pieces made, in order to test the structural <br>
                     equivalence of each component to a standard which complies to the safety regulations determined by the governing body. <br>
@@ -106,7 +109,8 @@
                 <form action="" method="post">
                     <div class="tut_question" id="chassis-Q1">
                         <p class="tut_qs_title"> Which of the following is NOT in the lifetime 
-                        of the typical chassis protocol? </p>
+                        of the typical chassis protocol? <span class="is_correct_icon"></span>
+                        </p>
                         <input type="radio" id="chassis-1-1" name="chassis-Q1" value="a">
                         <label for="chassis-1-1"> Design </label><br>
                         <input type="radio" id="chassis-1-2" name="chassis-Q1" value="b">
@@ -119,7 +123,8 @@
 
                     <div class="tut_question" id="chassis-Q2">
                         <p class="tut_qs_title"> Testing occurs BEFORE the final chassis 
-                        manufacturing steps are undertaken: </p>
+                        manufacturing steps are undertaken: <span class="is_correct_icon"></span>
+                        </p>
                         <input type="radio" id="chassis-2-1" name="chassis-Q2" value="a">
                         <label for="chassis-2-1"> TRUE </label><br>
                         <input type="radio" id="chassis-2-2" name="chassis-Q2" value="b">
@@ -133,5 +138,23 @@
                 Continue to Vehicle Dynamics
             </a>
         </div>
+
+        <script>
+            var answers = {{ answers }};
+
+            $('input[type=radio]').change(function() {
+                let question = $(this).attr("name");
+                let answer = $(this).attr("value");
+                key = question.split('-')[1];
+                isCorrect = answers[key] == answer;
+                if (isCorrect) {
+                    icon = "<i class='fa fa-check-circle' aria-hidden='true'></i>";
+                }
+                else {
+                    icon = "<i class='fa fa-times-circle' aria-hidden='true'></i>";
+                }
+                $("#" + question + ' ' + '.is_correct_icon').html(icon);
+            });
+        </script>
     </body>
 </html>

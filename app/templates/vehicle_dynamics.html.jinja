@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="../static/main.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
@@ -55,7 +56,7 @@
                     <li>Steering</li>
                     <li>Brakes and Accelerator</li>
                     <li>Wheel and Tyre Assemblies</li>
-                </ul>
+                </ul><br>
             
                 <h2 class="minor_heading">Design</h2>
                 <p>The design of these systems have somewhat of a greater degree of difficulty associated with them, as the designs <br>
@@ -67,7 +68,7 @@
                     All these configurations are implemented in order to maximise the tractive potential of our race car, and hence maximise <br>
                     efficiency of output power from the powertrain system.</p>
 
-                <img src="vehicle_dynamics.jpg" width='500'>
+                <img class="tut_img" src="../static/vehicle_dynamics.jpg" width='500'>
 
                 <h2 class="minor_heading">Manufacturing</h2>
                 <p>The manufacturing of the vehicle dynamics system is relatively simple. Although the parts involved with the area of the car <br>
@@ -82,7 +83,7 @@
                         <li>Brake Calipers</li>
                         <li>Shock Absorbers</li>
                     </ul>
-                <p>Once all the additional system components are manufactured, all the system can be assembled, and bolted onto the car!</p>
+                <p>Once all the additional system components are manufactured, all the system can be assembled, and bolted onto the car!</p><br>
 
                 <h2 class="minor_heading">Testing</h2>
                 <p>Through the initial design phases, the aim with the entire system is to produce the fastest configuration of the race car, and <br>
@@ -109,7 +110,8 @@
                 <form action="" method="post">
                     <div class="tut_question" id="vehicle_dynamics-Q1">
                         <p class="tut_qs_title"> Driver training usually results in the 
-                        most gains of lap times: </p>
+                        most gains of lap times: <span class="is_correct_icon"></span>
+                        </p>
                         <input type="radio" id="vehicle_dynamics-1-1" name="vehicle_dynamics-Q1" value="a">
                         <label for="vehicle_dynamics-1-1"> TRUE </label><br>
                         <input type="radio" id="vehicle_dynamics-1-2" name="vehicle_dynamics-Q1" value="b">
@@ -118,7 +120,8 @@
 
                     <div class="tut_question" id="vehicle_dynamics-Q2">
                         <p class="tut_qs_title"> Which of these is a core part of the Vehicle Dynamics manufacturing 
-                        philosophy: </p>
+                        philosophy: <span class="is_correct_icon"></span>
+                        </p>
                         <ul>
                             <li>Exploit a variety of different manufacturing 
                                 methods</li>
@@ -145,5 +148,23 @@
                 Continue to Powertrain
             </a>
         </div>
+
+        <script>
+            var answers = {{ answers }};
+
+            $('input[type=radio]').change(function() {
+                let question = $(this).attr("name");
+                let answer = $(this).attr("value");
+                key = question.split('-')[1];
+                isCorrect = answers[key] == answer;
+                if (isCorrect) {
+                    icon = "<i class='fa fa-check-circle' aria-hidden='true'></i>";
+                }
+                else {
+                    icon = "<i class='fa fa-times-circle' aria-hidden='true'></i>";
+                }
+                $("#" + question + ' ' + '.is_correct_icon').html(icon);
+            });
+        </script>
     </body>
 </html>	

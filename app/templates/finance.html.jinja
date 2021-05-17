@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="../static/main.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
@@ -54,9 +55,8 @@
                     The consequences of running out of vital resources such as monetary funds, could mean that the project cannot be completed 
                     to the required standards, or in the worst-case scenario, could mean that the project cannot be completed at all!
                 </p>
-                <br>
 
-                <img src="general.jpg" width='500'><br>
+                <img class="tut_img" src="../static/general.jpg" width='500'>
 
                 <h2 class="minor_heading">Team Finances</h2>
                 <p>For the context of the UWA Motorsport team, we are working to complete our car with a limited budget of $50,000, with approximately 
@@ -76,7 +76,8 @@
                 <form action="" method="post">
                     <div class="tut_question" id="finance-Q1">
                         <p class="tut_qs_title"> What typical skills are required for a successful 
-                        Finance team member? </p>
+                        Finance team member?  <span class="is_correct_icon"></span> 
+                        </p>
                         <input type="radio" id="finance-1-1" name="finance-Q1" value="a">
                         <label for="finance-1-1"> Goal Setting </label><br>
                         <input type="radio" id="finance-1-2" name="finance-Q1" value="b">
@@ -89,7 +90,8 @@
 
                     <div class="tut_question" id="finance-Q2">
                         <p class="tut_qs_title"> How many team members are needed for the function 
-                        of UWA Motorsport Team Finance Sector </p>
+                        of UWA Motorsport Team Finance Sector? <span class="is_correct_icon"></span> 
+                        </p>
                         <input type="radio" id="finance-2-1" name="finance-Q2" value="a">
                         <label for="finance-2-1"> 1 </label><br>
                         <input type="radio" id="finance-2-2" name="finance-Q2" value="b">
@@ -106,6 +108,25 @@
             <a class="gold_border black_button btn btn-lg btn-block" href={{url_for('tutorial3')}} role="button"> 
                 Continue to Marketing
             </a>
+
         </div>
+
+        <script>
+            var answers = {{ answers }};
+
+            $('input[type=radio]').change(function() {
+                let question = $(this).attr("name");
+                let answer = $(this).attr("value");
+                key = question.split('-')[1];
+                isCorrect = answers[key] == answer;
+                if (isCorrect) {
+                    icon = "<i class='fa fa-check-circle' aria-hidden='true'></i>";
+                }
+                else {
+                    icon = "<i class='fa fa-times-circle' aria-hidden='true'></i>";
+                }
+                $("#" + question + ' ' + '.is_correct_icon').html(icon);
+            });
+        </script>
     </body>
 </html>

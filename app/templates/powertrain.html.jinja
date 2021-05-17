@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="../static/main.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
@@ -56,7 +57,7 @@
                         <li>Inverter</li>
                         <li>Motor</li>
                         <li>Differential and Gearbox</li>
-                    </ul>
+                    </ul><br>
 
                 <h2 class="minor_heading">Design</h2>
                 <p>Most of the powertrain components are too complex to be individually modelled and manufactured by students, so we spec and purchase <br>
@@ -67,7 +68,8 @@
                     purchasing more external products to feature on our concepts will provide us with more restrictions on how much we can exploit certain <br>
                     designs and ideas, and hence won’t allow the learning experience of the competition to be explored by the students!</p>
                 
-                <img src="powertrain.jpg" width='500'>
+                <img class="tut_img" src="../static/powertrain.jpg" width='500'>
+
                 <h2 class="minor_heading">Manufacturing</h2>
                 <p>For the designed components, we utilise a wide range of manufacturing methods to realise our concepts and designs. For the accumulator <br>
                     container, we utilise aluminium sheet metal, which is laser cut from rectangular sheets, and is then notched and fitted together to make <br>
@@ -75,7 +77,7 @@
                     laser cut, and joined together through the use of glue. Once the battery cases are glued together, they are populated by the battery cells<br>
                     (can be thought of oversized AA batteries), and all the other electrical components. The full battery cases are then inserted and fastened <br>
                     into the accumulator container. For the gearbox, the design is directly sent off to an external machining venue, where the design is fed into <br>
-                    a CNC (Computer Numeric Control) Milling machine, which directly cuts the design from a massive block of aluminium.</p>
+                    a CNC (Computer Numeric Control) Milling machine, which directly cuts the design from a massive block of aluminium.</p><br>
 
                 <h2 class="minor_heading">Testing</h2>
                 <p>The testing of the powertrain system has the aims of fine tuning the timing of the motor, so as to eliminate any irregularities in power <br>
@@ -91,7 +93,9 @@
             <div class="tut_jumbo gold_jumbo jumbotron"> 
                 <form action="" method="post">
                     <div class="tut_question" id="powertrain-Q1">
-                        <p class="tut_qs_title"> What material is used for the gearbox? </p>
+                        <p class="tut_qs_title"> What material is used for the gearbox? 
+                        <span class="is_correct_icon"></span>
+                        </p>
                         <input type="radio" id="powertrain-1-1" name="powertrain-Q1" value="a">
                         <label for="powertrain-1-1"> Aluminium </label><br>
                         <input type="radio" id="powertrain-1-2" name="powertrain-Q1" value="b">
@@ -104,7 +108,8 @@
 
                     <div class="tut_question" id="powertrain-Q2">
                         <p class="tut_qs_title"> Which parts do we spec and outsource from external 
-                        businesses? </p>
+                        businesses? <span class="is_correct_icon"></span>
+                        </p>
                         <ul>
                             <li>Inverter</li>
                             <li>Accumulator</li>
@@ -128,5 +133,23 @@
                 Begin Quiz!
             </a>
         </div>
+
+        <script>
+            var answers = {{ answers }};
+
+            $('input[type=radio]').change(function() {
+                let question = $(this).attr("name");
+                let answer = $(this).attr("value");
+                key = question.split('-')[1];
+                isCorrect = answers[key] == answer;
+                if (isCorrect) {
+                    icon = "<i class='fa fa-check-circle' aria-hidden='true'></i>";
+                }
+                else {
+                    icon = "<i class='fa fa-times-circle' aria-hidden='true'></i>";
+                }
+                $("#" + question + ' ' + '.is_correct_icon').html(icon);
+            });
+        </script>
     </body>
 </html>
