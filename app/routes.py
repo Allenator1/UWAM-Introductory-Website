@@ -129,16 +129,17 @@ def submissions():
 
 @app.route('/quiz/<quiz_id>', methods=['GET', 'POST'])
 @login_required
-def quiz(quiz_id=None):
+def quiz(quiz_id):
+    is_new_quiz = int(quiz_id) == 0
     quiz = None
-    if quiz_id:
+    if not is_new_quiz:
         quiz = Quiz.query.get(quiz_id)
-    elif not current_user.current_quiz:
+    elif is_new_quiz and not current_user.current_quiz:
         quiz = Quiz(user_id=current_user.id)
         db.session.add(quiz)
         db.session.commit()
         current_user.current_quiz = quiz.id
-    else:    
+    elif is_new_quiz and current_user.current_quiz:    
         quiz = Quiz.query.get(current_user.current_quiz)
 
     if request.method == 'POST' and not quiz_id:
@@ -151,7 +152,7 @@ def quiz(quiz_id=None):
     db.session.commit()
     return render_template('quiz.html.jinja', finance_qs=quiz.finance, marketing_qs=quiz.marketing,
         chassis_qs=quiz.chassis, vehicle_dynamics_qs=quiz.vehicle_dynamics, powertrain_qs=quiz.powertrain, 
-        old_submission=bool(quiz_id))
+        old_submission = not is_new_quiz)
 
 
 @app.route('/new_quiz', methods=['GET'])
@@ -207,6 +208,32 @@ def save_answer():
         db.session.commit()
         return jsonify(successful=True)
     return redirect(url_for('quiz'))
+
+
+@app.route('/tutorial1', methods=['GET'])
+def tutorial1():
+    return render_template('welcome.html')
+
+@app.route('/tutorial2', methods=['GET'])
+def tutorial2():
+    return render_template('finance.html')
+
+@app.route('/tutorial3', methods=['GET'])
+def tutorial3():
+    return render_template('marketing.html')
+
+@app.route('/tutorial4', methods=['GET'])
+def tutorial4():
+    return render_template('chassis.html')
+
+@app.route('/tutorial5', methods=['GET'])
+def tutorial5():
+    return render_template('vehicle_dynamics.html')
+
+@app.route('/tutorial6', methods=['GET'])
+def tutorial6():
+    return render_template('powertrain.html')
+
 
 
 
