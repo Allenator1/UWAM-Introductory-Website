@@ -88,6 +88,42 @@
                     can be addressed and the proper actions undertaken!</p>
             </div>
             
+            <div class="tut_jumbo gold_jumbo jumbotron"> 
+                <form action="" method="post">
+                    <div class="tut_question" id="powertrain-Q1">
+                        <p class="tut_qs_title"> What material is used for the gearbox? </p>
+                        <input type="radio" id="powertrain-1-1" name="powertrain-Q1" value="a">
+                        <label for="powertrain-1-1"> Aluminium </label><br>
+                        <input type="radio" id="powertrain-1-2" name="powertrain-Q1" value="b">
+                        <label for="powertrain-1-2"> Steel </label><br>
+                        <input type="radio" id="powertrain-1-2" name="powertrain-Q1" value="c">
+                        <label for="powertrain-1-3"> Titanium </label><br>
+                        <input type="radio" id="powertrain-1-2" name="powertrain-Q1" value="d">
+                        <label for="powertrain-1-4"> Copper </label><br>
+                    </div>
+
+                    <div class="tut_question" id="powertrain-Q2">
+                        <p class="tut_qs_title"> Which parts do we spec and outsource from external 
+                        businesses? </p>
+                        <ul>
+                            <li>Inverter</li>
+                            <li>Accumulator</li>
+                            <li>Gearbox</li>
+                            <li>Differential</li>
+                        </ul>
+                        <input type="radio" id="powertrain-1-1" name="powertrain-Q2" value="a">
+                        <label for="powertrain-2-1"> II </label><br>
+                        <input type="radio" id="powertrain-1-2" name="powertrain-Q2" value="b">
+                        <label for="powertrain-2-2"> I, III, IV </label><br>
+                        <input type="radio" id="powertrain-1-3" name="powertrain-Q2" value="c">
+                        <label for="powertrain-2-3"> I - IV </label><br>
+                        <input type="radio" id="powertrain-1-3" name="powertrain-Q2" value="d">
+                        <label for="powertrain-2-4"> I, II, IV </label><br>
+                    </div>
+                </form>
+            </div>
+            <br>
+            
             <a class="gold_button btn btn-lg btn-block" href={{url_for('quiz', quiz_id=0)}} role="button"> 
                 Begin Quiz!
             </a>
