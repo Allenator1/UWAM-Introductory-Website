@@ -48,21 +48,25 @@
             <div class="jumbotron" id="opening_message">
                 <h1 id="opening_msg_heading"> Welcome to our tutorial </h1>
                 <p class="jumbotron_text"> 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec lacinia scelerisque odio, eu sodales enim blandit ac. 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Class aptent taciti sociosqu ad litora torquent per conubia 
-                    nostra, per inceptos himenaeos. Aenean non mi vel risus dictum porta.
+                <p>
+                    Hello! And welcome to the UWA Motorsport Team!
+                    We cannot wait to start seeing more of you in the lab, and most importantly, 
+                    getting you equipped to fit yourselves into the team, and getting stuck into 
+                    the production of our race cars!
+                    <br><br>
+                    This will be a mini-introductory module into who we are, what we do, and how YOU can get involved!
+                    At the end, we will offer a quiz to test the learned concepts and give a little unsolicited advice
+                    on which of our departments might suit you the best!
                 </p>
                 {% if current_user.is_authenticated %}
                 <a class="left_btn black_button btn btn-block" href="#" role="button"> 
                     Resume your progress
                 </a>
-                <a class="right_btn black_button btn btn-block" href="#" role="button"> 
+                <a class="right_btn black_button btn btn-block" href={{url_for('tutorial1')}} role="button"> 
                     Start a new lesson
                 </a>
                 {% else %}
-                <a class="black_button btn btn-lg btn-block" href="#" role="button"> 
+                <a class="black_button btn btn-lg btn-block" href={{url_for('tutorial1')}} role="button"> 
                     Start the tutorial!
                 </a>
                 {% endif %}
