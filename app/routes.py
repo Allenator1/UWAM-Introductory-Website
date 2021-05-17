@@ -142,8 +142,9 @@ def quiz(quiz_id):
     elif is_new_quiz and current_user.current_quiz:    
         quiz = Quiz.query.get(current_user.current_quiz)
 
-    if request.method == 'POST' and not quiz_id:
+    if request.method == 'POST' and is_new_quiz:
         if is_completed(quiz):
+            print(is_completed(quiz))
             quiz.finish_date = datetime.utcnow()
             current_user.current_quiz = None
             db.session.commit()
@@ -212,26 +213,32 @@ def save_answer():
 
 @app.route('/tutorial1', methods=['GET'])
 def tutorial1():
+    current_user.current_module = 'tutorial1'
     return render_template('welcome.html')
 
 @app.route('/tutorial2', methods=['GET'])
 def tutorial2():
+    current_user.current_module = 'tutorial2'
     return render_template('finance.html')
 
 @app.route('/tutorial3', methods=['GET'])
 def tutorial3():
+    current_user.current_module = 'tutorial3'
     return render_template('marketing.html')
 
 @app.route('/tutorial4', methods=['GET'])
 def tutorial4():
+    current_user.current_module = 'tutorial4'
     return render_template('chassis.html')
 
 @app.route('/tutorial5', methods=['GET'])
 def tutorial5():
+    current_user.current_module = 'tutorial5'
     return render_template('vehicle_dynamics.html')
 
 @app.route('/tutorial6', methods=['GET'])
 def tutorial6():
+    current_user.current_module = 'tutorial6'
     return render_template('powertrain.html')
 
 
