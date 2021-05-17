@@ -21,6 +21,7 @@
                 <div class="banner_right">
                     <a class="homepage_button gold_button btn" href= {{ url_for('index') }} role="button"> Return to Homepage </a>
                     <a class="logout_button gold_button btn" href={{ url_for('logout') }} role="button"> Sign out </a>
+                    <a class="quiz_button gold_button btn" href={{ url_for('quiz', quiz_id=0) }} role="button"> Quiz </a>
                 </div>
             </div>
         </div>
@@ -37,12 +38,12 @@
         {% if submission_stats|length == 0 %}
         <div id="no_submissions_box">
             <p id="no_submissions_message"> You have no submissions. Start a new tutorial or begin the quiz! </p>
-            <button class="gold_border left_btn black_button btn btn-block"> 
-                Start Tutorial
-            </button>
-            <button class="gold_border right_btn black_button btn btn-block"> 
-                Start Quiz
-            </button>
+            <a class="gold_border left_btn black_button btn btn-block" href={{ url_for('continue_tutorial') }}> 
+                Continue Tutorial
+            </a>
+            <a class="gold_border right_btn black_button btn btn-block" href={{ url_for('quiz', quiz_id=0) }}> 
+                Attempt Quiz
+            </a>
         </div>
         {% endif %}
 

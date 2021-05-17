@@ -27,6 +27,9 @@
                     <a class="submissions_button gold_button btn" href={{ url_for('submissions') }} role="button"> 
                         Submissions
                     </a>
+                    <a class="quiz_button gold_button btn" href={{ url_for('quiz', quiz_id=0) }} role="button"> 
+                        Quiz
+                    </a>
                     {% else %}
                     <a class="login_button gold_button btn" href={{ url_for('login') }} role="button"> 
                         Login
