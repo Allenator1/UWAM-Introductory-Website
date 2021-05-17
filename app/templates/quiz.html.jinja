@@ -7,11 +7,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
         <title> Motorsports Quiz Feedback </title>
-        <style>
-            #quiz_container {
-                color: Ivory;
-            }
-        </style>
     </head>
 
     <body>
@@ -41,10 +36,10 @@
 
         <div class="gold_bar"></div>
 
-        <div id="quiz_container"> 
+        <div class="quiz_jumbo gold_jumbo jumbotron" id="quiz_container"> 
             <form action="" method="post" >
                 <div class="quiz_question" id="marketing-Q1">
-                    <p> What is the responsibility of the marketing team? </p>
+                    <p class="quiz_qs_title"> What is the responsibility of the marketing team? </p>
                     <input type="radio" id="marketing-1-1" name="marketing-Q1" value="a">
                     <label for="marketing-1-1"> Manage the teams brand </label><br>
                     <input type="radio" id="marketing-1-2" name="marketing-Q1" value="b">
@@ -56,7 +51,7 @@
                 </div>
 
                 <div class="quiz_question" id="finance-Q1">
-                    <p> What is the finance departments primary job? </p>
+                    <p class="quiz_qs_title"> What is the finance departments primary job? </p>
                     <input type="radio" id="finance-1-1" name="finance-Q1" value="a">
                     <label for="finance-1-1"> To hoard resources </label><br>
                     <input type="radio" id="finance-1-2" name="finance-Q1" value="b">
@@ -68,7 +63,7 @@
                 </div>
 
                 <div class="quiz_question" id="powertrain-Q1">
-                    <p> Which of the following elements are related to the powertrain? 
+                    <p class="quiz_qs_title"> Which of the following elements are related to the powertrain? 
                     (tick all that apply) </p>
                     <input type="checkbox" id="powertrain-1-1" name="powertrain-Q1-a" value="a">
                     <label for="powertrain-1-1"> Accumulator </label><br>
@@ -81,7 +76,7 @@
                 </div>
 
                 <div class="quiz_question" id="marketing-Q2">
-                    <p> What document do we provide potential sponsors for a potential partnership? </p>
+                    <p class="quiz_qs_title"> What document do we provide potential sponsors for a potential partnership? </p>
                     <input type="radio" id="marketing-2-1" name="marketing-Q2" value="a">
                     <label for="marketing-2-1"> Sponsorship Partnership Outline </label><br>
                     <input type="radio" id="marketing-2-2" name="marketing-Q2" value="b">
@@ -93,7 +88,7 @@
                 </div>
 
                 <div class="quiz_question" id="vehicle_dynamics-Q1">
-                    <p> What is the purpose of testing vehicle dynamics components? </p>
+                    <p class="quiz_qs_title"> What is the purpose of testing vehicle dynamics components? </p>
                     <input type="radio" id="vehicle_dynamics-1-1" name="vehicle_dynamics-Q1" value="a">
                     <label for="vehicle_dynamics-1-1"> To fine tune the vehicle dynamics parameters to output 
                     the fastest configuration </label><br>
@@ -108,7 +103,7 @@
                 </div>
 
                 <div class="quiz_question" id="chassis-Q3">
-                    <p> What is the purpose of testing chassis components? </p>
+                    <p class="quiz_qs_title"> What is the purpose of testing chassis components? </p>
                     <input type="radio" id="chassis-3-1" name="chassis-Q3" value="a">
                     <label for="chassis-3-1"> To ensure safety standards have been met 
                     by the competition </label><br>
@@ -124,7 +119,7 @@
                 </div>
 
                 <div class="quiz_question" id="powertrain-Q2">
-                    <p> What machining process is used in manufacturing of the gearbox? </p>
+                    <p class="quiz_qs_title"> What machining process is used in manufacturing of the gearbox? </p>
                     <input type="radio" id="powertrain-2-1" name="powertrain-Q2" value="a">
                     <label for="powertrain-2-1"> CNC (Computer Numeric Control) </label><br>
                     <input type="radio" id="powertrain-2-2" name="powertrain-Q2" value="b">
@@ -136,7 +131,7 @@
                 </div>
 
                 <div class="quiz_question" id="marketing-Q3">
-                    <p> What main platform does the marketing team use in order to fulfil 
+                    <p class="quiz_qs_title"> What main platform does the marketing team use in order to fulfil 
                     their responsibilities? </p>
                     <input type="radio" id="marketing-3-1" name="marketing-Q3" value="a">
                     <label for="marketing-3-1"> Tutorial and Lecture Advertising </label><br>
@@ -149,7 +144,7 @@
                 </div>
 
                 <div class="quiz_question" id="chassis-Q1">
-                    <p> What is the monocoque typically made of? </p>
+                    <p class="quiz_qs_title"> What is the monocoque typically made of? </p>
                     <input type="radio" id="chassis-1-1" name="chassis-Q1" value="a">
                     <label for="chassis-1-1"> Aluminium skinned honeycomb </label><br>
                     <input type="radio" id="chassis-1-2" name="chassis-Q1" value="b">
@@ -161,7 +156,7 @@
                 </div>
 
                 <div class="quiz_question" id="vehicle_dynamics-Q2">
-                    <p> What are the main components that are encompassed in vehicle_dynamics
+                    <p class="quiz_qs_title"> What are the main components that are encompassed in vehicle_dynamics
                      (tick all that apply)? </p>
                     <input type="checkbox" id="vehicle_dynamics-2-1" name="vehicle_dynamics-Q2-a" value="a">
                     <label for="vehicle_dynamics-2-1"> Suspension </label><br>
@@ -174,7 +169,7 @@
                 </div>
 
                 <div class="quiz_question" id="finance-Q2">
-                    <p> What are the consequences of running out of monetary resources? </p>
+                    <p class="quiz_qs_title"> What are the consequences of running out of monetary resources? </p>
                     <input type="radio" id="finance-2-1" name="finance-Q2" value="a">
                     <label for="finance-2-1"> We won’t be able to pay our team members </label><br>
                     <input type="radio" id="finance-2-2" name="finance-Q2" value="b">
@@ -188,7 +183,7 @@
                 </div>
 
                 <div class="quiz_question" id="vehicle_dynamics-Q3">
-                    <p> Which of the following components are not outsourced? (tick all that apply) </p>
+                    <p class="quiz_qs_title"> Which of the following components are not outsourced? (tick all that apply) </p>
                     <input type="checkbox" id="vehicle_dynamics-3-1" name="vehicle_dynamics-Q3-a" value="a">
                     <label for="vehicle_dynamics-3-1"> Wheels </label><br>
                     <input type="checkbox" id="vehicle_dynamics-3-2" name="vehicle_dynamics-Q3-b" value="b">
@@ -200,7 +195,7 @@
                 </div>
 
                 <div class="quiz_question" id="finance-Q3">
-                    <p> What is the typical expected budget for a race car developed 
+                    <p class="quiz_qs_title"> What is the typical expected budget for a race car developed 
                     at UWA Motorsports? </p>
                     <input type="radio" id="finance-3-1" name="finance-Q3" value="a">
                     <label for="finance-3-1"> 30,000 </label><br>
@@ -213,7 +208,7 @@
                 </div>
 
                 <div class="quiz_question" id="powertrain-Q3">
-                    <p> What aspect of the powertrain is tuned during testing? </p>
+                    <p class="quiz_qs_title"> What aspect of the powertrain is tuned during testing? </p>
                     <input type="radio" id="powertrain-3-1" name="powertrain-Q3" value="a">
                     <label for="powertrain-3-1"> Motor </label><br>
                     <input type="radio" id="powertrain-3-2" name="powertrain-Q3" value="b">
@@ -225,7 +220,7 @@
                 </div>
 
                 <div class="quiz_question" id="chassis-Q2">
-                    <p> What is the name given to the segment of the chassis in which the 
+                    <p class="quiz_qs_title"> What is the name given to the segment of the chassis in which the 
                     driver sits in? </p>
                     <input type="radio" id="chassis-2-1" name="chassis-Q2" value="a">
                     <label for="chassis-2-1"> Monocoque </label><br>
