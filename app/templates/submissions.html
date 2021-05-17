@@ -55,9 +55,11 @@
                 <p class="quiz_stat_label"> Date Submitted: </p>
                 <p class="quiz_stat"> {{ quiz.date }} </p>
                 <p class="quiz_stat_label"> Department </p>
-                <p class="quiz_stat"> {{ quiz.section }} </p>
+                <p class="{{ quiz.section }}_stat quiz_stat"> {{ quiz.section }} </p>
                 <p class="quiz_stat_label"> Time taken to finish: </p>
                 <p class="quiz_stat">{{ quiz.time_taken }} minutes </p>
+                <p class="quiz_stat_label"> Score: </p>
+                <p class="quiz_stat">{{ quiz.score }}/15 </p>
                 <button class="gold_border submission_btn black_button btn btn-block"> 
                     View Submission 
                 </button>
@@ -75,10 +77,12 @@
             <div class="submission_box black_jumbo jumbotron col-2-sm" data-id="{{quiz.quiz_id}}">
                 <p class="quiz_stat_label"> Date Submitted: </p>
                 <p class="quiz_stat"> {{ quiz.date }} </p>
-                <p class="quiz_stat_label"> Accuracy: </p>
-                <p class="quiz_stat"> {{ quiz.accuracy * 100 }}% </p>
+                <p class="quiz_stat_label"> Department: </p>
+                <p class="{{ quiz.section }}_stat quiz_stat"> {{ quiz.section }} </p>
                 <p class="quiz_stat_label"> Time taken to finish: </p>
                 <p class="quiz_stat">{{ quiz.time_taken }} minutes </p>
+                <p class="quiz_stat_label"> Score: </p>
+                <p class="quiz_stat">{{ quiz.score }}/15 </p>
                 <button class="gold_border submission_btn black_button btn btn-block"> 
                     View Submission 
                 </button>

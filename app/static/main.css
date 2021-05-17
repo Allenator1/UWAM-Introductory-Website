@@ -349,6 +349,22 @@ form .form_label {
     border-color: rgb(253, 203, 76);
 }
 
+.Finance_stat.quiz_stat {
+    color: #007bff;
+}
+.Marketing_stat.quiz_stat {
+    color: #28a745;
+}
+.Chassis_stat.quiz_stat {
+    color: lightgrey;
+}
+.Vehicle.Dynamics_stat.quiz_stat {
+    color: #dc3545;
+}
+.Powertrain_stat.quiz_stat {
+    color: #17a2b8;
+}
+
 /* feedback.html specific css */
 
 #feedback_box {
