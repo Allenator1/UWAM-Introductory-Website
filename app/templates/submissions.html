@@ -94,14 +94,16 @@
             $(document).ready(function () {
                 $('.submission_btn').click(function() {
                     let submission_id = $(this).parent().data('id');
-                    $.post('/old_quiz', {'get_submission': submission_id});
+                    window.location.href = '/quiz/' + submission_id; 
                 });
             });
 
             $(document).ready(function () {
                 $('.del_submission_btn').click(function() {
                     let submission_id = $(this).parent().data('id');
-                    $.post('/submissions', {'del_submission': submission_id});
+                    $.post('/del_quiz', {'del_submission': submission_id}).done(function(response) {
+                        window.location.href = '/submissions';
+                    });
                 });
             });
         </script>
