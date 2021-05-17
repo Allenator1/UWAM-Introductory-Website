@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/main.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+        <title> Motorsports Quiz Feedback </title>
+        <style>
+            #quiz_container {
+                color: Ivory;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+        <div class="banner">
+            <div class="banner_content">
+                <div class="banner_left">
+                    <h1 class="heading" id="homepage_title"> 
+                        Quiz 
+                    </h1>
+                </div>
+                <div class="banner_right">
+                    <a class="logout_button gold_button btn" href={{ url_for('logout') }} role="button"> 
+                        Sign out
+                    </a>
+                    <a class="submissions_button gold_button btn" href={{ url_for('submissions') }} role="button"> 
+                        Submissions
+                    </a>
+                    <a class="homepage_button gold_button btn" id="homepage_button" href= {{ url_for('index') }} role="button">
+                        Return to Homepage 
+                   </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="gold_bar"></div>
+
+        <div id="quiz_container"> 
+            <form action="" method="post" >
+                <div class="quiz_question" id="marketing-Q1">
+                    <p> What is the responsibility of the marketing team? </p>
+                    <input type="radio" id="marketing-1-1" name="marketing-Q1" value="a">
+                    <label for="marketing-1-1"> Manage the teams brand </label><br>
+                    <input type="radio" id="marketing-1-2" name="marketing-Q1" value="b">
+                    <label for="marketing-1-2"> Manage the funds and resources </label><br>
+                    <input type="radio" id="marketing-1-3" name="marketing-Q1" value="c">
+                    <label for="marketing-1-3"> Induct new members to the team </label><br>
+                    <input type="radio" id="marketing-1-4" name="marketing-Q1" value="d">
+                    <label for="marketing-1-4"> Manage the engineering operations </label><br>
+                </div>
+
+                <div class="quiz_question" id="finance-Q1">
+                    <p> What is the finance departments primary job? </p>
+                    <input type="radio" id="finance-1-1" name="finance-Q1" value="a">
+                    <label for="finance-1-1"> To hoard resources </label><br>
+                    <input type="radio" id="finance-1-2" name="finance-Q1" value="b">
+                    <label for="finance-1-2"> To drive the car </label><br>
+                    <input type="radio" id="finance-1-3" name="finance-Q1" value="c">
+                    <label for="finance-1-3"> To manage the flow of resources </label><br>
+                    <input type="radio" id="finance-1-4" name="finance-Q1" value="d">
+                    <label for="finance-1-4"> To advise the design of the car </label><br>
+                </div>
+
+                <div class="quiz_question" id="powertrain-Q1">
+                    <p> Which of the following elements are related to the powertrain? 
+                    (tick all that apply) </p>
+                    <input type="checkbox" id="powertrain-1-1" name="powertrain-Q1-a" value="a">
+                    <label for="powertrain-1-1"> Accumulator </label><br>
+                    <input type="checkbox" id="powertrain-1-2" name="powertrain-Q1-b" value="b">
+                    <label for="powertrain-1-2"> Tyres </label><br>
+                    <input type="checkbox" id="powertrain-1-3" name="powertrain-Q1-c" value="c">
+                    <label for="powertrain-1-3"> Inverter </label><br>
+                    <input type="checkbox" id="powertrain-1-4" name="powertrain-Q1-d" value="d">
+                    <label for="powertrain-1-4"> Monocoque </label><br>
+                </div>
+
+                <div class="quiz_question" id="marketing-Q2">
+                    <p> What document do we provide potential sponsors for a potential partnership? </p>
+                    <input type="radio" id="marketing-2-1" name="marketing-Q2" value="a">
+                    <label for="marketing-2-1"> Sponsorship Partnership Outline </label><br>
+                    <input type="radio" id="marketing-2-2" name="marketing-Q2" value="b">
+                    <label for="marketing-2-2"> Sponsorship Agreement </label><br>
+                    <input type="radio" id="marketing-2-3" name="marketing-Q2" value="c">
+                    <label for="marketing-2-3"> Business Prospectus </label><br>
+                    <input type="radio" id="marketing-2-4" name="marketing-Q2" value="d">
+                    <label for="marketing-2-4"> Sponsorship Prospectus </label><br>
+                </div>
+
+                <div class="quiz_question" id="vehicle_dynamics-Q1">
+                    <p> What is the purpose of testing vehicle dynamics components? </p>
+                    <input type="radio" id="vehicle_dynamics-1-1" name="vehicle_dynamics-Q1" value="a">
+                    <label for="vehicle_dynamics-1-1"> To fine tune the vehicle dynamics parameters to output 
+                    the fastest configuration </label><br>
+                    <input type="radio" id="vehicle_dynamics-1-2" name="vehicle_dynamics-Q1" value="b">
+                    <label for="vehicle_dynamics-1-2"> To validate / disprove our design concepts, 
+                    and models </label><br>
+                    <input type="radio" id="vehicle_dynamics-1-3" name="vehicle_dynamics-Q1" value="c">
+                    <label for="vehicle_dynamics-1-3"> To train the drivers to feel comfortable and push the 
+                    cars to their limits </label><br>
+                    <input type="radio" id="vehicle_dynamics-1-4" name="vehicle_dynamics-Q1" value="d">
+                    <label for="vehicle_dynamics-1-4"> All the above </label><br>
+                </div>
+
+                <div class="quiz_question" id="chassis-Q3">
+                    <p> What is the purpose of testing chassis components? </p>
+                    <input type="radio" id="chassis-3-1" name="chassis-Q3" value="a">
+                    <label for="chassis-3-1"> To ensure safety standards have been met 
+                    by the competition </label><br>
+                    <input type="radio" id="chassis-3-2" name="chassis-Q3" value="b">
+                    <label for="chassis-3-2"> To give members of the team something to 
+                    do if they finish early </label><br>
+                    <input type="radio" id="chassis-3-3" name="chassis-Q3" value="c">
+                    <label for="chassis-3-3"> To dispose of extra materials that were left 
+                    after the completion of the chassis </label><br>
+                    <input type="radio" id="chassis-3-4" name="chassis-Q3" value="d">
+                    <label for="chassis-3-4"> To ensure safety standards have been met 
+                    by the University safety team </label><br>
+                </div>
+
+                <div class="quiz_question" id="powertrain-Q2">
+                    <p> What machining process is used in manufacturing of the gearbox? </p>
+                    <input type="radio" id="powertrain-2-1" name="powertrain-Q2" value="a">
+                    <label for="powertrain-2-1"> CNC (Computer Numeric Control) </label><br>
+                    <input type="radio" id="powertrain-2-2" name="powertrain-Q2" value="b">
+                    <label for="powertrain-2-2"> CNC (Control Numeric Computation) </label><br>
+                    <input type="radio" id="powertrain-2-3" name="powertrain-Q2" value="c">
+                    <label for="powertrain-2-3"> CNC (Cutting Nesting Cleaning) </label><br>
+                    <input type="radio" id="powertrain-2-4" name="powertrain-Q2" value="d">
+                    <label for="powertrain-2-4"> None of the above </label><br>
+                </div>
+
+                <div class="quiz_question" id="marketing-Q3">
+                    <p> What main platform does the marketing team use in order to fulfil 
+                    their responsibilities? </p>
+                    <input type="radio" id="marketing-3-1" name="marketing-Q3" value="a">
+                    <label for="marketing-3-1"> Tutorial and Lecture Advertising </label><br>
+                    <input type="radio" id="marketing-3-2" name="marketing-Q3" value="b">
+                    <label for="marketing-3-2"> Billboards and Posters </label><br>
+                    <input type="radio" id="marketing-3-3" name="marketing-Q3" value="c">
+                    <label for="marketing-3-3"> TV Advertisements </label><br>
+                    <input type="radio" id="marketing-3-4" name="marketing-Q3" value="d">
+                    <label for="marketing-3-4"> Social Media </label><br>
+                </div>
+
+                <div class="quiz_question" id="chassis-Q1">
+                    <p> What is the monocoque typically made of? </p>
+                    <input type="radio" id="chassis-1-1" name="chassis-Q1" value="a">
+                    <label for="chassis-1-1"> Aluminium skinned honeycomb </label><br>
+                    <input type="radio" id="chassis-1-2" name="chassis-Q1" value="b">
+                    <label for="chassis-1-2"> Carbon Fibre skinned honeycomb </label><br>
+                    <input type="radio" id="chassis-1-3" name="chassis-Q1" value="c">
+                    <label for="chassis-1-3"> Steel Tubing </label><br>
+                    <input type="radio" id="chassis-1-4" name="chassis-Q1" value="d">
+                    <label for="chassis-1-4"> Balsa Wood </label><br>
+                </div>
+
+                <div class="quiz_question" id="vehicle_dynamics-Q2">
+                    <p> What are the main components that are encompassed in vehicle_dynamics
+                     (tick all that apply)? </p>
+                    <input type="checkbox" id="vehicle_dynamics-2-1" name="vehicle_dynamics-Q2-a" value="a">
+                    <label for="vehicle_dynamics-2-1"> Suspension </label><br>
+                    <input type="checkbox" id="vehicle_dynamics-2-2" name="vehicle_dynamics-Q2-b" value="b">
+                    <label for="vehicle_dynamics-2-2"> Steering </label><br>
+                    <input type="checkbox" id="vehicle_dynamics-2-3" name="vehicle_dynamics-Q2-c" value="c">
+                    <label for="vehicle_dynamics-2-3"> Brakes </label><br>
+                    <input type="checkbox" id="vehicle_dynamics-2-4" name="vehicle_dynamics-Q2-d" value="d">
+                    <label for="vehicle_dynamics-2-4"> Wheel and Tyres </label><br>
+                </div>
+
+                <div class="quiz_question" id="finance-Q2">
+                    <p> What are the consequences of running out of monetary resources? </p>
+                    <input type="radio" id="finance-2-1" name="finance-Q2" value="a">
+                    <label for="finance-2-1"> We won’t be able to pay our team members </label><br>
+                    <input type="radio" id="finance-2-2" name="finance-Q2" value="b">
+                    <label for="finance-2-2"> We won’t be able to extract enough funds 
+                    for the satisfactory completion of our car and competition </label><br>
+                    <input type="radio" id="finance-2-3" name="finance-Q2" value="c">
+                    <label for="finance-2-3"> The university won’t have a steady stream 
+                    of income from our racing team </label><br>
+                    <input type="radio" id="finance-2-4" name="finance-Q2" value="d">
+                    <label for="finance-2-4"> All the above </label><br>
+                </div>
+
+                <div class="quiz_question" id="vehicle_dynamics-Q3">
+                    <p> Which of the following components are not outsourced? (tick all that apply) </p>
+                    <input type="checkbox" id="vehicle_dynamics-3-1" name="vehicle_dynamics-Q3-a" value="a">
+                    <label for="vehicle_dynamics-3-1"> Wheels </label><br>
+                    <input type="checkbox" id="vehicle_dynamics-3-2" name="vehicle_dynamics-Q3-b" value="b">
+                    <label for="vehicle_dynamics-3-2"> Tyres </label><br>
+                    <input type="checkbox" id="vehicle_dynamics-3-3" name="vehicle_dynamics-Q3-c" value="c">
+                    <label for="vehicle_dynamics-3-3"> Shock Absorbers </label><br>
+                    <input type="checkbox" id="vehicle_dynamics-3-4" name="vehicle_dynamics-Q3-d" value="d">
+                    <label for="vehicle_dynamics-3-4"> Uprights </label><br>
+                </div>
+
+                <div class="quiz_question" id="finance-Q3">
+                    <p> What is the typical expected budget for a race car developed 
+                    at UWA Motorsports? </p>
+                    <input type="radio" id="finance-3-1" name="finance-Q3" value="a">
+                    <label for="finance-3-1"> 30,000 </label><br>
+                    <input type="radio" id="finance-3-2" name="finance-Q3" value="b">
+                    <label for="finance-3-2"> 40,000 </label><br>
+                    <input type="radio" id="finance-3-3" name="finance-Q3" value="c">
+                    <label for="finance-3-3"> 50,000 </label><br>
+                    <input type="radio" id="finance-3-4" name="finance-Q3" value="d">
+                    <label for="finance-3-4"> 60,000 </label><br>
+                </div>
+
+                <div class="quiz_question" id="powertrain-Q3">
+                    <p> What aspect of the powertrain is tuned during testing? </p>
+                    <input type="radio" id="powertrain-3-1" name="powertrain-Q3" value="a">
+                    <label for="powertrain-3-1"> Motor </label><br>
+                    <input type="radio" id="powertrain-3-2" name="powertrain-Q3" value="b">
+                    <label for="powertrain-3-2"> Gearbox </label><br>
+                    <input type="radio" id="powertrain-3-3" name="powertrain-Q3" value="c">
+                    <label for="powertrain-3-3"> Accumulator </label><br>
+                    <input type="radio" id="powertrain-3-4" name="powertrain-Q3" value="d">
+                    <label for="powertrain-3-4"> Differential </label><br>
+                </div>
+
+                <div class="quiz_question" id="chassis-Q2">
+                    <p> What is the name given to the segment of the chassis in which the 
+                    driver sits in? </p>
+                    <input type="radio" id="chassis-2-1" name="chassis-Q2" value="a">
+                    <label for="chassis-2-1"> Monocoque </label><br>
+                    <input type="radio" id="chassis-2-2" name="chassis-Q2" value="b">
+                    <label for="chassis-2-2"> Cockpit </label><br>
+                    <input type="radio" id="chassis-2-3" name="chassis-Q2" value="c">
+                    <label for="chassis-2-3"> Subframe </label><br>
+                    <input type="radio" id="chassis-2-4" name="chassis-Q2" value="d">
+                    <label for="chassis-2-4"> Impact Attenuator </label><br>
+                </div>
+
+                <input type="submit" value="Submit">
+            </form>
+
+        </div>
+    
+        <script>
+            var finance_qs = {{ finance_qs }};
+            var marketing_qs = {{ marketing_qs }};
+            var chassis_qs = {{ chassis_qs }};
+            var vehicle_dynamics_qs = {{ vehicle_dynamics_qs }};
+            var powertrain_qs = {{ powertrain_qs }};
+
+            finance_qs['department'] = 'finance';
+            marketing_qs['department'] = 'marketing';
+            chassis_qs['department'] = 'chassis';
+            vehicle_dynamics_qs['department'] = 'vehicle_dynamics';
+            powertrain_qs['department'] = 'powertrain';
+
+            function loadAnswers(answers_obj) {
+                for (let q in answers_obj) {
+                    if (q == "department") continue;
+
+                    let question_id = "#" + answers_obj['department'] + "-" + q;
+                    if (Array.isArray(answers_obj[q])) {
+                        for (let i = 0; i < answers_obj[q].length; i++) {
+                            if (answers_obj[q][i] == '') continue;
+                            $(question_id + ` input[value=${answers_obj[q][i]}]`).attr("checked", "checked");
+                        }
+                    }
+                    else {
+                        if (answers_obj[q] == '') continue;
+                        $(question_id + ` input[value=${answers_obj[q]}]`).attr("checked", "checked");
+                    }
+                }
+            }
+
+            loadAnswers(finance_qs);
+            loadAnswers(marketing_qs);
+            loadAnswers(chassis_qs);
+            loadAnswers(vehicle_dynamics_qs);
+            loadAnswers(powertrain_qs);
+
+            $('input[type=radio]').change(function() {
+                let question = $(this).attr("name");
+                let answer = $(this).attr("value");
+                let json = {};
+                json[question] = answer;
+                $.post('/save_answer', json);
+            });
+
+            $('input[type=checkbox]').change(function() {
+                let question = $(this).attr("name");
+                let answer = $(this).attr("value");
+                let json = {};
+                let checked = $(this).prop("checked");
+                if (checked) {
+                    json[question] = ["on", answer];
+                }
+                else {
+                    json[question] = ["off", answer];
+                }
+                $.post('/save_answer', json);
+            });
+
+            {% if old_submission %}
+            $('input').attr("disabled", "disabled")
+            {% endif %}
+        </script>
+    </body>
+</html

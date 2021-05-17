@@ -1,13 +1,12 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired, Email, EqualTo, Length, Regexp
+from wtforms.validators import DataRequired, Email, EqualTo, Length, Regexp, ValidationError
 from app.models import User
-from app.models import Quiz
 
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
-    password = StringField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me!')
     submit = SubmitField('Sign In')
 
@@ -15,9 +14,9 @@ class LoginForm(FlaskForm):
 class RegisterForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), 
         Regexp("[a-zA-Z\_\d]{2,32}")])
-    email = StringField('Email', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
     preferred_name = StringField('Preferred Name')
-    password = StringField('Password', validators=[DataRequired(), Length(min=5), 
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=5), 
         EqualTo('confirm_password', message="Passwords must match")])
     confirm_password = StringField('Confirm Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me!')

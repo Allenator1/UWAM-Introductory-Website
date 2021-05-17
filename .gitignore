@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+**/__pycache__
+*.pyc
 
 # C extensions
 *.so
@@ -140,3 +142,7 @@ cython_debug/
 #db
 app.db
 migrations
+
+#vscode
+**/.vscode/
+**/settings.json

@@ -1,10 +1,10 @@
-from flask import render_template, redirect, url_for, flash, request, jsonify
+from datetime import datetime
+from flask import json, render_template, redirect, url_for, flash, request, jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
 from app.forms import LoginForm, RegisterForm
 from app.models import User, Quiz
 from app.controller import *
-from operator import add
 
 
 @app.route('/', methods=['GET'])
@@ -79,11 +79,10 @@ def tutorial():
     tutorial = current_user.tutorial
     if json and 'fresh_tutorial' in json.keys():
         tutorial.new_tutorial()
-        return redirect(url_for('tutorial'))
     elif json:
         question = list(json.keys())[0]
         tutorial.questions[question] = json[question]
-        return jsonify({question: json[question]})
+        return
     return render_template('tutorial.html', questions=tutorial.questions)
 
 
@@ -91,8 +90,8 @@ def tutorial():
 @login_required
 def feedback():
     quiz = db.session.query(Quiz).join(User).\
-        filter(Quiz.user_id == current_user.id).\
-        order_by(Quiz.finish_date).first()
+        filter(Quiz.user_id == current_user.id, Quiz.finish_date != None).\
+        order_by(Quiz.finish_date.desc()).first()
     section_totals = get_section_totals(quiz)
     section_proportions = get_proportions(section_totals)
     section = max(section_totals, key=section_totals.get)
@@ -102,17 +101,9 @@ def feedback():
 @app.route('/submissions', methods=['GET', 'POST'])
 @login_required
 def submissions():
-    if request.form and 'del_submission' in request.form.keys():
-        submission_id = int(request.form['del_submission'])
-        if not Quiz.query.get(submission_id):
-            raise("Trying to delete submission that doesn't exist")
-        db.session.delete(Quiz.query.get(submission_id))
-        db.session.commit()
-        return redirect(url_for('submissions'))
-
     submissions = db.session.query(Quiz).join(User).\
         filter(Quiz.user_id == current_user.id, Quiz.finish_date != None).\
-        order_by(Quiz.finish_date).limit(12).all()
+        order_by(Quiz.finish_date.desc()).limit(12).all()
 
     submission_stats = []
     aggr_section_totals = {'Finance': 0, 'Marketing': 0, 'Chassis': 0, 'Vehicle Dynamics': 0, 'Powertrain': 0}
@@ -136,10 +127,90 @@ def submissions():
         section=section)
 
 
-@app.route('/old_quiz')
+@app.route('/quiz/<quiz_id>', methods=['GET', 'POST'])
 @login_required
-def old_quiz():
-    pass
+def quiz(quiz_id=None):
+    quiz = None
+    if quiz_id:
+        quiz = Quiz.query.get(quiz_id)
+    elif not current_user.current_quiz:
+        quiz = Quiz(user_id=current_user.id)
+        db.session.add(quiz)
+        db.session.commit()
+        current_user.current_quiz = quiz.id
+    else:    
+        quiz = Quiz.query.get(current_user.current_quiz)
+
+    if request.method == 'POST' and not quiz_id:
+        if is_completed(quiz):
+            quiz.finish_date = datetime.utcnow()
+            current_user.current_quiz = None
+            db.session.commit()
+            return redirect(url_for('feedback'))
+
+    db.session.commit()
+    return render_template('quiz.html.jinja', finance_qs=quiz.finance, marketing_qs=quiz.marketing,
+        chassis_qs=quiz.chassis, vehicle_dynamics_qs=quiz.vehicle_dynamics, powertrain_qs=quiz.powertrain, 
+        old_submission=bool(quiz_id))
+
+
+@app.route('/new_quiz', methods=['GET'])
+@login_required
+def new_quiz():
+    assert(current_user.current_quiz is not None)
+    old_quiz = Quiz.query.get(current_user.current_quiz)
+    db.session.delete(old_quiz)
+    current_user.current_quiz = None
+    db.session.commit()
+    return redirect(url_for('quiz'))
+
+
+@app.route('/del_quiz', methods=['GET', 'POST'])
+@login_required
+def del_quiz():
+    if request.form and 'del_submission' in request.form.keys():
+        submission_id = int(request.form['del_submission'])
+        assert(Quiz.query.get(submission_id) is not None)
+        db.session.delete(Quiz.query.get(submission_id))
+        db.session.commit()
+        return jsonify(status="success")
+
+
+@app.route('/save_answer', methods=['POST'])
+@login_required
+def save_answer():
+    quiz = Quiz.query.get(current_user.current_quiz)
+    if request.method == 'POST' and request.form:
+        response = request.form  
+        key = list(response.keys())[0]
+        department = key.split('-')[0]
+        question = key.split('-')[1]
+
+        if len(key.split('-')) > 2:
+            response = request.form.getlist(key)
+            answer = response[1]
+            is_toggled = response[0] == "on"
+            current_ans_list = getattr(quiz, department)[question]
+            answer_exists = answer in current_ans_list
+
+            if current_ans_list == "" and is_toggled:
+                current_ans_list = [answer]
+            elif not answer_exists and is_toggled:
+                current_ans_list.append(answer)
+            elif answer_exists and not is_toggled:
+                current_ans_list.remove(answer)
+
+            getattr(quiz, department)[question] = current_ans_list
+        else:
+            getattr(quiz, department)[question] = response[key]
+
+        db.session.commit()
+        return jsonify(successful=True)
+    return redirect(url_for('quiz'))
+
+
+
+        
 
 
 

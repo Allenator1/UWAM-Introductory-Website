@@ -15,6 +15,7 @@ class User(UserMixin, db.Model):
     is_admin = db.Column(db.Boolean)
     tutorial = db.relationship('Tutorial', uselist=False, backref='user')
     submissions = db.relationship('Quiz', backref='user')
+    current_quiz = db.Column(db.Integer)
 
     def __repr__(self):
         return f'<User {self.username}>'
@@ -43,11 +44,6 @@ class Quiz(db.Model):
         return f'<Quiz by {user.username} on {self.start_date}>'
 
 
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
-
-
 class Tutorial(db.Model):
     __tablename__ = 'tutorial'
     id = db.Column(db.Integer, primary_key=True)
@@ -60,6 +56,11 @@ class Tutorial(db.Model):
 
     def new_tutorial(self):
         self.questions = {'Q' + i : "" for i in range(1, 11)}
+
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 
 
