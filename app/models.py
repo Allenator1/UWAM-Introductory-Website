@@ -13,9 +13,9 @@ class User(UserMixin, db.Model):
     preferred_name = db.Column(db.String(64))
     password_hash = db.Column(db.String(128))
     is_admin = db.Column(db.Boolean)
-    tutorial = db.relationship('Tutorial', uselist=False, backref='user')
+    current_module = db.Column(db.String(32), default="tutorial1")
+    current_quiz = db.Column(db.Integer, default=None)
     submissions = db.relationship('Quiz', backref='user')
-    current_quiz = db.Column(db.Integer)
 
     def __repr__(self):
         return f'<User {self.username}>'
@@ -42,20 +42,6 @@ class Quiz(db.Model):
     def __repr__(self):
         user = User.query.get(self.user_id)
         return f'<Quiz by {user.username} on {self.start_date}>'
-
-
-class Tutorial(db.Model):
-    __tablename__ = 'tutorial'
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    questions = db.Column(MutableDict.as_mutable(db.JSON), default={'Q' + str(i) : "" for i in range(1, 11)})
-
-    def __repr__(self):
-        user = User.query.get(self.user_id)
-        return f'<Tutorial for {user.username}>'
-
-    def new_tutorial(self):
-        self.questions = {'Q' + i : "" for i in range(1, 11)}
 
 
 @login.user_loader
