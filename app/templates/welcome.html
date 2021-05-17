@@ -1,78 +1,135 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
     <head>
-        <title>Welcome!</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/main.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+        <title> Welcome </title>
     </head>
 
     <body>
-        <p>Hello! And welcome to the <b>UWA Motorsport Team!</b><br>
-            We cannot wait to start seeing more of you in the lab, and most importantly, getting you equipped to fit yourselves into the team, and getting stuck into the production of our race cars!<br>
-            This will be a mini-introductory module into who we are, what we do, and how YOU can get involved!</p>
-        <h1>Who are we?</h1>
-        <p>UWA Motorsport Team is a group of like-minded, driven individuals who are chasing the learning experience of conceptualising, designing, manufacturing, testing, and racing cars.<br>
-            These cars are designed to compete in various competitions around the world (labelled <b>Formula SAE</b> and <b>Formula Student</b>), operating under the governing bodies of <b>SAE</b> (Society of Automotive Engineers), and the <b>Institute of Mechanical Engineers</b><br>
-            The team had been formed in 2000, with the team attending their first Formula SAE competition in 2001 and have been continuing to do so since then! </p>
-        <img src="2019 UWAM TEAM.jpg" width='500'>
-        <h1>Notable Achievements</h1>
-        <h2>Formula SAE - Australiasia</h2>
-        <ul>
-            <li>2 x 1<sup>st</sup> Place: Overall</li>
-            <li>4 x 1<sup>st</sup> Place: Engineering Design</li>
-            <li>30 x 1<sup>st</sup> Place: Dynamic Events</li>
-        </ul>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 
-        <h2>Formula SAE – Michigan</h2>
-        <ul>
-            <li>1 x 1<sup>st</sup> Place: Overall (World Champions)</li>
-            <li>2 x 2<sup>nd</sup> Place: Overall</li>
-            <li>2 x 1<sup>st</sup> Place: Engineering Design</li>
-        </ul>
+        <div class="banner">
+            <div class="banner_content">
+                <div class="banner_left">
+                    <h1 class="heading"> Introduction </h1>
+                </div>
+                <div class="banner_right">
+                    {% if current_user.is_authenticated %}
+                    <a class="logout_button gold_button btn" href={{ url_for('logout') }} role="button"> 
+                        Sign out
+                    </a>
+                    <a class="submissions_button gold_button btn" href={{ url_for('submissions') }} role="button"> 
+                        Submissions
+                    </a>
+                    {% else %}
+                    <a class="login_button gold_button btn" href={{ url_for('login') }} role="button"> 
+                        Login
+                    </a>
+                    <a class="register_button gold_button btn" href={{ url_for('register') }} role="button"> 
+                        Register
+                    </a>
+                    {% endif %}
+                    <a class="homepage_button gold_button btn" href= {{ url_for('index') }} role="button"> 
+                        Return to Homepage 
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="gold_bar"></div>
 
-        <h2>Formula Student – Germany</h2>
-        <ul>
-            <li>1 x 3<sup>rd</sup> Place: Overall</li>
-        </ul>
-
-        <h2>Other Achievements</h2>
-        <ul>
-            <li>>30 International Prizes</li>
-            <li>7 Awards for Design Innovation</li>
-            <li>Technology Concept commercialised in professional industry</li>
-            <li>PHD research involving concepts from our cars</li>
-        </ul>
-
-        <h1>What we do</h1>
-        <p>The team had been involved in developing Internal Combustion Vehicles (IC) (2001-2013), and just recently have switched our efforts in the production of Electric Vehicles (EV) (2014-). <br>
-            The team is split into various departments and offer a various range of working opportunities for students of all disciplines! Our main overarching departments include:</p>
-            <ul>
-                <li>Business</li>
-                <li>Technical</li>
-            </ul>
-        <p>Within these departments, there are further break down of areas:</p>
-        <ul>
-            <li>Business
+        <div class="tut_jumbo black_jumbo jumbotron">
+            <div class="tut_text black_jumbo jumbotron">
+                <h1 class="major_heading">Who are we?</h1>
+                <p>UWA Motorsport Team is a group of like-minded, driven individuals who are chasing the learning experience of 
+                    conceptualising, designing, manufacturing, testing, and racing cars.
+                    <br>
+                    These cars are designed to compete in various competitions around the world (labelled <b>Formula SAE</b> and 
+                    <b>Formula Student</b>), operating under the governing bodies of <b>SAE</b> 
+                    (Society of Automotive Engineers), and the <b>Institute of Mechanical Engineers</b>
+                    <br>
+                    The team had been formed in 2000, with the team attending their first Formula SAE competition in 2001 and 
+                    have been continuing to do so since then! 
+                </p>
+                <br>
+                <img src="2019 UWAM TEAM.jpg" width='500'>
+                <br>
+                <h1 class="major_heading">Notable Achievements</h1>
+                <h2 class="minor_heading">Formula SAE - Australiasia</h2>
                 <ul>
-                    <li>Finance</li>
-                    <li>Outreach</li>
-                    <li>Safety</li>
-                    <li>Marketing</li>
-                </ul>  
-            </li>
-            <li>Technical
-                <ul>
-                    <li>Aerodynamics + Cooling</li>
-                    <li>Chassis</li>
-                    <li>Electrical</li>
-                    <li>Vehicle Dynamics</li>
-                    <li>Powertrain</li>
+                    <li>2 x 1<sup>st</sup> Place: Overall</li>
+                    <li>4 x 1<sup>st</sup> Place: Engineering Design</li>
+                    <li>30 x 1<sup>st</sup> Place: Dynamic Events</li>
                 </ul>
-            </li>
-        </ul>
-        <p>Each area has a designated lead, as well as up to 5 members to undertake tasks that are associated with each area.</p>
-        <h1>Next steps for YOU!</h1>
-            <p>Now that we have had an introductory to the team and a little bit about our background, we will now walk you through all our areas, <br>
-                and will have quizzes associated with each area module. These quizzes will aim to demonstrate which area of the team you may fit best <br>
-                into and will walk you through steps in which you can progress in becoming an active team member in each of your areas!</p>
+
+                <h2 class="minor_heading">Formula SAE – Michigan</h2>
+                <ul>
+                    <li>1 x 1<sup>st</sup> Place: Overall (World Champions)</li>
+                    <li>2 x 2<sup>nd</sup> Place: Overall</li>
+                    <li>2 x 1<sup>st</sup> Place: Engineering Design</li>
+                </ul>
+
+                <h2 class="minor_heading">Formula Student – Germany</h2>
+                <ul>
+                    <li>1 x 3<sup>rd</sup> Place: Overall</li>
+                </ul>
+
+                <h2 class="minor_heading">Other Achievements</h2>
+                <ul>
+                    <li>>30 International Prizes</li>
+                    <li>7 Awards for Design Innovation</li>
+                    <li>Technology Concept commercialised in professional industry</li>
+                    <li>PHD research involving concepts from our cars</li>
+                </ul>
+                <br>
+                <h1 class="major_heading">What we do</h1>
+                <p>The team had been involved in developing Internal Combustion Vehicles (IC) (2001-2013), and just recently have switched 
+                    our efforts in the production of Electric Vehicles (EV) (2014-). 
+                    <br>
+                    The team is split into various departments and offer a various range of working opportunities for students of all disciplines! 
+                    Our main overarching departments include:
+                </p>
+                    <ul>
+                        <li>Business</li>
+                        <li>Technical</li>
+                    </ul>
+                <p>Within these departments, there are further break down of areas:</p>
+                <ul>
+                    <li>Business
+                        <ul>
+                            <li>Finance</li>
+                            <li>Outreach</li>
+                            <li>Safety</li>
+                            <li>Marketing</li>
+                        </ul>  
+                    </li>
+                    <li>Technical
+                        <ul>
+                            <li>Aerodynamics + Cooling</li>
+                            <li>Chassis</li>
+                            <li>Electrical</li>
+                            <li>Vehicle Dynamics</li>
+                            <li>Powertrain</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>Each area has a designated lead, as well as up to 5 members to undertake tasks that are associated with each area.</p>
+                <br>
+                <h1 class="major_heading">Next steps for YOU!</h1>
+                <p>Now that we have had an introductory to the team and a little bit about our background, we will now walk you through all our areas, 
+                    <br>
+                    and will have quizzes associated with each area module. These quizzes will aim to demonstrate which area of the team you may fit best 
+                    <br>
+                    into and will walk you through steps in which you can progress in becoming an active team member in each of your areas!
+                </p>
+            </div>
+            <a class="gold_border black_button btn btn-lg btn-block" href={{url_for('tutorial2')}} role="button"> 
+                Start the tutorial!
+            </a>
+        </div>
     </body>
 </html>

@@ -252,7 +252,7 @@ form .form_label {
 .bg {
     width: 110%;
     height: 100%;
-    background-image: url(../static/f1_car.jpg);
+    background-image: url(../static/car_sunset.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-x: center;
@@ -370,6 +370,25 @@ form .form_label {
 
 #given_section {
     font-size: 38px;
+}
+
+/* CSS for tutorial modules */
+
+.tut_jumbo.black_jumbo {
+    margin: 32px 16px;
+}
+.tut_text.black_jumbo {
+    margin: 6px 6px 32px 6px;
+    padding: 48px 32px;
+}
+.major_heading {
+    color: Ivory;
+    font-size: 30px;
+}
+.minor_heading {
+    color: rgb(253, 203, 76);
+    font-size: 20px;
+    text-decoration: underline solid 1px;
 }
 
 

@@ -1,47 +1,96 @@
 <!DOCTYPE html>
-<html>
-    <header>
-        <title>Technical: Powertrain</title>
-    </header>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/main.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+        <title> Technicals: Powertrain </title>
+    </head>
 
     <body>
-        <h1>Technical Module: Powertrain</h1>
-        <p>This department is involved entirely in the generation, consumption, and transmission of power from the motor to the tyres. <br>
-            The main components of the powertrain system include:</p>
-            <ul>
-                <li>Accumulator (Battery)</li>
-                <li>Inverter</li>
-                <li>Motor</li>
-                <li>Differential and Gearbox</li>
-            </ul>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 
-        <h2>Design</h2>
-        <p>Most of the powertrain components are too complex to be individually modelled and manufactured by students, so we spec and purchase <br>
-            the inverter, motor, and differential from external businesses / suppliers, and focus all of our design efforts in designing the <br>
-            accumulator and gearbox. These components need to be designed from scratch, as they are quite difficult to source. This is so because <br>
-            all the market accumulators and gearboxes don’t satisfactorily fit our competition contexts. They are either too big and bulky and won’t <br>
-            fit nicely with the entire race car package, or they are too small, fragile, and underpowered to be featured on our car. In addition, <br>
-            purchasing more external products to feature on our concepts will provide us with more restrictions on how much we can exploit certain <br>
-            designs and ideas, and hence won’t allow the learning experience of the competition to be explored by the students!</p>
-        
-        <img src="powertrain.jpg" width='500'>
-        <h2>Manufacturing</h2>
-        <p>For the designed components, we utilise a wide range of manufacturing methods to realise our concepts and designs. For the accumulator <br>
-            container, we utilise aluminium sheet metal, which is laser cut from rectangular sheets, and is then notched and fitted together to make <br>
-            a box form, and the joins welded together so as to maintain its form. For the battery casing, we use sheets of plastic, which are also <br>
-            laser cut, and joined together through the use of glue. Once the battery cases are glued together, they are populated by the battery cells<br>
-             (can be thought of oversized AA batteries), and all the other electrical components. The full battery cases are then inserted and fastened <br>
-             into the accumulator container. For the gearbox, the design is directly sent off to an external machining venue, where the design is fed into <br>
-             a CNC (Computer Numeric Control) Milling machine, which directly cuts the design from a massive block of aluminium.</p>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 
-        <h2>Testing</h2>
-        <p>The testing of the powertrain system has the aims of fine tuning the timing of the motor, so as to eliminate any irregularities in power <br>
-            output, so that the tyres are always receiving a consistent power trend. This is done through fitting the powertrain system to a dynamometer, <br>
-            much like IC Vehicles, and running the dynamometer to output performance data and the harmony between the accumulator, inverter, and motor <br>
-            package. Any wrinkles in the numbers are then ironed out through various electrical and software tuning methods. This is usually an iterative <br>
-            process until we achieve the power performance which is deemed acceptable to run the race car under, at which point the powertrain system is <br>
-            ready be placed into the car, and used to operate the vehicle! As with the vehicle dynamics components, the powertrain is heavily monitored <br>
-            during the race cars operation, and further irregularities associated with the system and its effects on the entire car (hopefully minimal) <br>
-            can be addressed and the proper actions undertaken!</p>
+        <div class="banner">
+            <div class="banner_content">
+                <div class="banner_left">
+                    <h1 class="heading"> Introduction </h1>
+                </div>
+                <div class="banner_right">
+                    {% if current_user.is_authenticated %}
+                    <a class="logout_button gold_button btn" href={{ url_for('logout') }} role="button"> 
+                        Sign out
+                    </a>
+                    <a class="submissions_button gold_button btn" href={{ url_for('submissions') }} role="button"> 
+                        Submissions
+                    </a>
+                    {% else %}
+                    <a class="login_button gold_button btn" href={{ url_for('login') }} role="button"> 
+                        Login
+                    </a>
+                    <a class="register_button gold_button btn" href={{ url_for('register') }} role="button"> 
+                        Register
+                    </a>
+                    {% endif %}
+                    <a class="homepage_button gold_button btn" href= {{ url_for('index') }} role="button"> 
+                        Return to Homepage 
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="gold_bar"></div>
+
+        <div class="tut_jumbo black_jumbo jumbotron">
+            <div class="tut_text black_jumbo jumbotron">
+                <h1 class="major_heading">Technical Module: Powertrain</h1>
+
+                <p>This department is involved entirely in the generation, consumption, and transmission of power from the motor to the tyres. <br>
+                    The main components of the powertrain system include:</p>
+                    <ul>
+                        <li>Accumulator (Battery)</li>
+                        <li>Inverter</li>
+                        <li>Motor</li>
+                        <li>Differential and Gearbox</li>
+                    </ul>
+
+                <h2 class="minor_heading">Design</h2>
+                <p>Most of the powertrain components are too complex to be individually modelled and manufactured by students, so we spec and purchase <br>
+                    the inverter, motor, and differential from external businesses / suppliers, and focus all of our design efforts in designing the <br>
+                    accumulator and gearbox. These components need to be designed from scratch, as they are quite difficult to source. This is so because <br>
+                    all the market accumulators and gearboxes don’t satisfactorily fit our competition contexts. They are either too big and bulky and won’t <br>
+                    fit nicely with the entire race car package, or they are too small, fragile, and underpowered to be featured on our car. In addition, <br>
+                    purchasing more external products to feature on our concepts will provide us with more restrictions on how much we can exploit certain <br>
+                    designs and ideas, and hence won’t allow the learning experience of the competition to be explored by the students!</p>
+                
+                <img src="powertrain.jpg" width='500'>
+                <h2 class="minor_heading">Manufacturing</h2>
+                <p>For the designed components, we utilise a wide range of manufacturing methods to realise our concepts and designs. For the accumulator <br>
+                    container, we utilise aluminium sheet metal, which is laser cut from rectangular sheets, and is then notched and fitted together to make <br>
+                    a box form, and the joins welded together so as to maintain its form. For the battery casing, we use sheets of plastic, which are also <br>
+                    laser cut, and joined together through the use of glue. Once the battery cases are glued together, they are populated by the battery cells<br>
+                    (can be thought of oversized AA batteries), and all the other electrical components. The full battery cases are then inserted and fastened <br>
+                    into the accumulator container. For the gearbox, the design is directly sent off to an external machining venue, where the design is fed into <br>
+                    a CNC (Computer Numeric Control) Milling machine, which directly cuts the design from a massive block of aluminium.</p>
+
+                <h2 class="minor_heading">Testing</h2>
+                <p>The testing of the powertrain system has the aims of fine tuning the timing of the motor, so as to eliminate any irregularities in power <br>
+                    output, so that the tyres are always receiving a consistent power trend. This is done through fitting the powertrain system to a dynamometer, <br>
+                    much like IC Vehicles, and running the dynamometer to output performance data and the harmony between the accumulator, inverter, and motor <br>
+                    package. Any wrinkles in the numbers are then ironed out through various electrical and software tuning methods. This is usually an iterative <br>
+                    process until we achieve the power performance which is deemed acceptable to run the race car under, at which point the powertrain system is <br>
+                    ready be placed into the car, and used to operate the vehicle! As with the vehicle dynamics components, the powertrain is heavily monitored <br>
+                    during the race cars operation, and further irregularities associated with the system and its effects on the entire car (hopefully minimal) <br>
+                    can be addressed and the proper actions undertaken!</p>
+            </div>
+            
+            <a class="gold_button btn btn-lg btn-block" href={{url_for('quiz', quiz_id=0)}} role="button"> 
+                Begin Quiz!
+            </a>
+        </div>
     </body>
 </html>

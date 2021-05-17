@@ -1,67 +1,113 @@
 <!DOCTYPE html>
-<html>
-    <header>
-        <title>Technical: Vehicle Dynamics</title>
-    </header>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/main.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+        <title> Technicals: Vehicle Dynamics </title>
+    </head>
 
-<body>
-    <h1>Technical Module: Vehicle Dynamics</h1>
+    <body>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 
-    <p>This area is involved in taking the power output by the motor, and efficiently transmitting it to the ground, <br>
-        and utilising the resultant forces at the tyre surfaces to propel the car in whichever direction the driver wishes to go. <br>
-        The main subsystems that the vehicle dynamics department is in charge of are the:</p>
-        <ul>
-            <li>Suspension system</li>
-            <li>Steering</li>
-            <li>Brakes and Accelerator</li>
-            <li>Wheel and Tyre Assemblies</li>
-        </ul>
-     
-        <h2>Design</h2>
-        <p>The design of these systems have somewhat of a greater degree of difficulty associated with them, as the designs <br>
-            will have to consider the vehicle moving under different conditions. Such conditions include heavy accelerations, <br>
-            heavy braking, tight cornering. All these conditions will pinpoint the extremities of different tyre positions, <br>
-            and all conditions will have to be thoroughly analysed in order to ensure that no components will be under the risk <br>
-            of clashing through the cars states of motion. In addition, design consideration will have to be taken when configuring <br>
-            different components, such as suspension stiffness, steering behaviour, and different vehicle dynamics parameters. <br>
-            All these configurations are implemented in order to maximise the tractive potential of our race car, and hence maximise <br>
-            efficiency of output power from the powertrain system.</p>
+        <div class="banner">
+            <div class="banner_content">
+                <div class="banner_left">
+                    <h1 class="heading"> Introduction </h1>
+                </div>
+                <div class="banner_right">
+                    {% if current_user.is_authenticated %}
+                    <a class="logout_button gold_button btn" href={{ url_for('logout') }} role="button"> 
+                        Sign out
+                    </a>
+                    <a class="submissions_button gold_button btn" href={{ url_for('submissions') }} role="button"> 
+                        Submissions
+                    </a>
+                    {% else %}
+                    <a class="login_button gold_button btn" href={{ url_for('login') }} role="button"> 
+                        Login
+                    </a>
+                    <a class="register_button gold_button btn" href={{ url_for('register') }} role="button"> 
+                        Register
+                    </a>
+                    {% endif %}
+                    <a class="homepage_button gold_button btn" href= {{ url_for('index') }} role="button"> 
+                        Return to Homepage 
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="gold_bar"></div>
 
-        <img src="vehicle_dynamics.jpg" width='500'>
+        <div class="tut_jumbo black_jumbo jumbotron">
+            <div class="tut_text black_jumbo jumbotron">
+                <h1 class="major_heading">Technical Module: Vehicle Dynamics</h1>
 
-        <h2>Manufacturing</h2>
-        <p>The manufacturing of the vehicle dynamics system is relatively simple. Although the parts involved with the area of the car <br>
-            are extremely complex, most of the parts are outsourced from external suppliers / businesses. This is mainly done to reduce <br>
-            the span of the manufacturing process, so that more time can be spent in testing the vehicle and fine tuning all the vehicle <br>
-            dynamics parameters. The main outsourced components include:</p>
+                <p>This area is involved in taking the power output by the motor, and efficiently transmitting it to the ground, <br>
+                    and utilising the resultant forces at the tyre surfaces to propel the car in whichever direction the driver wishes to go. <br>
+                    The main subsystems that the vehicle dynamics department is in charge of are the:</p>
 
-            <ul>
-                <li>Wheels</li>
-                <li>Tyres</li>
-                <li>Steering Rack and Pinion</li>
-                <li>Brake Calipers</li>
-                <li>Shock Absorbers</li>
-            </ul>
-        <p>Once all the additional system components are manufactured, all the system can be assembled, and bolted onto the car!</p>
+                <ul>
+                    <li>Suspension system</li>
+                    <li>Steering</li>
+                    <li>Brakes and Accelerator</li>
+                    <li>Wheel and Tyre Assemblies</li>
+                </ul>
+            
+                <h2 class="minor_heading">Design</h2>
+                <p>The design of these systems have somewhat of a greater degree of difficulty associated with them, as the designs <br>
+                    will have to consider the vehicle moving under different conditions. Such conditions include heavy accelerations, <br>
+                    heavy braking, tight cornering. All these conditions will pinpoint the extremities of different tyre positions, <br>
+                    and all conditions will have to be thoroughly analysed in order to ensure that no components will be under the risk <br>
+                    of clashing through the cars states of motion. In addition, design consideration will have to be taken when configuring <br>
+                    different components, such as suspension stiffness, steering behaviour, and different vehicle dynamics parameters. <br>
+                    All these configurations are implemented in order to maximise the tractive potential of our race car, and hence maximise <br>
+                    efficiency of output power from the powertrain system.</p>
 
-        <h2>Testing</h2>
-        <p>Through the initial design phases, the aim with the entire system is to produce the fastest configuration of the race car, and <br>
-            along with this, comes the need to model reality in a series of numbers and mathematical equations. Most of these modelling strategies <br>
-            end up being 90% incorrect, as per usual efforts of teams with lack of experience, time, and money. Hence, the basic philosophy of <br>
-            the vehicle dynamics department is to ‘take your best guess’ in design, fast-track the build in the manufacturing process, and do <br>
-            all your learning on the track!</p>
-        
-        <p>It is through testing do you get to find out if your numbers were correct or not. If they were correct (or were close to being correct), <br>
-            it’s a big <b>HOORAYY!</b> Otherwise, time to get to the thinking part and start coming up with a list of hypothetical causes for the inaccuracy. <br>
-            Once all the possible causes have been identified, it is simply a matter of using the car to work through each of the scenarios to see which <br>
-            one gives you the magic <b>BINGO!</b></p>
+                <img src="vehicle_dynamics.jpg" width='500'>
 
-        <p>This learning phase also involves the fine tuning of all the aforementioned vehicle dynamics parameters, with the aim of achieving the fastest <br>
-            possible configuration of your race car! One of the most important factors in the vehicle dynamics area is the driver! Maximising your testing <br>
-            time will directly correlate with maximising your driver confidence and his/her ability to consistently push the race car to its operating limits <br>
-            and achieve the fastest lap times possible! In fact, it is shown that the teams that properly develop their drivers abilities are the teams that <br>
-            find themselves winning the competitions! This directly supports the fact that the driver ability is one of the biggest factors of team performance <br>
-            in competition dynamic events. There is a rough rule of thumb, that the time difference between a great driver and a novice driver, greatly outweighs <br>
-            the time difference between a great car and a satisfactory car, driven by the same driver of decent driver ability.</p>
-</body>
+                <h2 class="minor_heading">Manufacturing</h2>
+                <p>The manufacturing of the vehicle dynamics system is relatively simple. Although the parts involved with the area of the car <br>
+                    are extremely complex, most of the parts are outsourced from external suppliers / businesses. This is mainly done to reduce <br>
+                    the span of the manufacturing process, so that more time can be spent in testing the vehicle and fine tuning all the vehicle <br>
+                    dynamics parameters. The main outsourced components include:</p>
+
+                    <ul>
+                        <li>Wheels</li>
+                        <li>Tyres</li>
+                        <li>Steering Rack and Pinion</li>
+                        <li>Brake Calipers</li>
+                        <li>Shock Absorbers</li>
+                    </ul>
+                <p>Once all the additional system components are manufactured, all the system can be assembled, and bolted onto the car!</p>
+
+                <h2 class="minor_heading">Testing</h2>
+                <p>Through the initial design phases, the aim with the entire system is to produce the fastest configuration of the race car, and <br>
+                    along with this, comes the need to model reality in a series of numbers and mathematical equations. Most of these modelling strategies <br>
+                    end up being 90% incorrect, as per usual efforts of teams with lack of experience, time, and money. Hence, the basic philosophy of <br>
+                    the vehicle dynamics department is to ‘take your best guess’ in design, fast-track the build in the manufacturing process, and do <br>
+                    all your learning on the track!</p>
+                
+                <p>It is through testing do you get to find out if your numbers were correct or not. If they were correct (or were close to being correct), <br>
+                    it’s a big <b>HOORAYY!</b> Otherwise, time to get to the thinking part and start coming up with a list of hypothetical causes for the inaccuracy. <br>
+                    Once all the possible causes have been identified, it is simply a matter of using the car to work through each of the scenarios to see which <br>
+                    one gives you the magic <b>BINGO!</b></p>
+
+                <p>This learning phase also involves the fine tuning of all the aforementioned vehicle dynamics parameters, with the aim of achieving the fastest <br>
+                    possible configuration of your race car! One of the most important factors in the vehicle dynamics area is the driver! Maximising your testing <br>
+                    time will directly correlate with maximising your driver confidence and his/her ability to consistently push the race car to its operating limits <br>
+                    and achieve the fastest lap times possible! In fact, it is shown that the teams that properly develop their drivers abilities are the teams that <br>
+                    find themselves winning the competitions! This directly supports the fact that the driver ability is one of the biggest factors of team performance <br>
+                    in competition dynamic events. There is a rough rule of thumb, that the time difference between a great driver and a novice driver, greatly outweighs <br>
+                    the time difference between a great car and a satisfactory car, driven by the same driver of decent driver ability.</p>
+            </div>
+
+            <a class="gold_border black_button btn btn-lg btn-block" href={{url_for('tutorial6')}} role="button"> 
+                Continue to Powertrain
+            </a>
+        </div>
+    </body>
 </html>	
