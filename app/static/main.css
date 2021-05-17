@@ -391,6 +391,57 @@ form .form_label {
     text-decoration: underline solid 1px;
 }
 
+/* quiz module css */
+
+.quiz_jumbo.gold_jumbo {
+    color: black;
+    margin: 32px auto;
+    width: 80%;
+}
+
+.quiz_jumbo.gold_jumbo label {
+    font-size: 18px;
+}
+
+.quiz_qs_title {
+    font-size: 20px;
+}
+
+.quiz_question {
+    margin: 32px 16px;
+    padding: 32px;
+    border-radius: 20px;
+    border: groove;
+    border-color: #dda74f;
+    border-width: 2px;
+}
+
+/* css for tutorial module questions */
+
+.tut_jumbo.gold_jumbo label {
+    font-size: 16px;
+}
+
+.tut_qs_title {
+    font-size: 18px;
+}
+
+.tut_question {
+    margin: 16px;
+    padding: 24px;
+    border-radius: 20px;
+    border: groove;
+    border-color: #dda74f;
+    border-width: 2px;
+}
+
+.tut_jumbo.gold_jumbo {
+    color: black;
+    margin: 32px;
+    padding: 16px;
+    width: 80%;
+}
+
 
 
 
