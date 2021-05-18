@@ -13,11 +13,12 @@ class ModelTestCase(unittest.TestCase):
         app.config['SQLALCHEMY_DATABASE_URI']=\
             'sqlite:///'+os.path.join(basedir,'test.db')
         self.app = app.test_client()
+        db.drop_all()
         db.create_all()
         user = User(id=1, username="john_1", email="john@example.com", preferred_name="john")
         db.session.add(user)
         db.session.commit()
-        quiz = User(id=1, user_id=1)
+        quiz = Quiz(id=1, user_id=1)
         db.session.add(quiz)
         db.session.commit()
 
@@ -64,6 +65,7 @@ class ControllerTestCase(unittest.TestCase):
         app.config['SQLALCHEMY_DATABASE_URI']=\
             'sqlite:///'+os.path.join(basedir,'test.db')
         self.app = app.test_client()
+        db.drop_all()
         db.create_all()
         user = User(id=1, username="john_1", email="john@example.com", preferred_name="john")
         db.session.add(user)
@@ -147,8 +149,9 @@ class ControllerTestCase(unittest.TestCase):
 
         totals = get_section_totals(quiz)
         props = get_proportions(totals)
-        self.assertEqual(props, {'Finance': 100, 'Marketing': 100, 'Chassis': 100, 
-            'Vehicle Dynamics': 100, 'Powertrain': 100})
+        self.assertEqual(props, {'Finance': 20, 'Marketing': 20, 'Chassis': 20, 
+            'Vehicle Dynamics': 20, 'Powertrain': 20})
+
 
 
 class RouteHandlerTestCase(unittest.TestCase):
@@ -158,6 +161,7 @@ class RouteHandlerTestCase(unittest.TestCase):
         app.config['SQLALCHEMY_DATABASE_URI']=\
             'sqlite:///'+os.path.join(basedir,'test.db')
         self.app = app.test_client()
+        db.drop_all()
         db.create_all()
         user = User(id=1, username="john_1", email="john@example.com", preferred_name="john")
         db.session.add(user)
@@ -234,13 +238,13 @@ class RouteHandlerTestCase(unittest.TestCase):
         
     
     def test_feedback_route(self):
-        current_user = User.query.get(1)
+        user = User.query.get(1)
         quiz = Quiz.query.get(1)
         quiz.finish_date = datetime.utcnow()
         quiz.finance = FINANCE_ANSWERS
         db.session.commit()
         quiz = db.session.query(Quiz).join(User).\
-            filter(Quiz.user_id == current_user.id, Quiz.finish_date != None).\
+            filter(Quiz.user_id == user.id, Quiz.finish_date != None).\
             order_by(Quiz.finish_date.desc()).first()
         self.assertEqual(quiz, Quiz.query.get(1))
 
@@ -251,14 +255,14 @@ class RouteHandlerTestCase(unittest.TestCase):
 
 
     def test_submissions_route(self):
-        current_user = User.query.get(1)
+        user = User.query.get(1)
         quiz = Quiz.query.get(1)
         quiz.finish_date = datetime.utcnow()
         quiz.finance = FINANCE_ANSWERS
         db.session.commit()
 
         submissions = db.session.query(Quiz).join(User).\
-        filter(Quiz.user_id == current_user.id, Quiz.finish_date != None).\
+        filter(Quiz.user_id == user.id, Quiz.finish_date != None).\
         order_by(Quiz.finish_date.desc()).limit(12).all()
         self.assertEqual(len(submissions), 1)
 
@@ -279,7 +283,7 @@ class RouteHandlerTestCase(unittest.TestCase):
         
         self.assertEqual(submission_stats[0]['section'], 'Finance')
         self.assertEqual(section, 'Finance')
-        self.assertEqual(submission_stats[0]['score'], '3')
+        self.assertEqual(submission_stats[0]['score'], 3)
 
     
     def test_quiz_route(self):
@@ -287,42 +291,25 @@ class RouteHandlerTestCase(unittest.TestCase):
         user.current_quiz = 1
         db.session.commit()
 
-        quiz_id = 0
-        is_new_quiz = int(quiz_id) == 0
-        quiz = None
-        if not is_new_quiz:
-            quiz = Quiz.query.get(quiz_id)
-        elif is_new_quiz and not user.current_quiz:
-            quiz = Quiz(id=2, user_id=user.id)
-            db.session.add(quiz)
-            db.session.commit()
-            user.current_quiz = quiz.id
-        elif is_new_quiz and user.current_quiz:    
-            quiz = Quiz.query.get(user.current_quiz)
+        quiz = self.quiz_test_func(0)
         self.assertEqual(quiz, Quiz.query.get(1))
 
         user.current_quiz = None
         db.session.commit()
 
-        quiz_id = 0
-        is_new_quiz = int(quiz_id) == 0
-        quiz = None
-        if not is_new_quiz:
-            quiz = Quiz.query.get(quiz_id)
-        elif is_new_quiz and not user.current_quiz:
-            quiz = Quiz(id=2, user_id=user.id)
-            db.session.add(quiz)
-            db.session.commit()
-            user.current_quiz = quiz.id
-        elif is_new_quiz and user.current_quiz:    
-            quiz = Quiz.query.get(user.current_quiz)
+        quiz = self.quiz_test_func(0)
         self.assertEqual(quiz, Quiz.query.get(2))
 
         user.current_quiz = 1
         quiz = Quiz(id=3, user_id=user.id)
         db.session.commit()
 
-        quiz_id = 3
+        quiz = self.quiz_test_func(3)
+        self.assertEqual(quiz, Quiz.query.get(3))
+
+
+    def quiz_test_func(self, quiz_id):
+        user = User.query.get(1)
         is_new_quiz = int(quiz_id) == 0
         quiz = None
         if not is_new_quiz:
@@ -334,20 +321,79 @@ class RouteHandlerTestCase(unittest.TestCase):
             user.current_quiz = quiz.id
         elif is_new_quiz and user.current_quiz:    
             quiz = Quiz.query.get(user.current_quiz)
-        self.assertEqual(quiz, Quiz.query.get(3))
+        return quiz
+    
+
+    def test_new_quiz_route(self):
+        user = User.query.get(1)
+        user.current_quiz = 1
+        old_quiz = Quiz.query.get(user.current_quiz)
+        db.session.delete(old_quiz)
+        user.current_quiz = None
+        db.session.commit()
+        self.assertEqual(user.current_quiz, None)
+        self.assertEqual(Quiz.query.get(1), None)
+
+
+    def test_save_answer_route(self):
+        quiz = Quiz.query.get(1)
+        quiz.vehicle_dynamics = {'Q1': 'a', 'Q2': '', 'Q3': ['c']}
+        db.session.commit()
+        self.save_answer_test_func({'vehicle_dynamics-Q2-b': ['on', 'b']})
+        self.assertEqual(quiz.vehicle_dynamics, {'Q1': 'a', 'Q2': ['b'], 'Q3': ['c']})
+
+        quiz.vehicle_dynamics = {'Q1': 'a', 'Q2': '', 'Q3': ['c']}
+        db.session.commit()
+        self.save_answer_test_func({'vehicle_dynamics-Q3-b': ['on', 'a']})
+        self.assertEqual(quiz.vehicle_dynamics, {'Q1': 'a', 'Q2': '', 'Q3': ['c', 'a']})
+
+        quiz.vehicle_dynamics = {'Q1': 'a', 'Q2': '', 'Q3': ['c']}
+        db.session.commit()
+        self.save_answer_test_func({'vehicle_dynamics-Q3-b': ['off', 'c']})
+        self.assertEqual(quiz.vehicle_dynamics, {'Q1': 'a', 'Q2': '', 'Q3': []})
+
+        quiz.vehicle_dynamics = {'Q1': 'a', 'Q2': '', 'Q3': []}
+        db.session.commit()
+        self.save_answer_test_func({'vehicle_dynamics-Q3-b': ['off', 'c']})
+        self.assertEqual(quiz.vehicle_dynamics, {'Q1': 'a', 'Q2': '', 'Q3': []})
+
+        quiz.vehicle_dynamics = {'Q1': 'a', 'Q2': '', 'Q3': ['c']}
+        db.session.commit()
+        self.save_answer_test_func({'vehicle_dynamics-Q1': 'b'})
+        self.assertEqual(quiz.vehicle_dynamics, {'Q1': 'b', 'Q2': '', 'Q3': ['c']})
+
+    
+    def save_answer_test_func(self, response_dict):
+        quiz = Quiz.query.get(1)
+        key = list(response_dict.keys())[0]
+        department = key.split('-')[0]
+        question = key.split('-')[1]
+
+        if len(key.split('-')) > 2:
+            response = response_dict[key]
+            answer = response[1]
+            is_toggled = response[0] == "on"
+            current_ans_list = getattr(quiz, department)[question]
+            answer_exists = answer in current_ans_list
+
+            if current_ans_list == "" and is_toggled:
+                current_ans_list = [answer]
+            elif not answer_exists and is_toggled:
+                current_ans_list.append(answer)
+            elif answer_exists and not is_toggled:
+                current_ans_list.remove(answer)
+
+            getattr(quiz, department)[question] = current_ans_list
+        else:
+            getattr(quiz, department)[question] = response_dict[key]
+        db.session.commit()
+
+
+def suite():
+    suite = unittest.TestSuite()
+    suite.addTest(ModelTestCase('test_user_password_hashing'))
+    return suite
 
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
-
-
-
-
-
-
-
-    
-
