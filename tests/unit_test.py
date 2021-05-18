@@ -91,7 +91,7 @@ class ControllerTestCase(unittest.TestCase):
 
         section = {'Q1': 'd', 'Q2': ['b', 'a', 'c'], 'Q3': ['c']}
         total = get_total(section, VD_ANSWERS)
-        self.assertEqual(total, 2)
+        self.assertEqual(total, 1)
 
 
     def test_get_completion(self):
