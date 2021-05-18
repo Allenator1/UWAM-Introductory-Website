@@ -26,7 +26,7 @@ def get_section_totals(quiz):
 
 
 def get_proportions(totals):
-    num_marks = sum(totals.values())
+    num_marks = sum(totals.values()) or 1
     percents = {}
     for k in totals.keys():
         percents[k] = totals[k] / num_marks * 100
