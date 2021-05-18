@@ -1,4 +1,6 @@
-import unittest, os
+import unittest
+import os
+from datetime import datetime
 from app import app, db
 from app.models import User, Quiz
 from app.controller import *
@@ -110,7 +112,6 @@ class ControllerTestCase(unittest.TestCase):
         quiz.vehicle_dynamics = VD_ANSWERS
         quiz.powertrain = POWERTRAIN_ANSWERS
 
-        db.session.commit()
         self.assertTrue(is_completed(quiz))
 
 
@@ -120,13 +121,11 @@ class ControllerTestCase(unittest.TestCase):
         self.assertEqual(totals, {'Finance': 0, 'Marketing': 0, 'Chassis': 0, 
             'Vehicle Dynamics': 0, 'Powertrain': 0})
 
-        quiz = Quiz.query.get(1)
         quiz.finance = FINANCE_ANSWERS
         quiz.marketing = MARKETING_ANSWERS
         quiz.chassis = CHASSIS_ANSWERS
         quiz.vehicle_dynamics = VD_ANSWERS
         quiz.powertrain = POWERTRAIN_ANSWERS
-        db.session.commit()
 
         totals = get_section_totals(quiz)
         self.assertEqual(totals, {'Finance': 3, 'Marketing': 3, 'Chassis': 3, 
@@ -140,13 +139,11 @@ class ControllerTestCase(unittest.TestCase):
         self.assertEqual(props, {'Finance': 0, 'Marketing': 0, 'Chassis': 0, 
             'Vehicle Dynamics': 0, 'Powertrain': 0})
 
-        quiz = Quiz.query.get(1)
         quiz.finance = FINANCE_ANSWERS
         quiz.marketing = MARKETING_ANSWERS
         quiz.chassis = CHASSIS_ANSWERS
         quiz.vehicle_dynamics = VD_ANSWERS
         quiz.powertrain = POWERTRAIN_ANSWERS
-        db.session.commit()
 
         totals = get_section_totals(quiz)
         props = get_proportions(totals)
@@ -236,7 +233,118 @@ class RouteHandlerTestCase(unittest.TestCase):
             self.assertFalse(email_available)
         
     
+    def test_feedback_route(self):
+        current_user = User.query.get(1)
+        quiz = Quiz.query.get(1)
+        quiz.finish_date = datetime.utcnow()
+        quiz.finance = FINANCE_ANSWERS
+        db.session.commit()
+        quiz = db.session.query(Quiz).join(User).\
+            filter(Quiz.user_id == current_user.id, Quiz.finish_date != None).\
+            order_by(Quiz.finish_date.desc()).first()
+        self.assertEqual(quiz, Quiz.query.get(1))
+
+        section_totals = get_section_totals(quiz)
+        section_proportions = get_proportions(section_totals)
+        section = max(section_totals, key=section_totals.get)
+        self.assertEqual(section, 'Finance')
+
+
+    def test_submissions_route(self):
+        current_user = User.query.get(1)
+        quiz = Quiz.query.get(1)
+        quiz.finish_date = datetime.utcnow()
+        quiz.finance = FINANCE_ANSWERS
+        db.session.commit()
+
+        submissions = db.session.query(Quiz).join(User).\
+        filter(Quiz.user_id == current_user.id, Quiz.finish_date != None).\
+        order_by(Quiz.finish_date.desc()).limit(12).all()
+        self.assertEqual(len(submissions), 1)
+
+        submission_stats = []
+        aggr_section_totals = {'Finance': 0, 'Marketing': 0, 'Chassis': 0, 'Vehicle Dynamics': 0, 'Powertrain': 0}
+
+        for quiz in submissions:
+            stats = {}
+            stats['date'] = quiz.finish_date
+            stats['quiz_id'] = quiz.id
+            section_totals = get_section_totals(quiz)
+            aggr_section_totals = {k:(aggr_section_totals[k] + section_totals[k]) for k in section_totals.keys()}
+            stats['section'] = max(section_totals, key=section_totals.get)
+            stats['time_taken'] = round((quiz.finish_date - quiz.start_date).total_seconds() / 60, 2)
+            stats['score'] = sum(section_totals.values())
+            submission_stats.append(stats)
+        section = max(section_totals, key=aggr_section_totals.get)
+        
+        self.assertEqual(submission_stats[0]['section'], 'Finance')
+        self.assertEqual(section, 'Finance')
+        self.assertEqual(submission_stats[0]['score'], '3')
+
     
+    def test_quiz_route(self):
+        user = User.query.get(1)
+        user.current_quiz = 1
+        db.session.commit()
+
+        quiz_id = 0
+        is_new_quiz = int(quiz_id) == 0
+        quiz = None
+        if not is_new_quiz:
+            quiz = Quiz.query.get(quiz_id)
+        elif is_new_quiz and not user.current_quiz:
+            quiz = Quiz(id=2, user_id=user.id)
+            db.session.add(quiz)
+            db.session.commit()
+            user.current_quiz = quiz.id
+        elif is_new_quiz and user.current_quiz:    
+            quiz = Quiz.query.get(user.current_quiz)
+        self.assertEqual(quiz, Quiz.query.get(1))
+
+        user.current_quiz = None
+        db.session.commit()
+
+        quiz_id = 0
+        is_new_quiz = int(quiz_id) == 0
+        quiz = None
+        if not is_new_quiz:
+            quiz = Quiz.query.get(quiz_id)
+        elif is_new_quiz and not user.current_quiz:
+            quiz = Quiz(id=2, user_id=user.id)
+            db.session.add(quiz)
+            db.session.commit()
+            user.current_quiz = quiz.id
+        elif is_new_quiz and user.current_quiz:    
+            quiz = Quiz.query.get(user.current_quiz)
+        self.assertEqual(quiz, Quiz.query.get(2))
+
+        user.current_quiz = 1
+        quiz = Quiz(id=3, user_id=user.id)
+        db.session.commit()
+
+        quiz_id = 3
+        is_new_quiz = int(quiz_id) == 0
+        quiz = None
+        if not is_new_quiz:
+            quiz = Quiz.query.get(quiz_id)
+        elif is_new_quiz and not user.current_quiz:
+            quiz = Quiz(user_id=user.id)
+            db.session.add(quiz)
+            db.session.commit()
+            user.current_quiz = quiz.id
+        elif is_new_quiz and user.current_quiz:    
+            quiz = Quiz.query.get(user.current_quiz)
+        self.assertEqual(quiz, Quiz.query.get(3))
+
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+
+
+
+
 
 
 
