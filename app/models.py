@@ -12,7 +12,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(128), index=True, unique=True, nullable=False)
     preferred_name = db.Column(db.String(64))
     password_hash = db.Column(db.String(128))
-    is_admin = db.Column(db.Boolean)
+    is_admin = db.Column(db.Boolean, default=0)
     current_module = db.Column(db.String(32), default="tutorial1")
     current_quiz = db.Column(db.Integer, default=None)
     submissions = db.relationship('Quiz', backref='user')
