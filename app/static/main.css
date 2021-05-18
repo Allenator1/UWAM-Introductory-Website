@@ -353,6 +353,7 @@ form .form_label {
 
 #feedback_box {
     color: rgb(253, 203, 76);
+    font-size: 18px;
 }
 
 #congratz_box {
@@ -370,6 +371,11 @@ form .form_label {
 
 #given_section {
     font-size: 38px;
+}
+
+#lead_contact_details {
+    color: ivory;
+    font-size: 20px;
 }
 
 /* CSS for tutorial modules */
