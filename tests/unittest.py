@@ -234,6 +234,9 @@ class RouteHandlerTestCase(unittest.TestCase):
             email = json['email']
             email_available = User.query.filter_by(email=email).first() == None
             self.assertFalse(email_available)
+        
+    
+    
 
 
 
