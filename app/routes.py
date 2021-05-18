@@ -82,7 +82,8 @@ def feedback():
     section_totals = get_section_totals(quiz)
     section_proportions = get_proportions(section_totals)
     section = max(section_totals, key=section_totals.get)
-    return render_template('feedback.html', section_proportions=section_proportions, section=section)
+    quiz_id = quiz.id
+    return render_template('feedback.html', section_proportions=section_proportions, section=section, quiz_id=quiz_id)
 
 
 @app.route('/submissions', methods=['GET', 'POST'])
