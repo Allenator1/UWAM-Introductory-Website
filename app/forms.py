@@ -18,7 +18,7 @@ class RegisterForm(FlaskForm):
     preferred_name = StringField('Preferred Name')
     password = PasswordField('Password', validators=[DataRequired(), Length(min=5), 
         EqualTo('confirm_password', message="Passwords must match")])
-    confirm_password = StringField('Confirm Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me!')
     submit = SubmitField('Register')
 
