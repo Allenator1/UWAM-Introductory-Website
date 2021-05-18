@@ -1,3 +1,27 @@
+commit 4f659ed7464ffea9305787d187744aba1be99621
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 16:47:30 2021 +0800
+
+    Added Jinja to produce a feedback message dependent on the department chosen for the user. Messages were produced by MIKAYIL (m-aliyev)
+
+commit 7bec84e506eb591e00853fbe59ab2c90fdbceeb8
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 16:45:28 2021 +0800
+
+    Small fix
+
+commit 1dd94c5b75e2d7fee969f8d2f43651d3da369aaa
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 16:45:14 2021 +0800
+
+    New css for feedback.html
+
+commit f5360a49d9e9abfb65b68a295768a9fed69fb184
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 16:08:32 2021 +0800
+
+    New commits
+
 commit fafba9de24b0be6bf1aea8683baaafeff780ba19
 Author: Allen Antony <22706998@student.uwa.edu.au>
 Date:   Tue May 18 15:56:42 2021 +0800
