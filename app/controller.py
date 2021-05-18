@@ -1,11 +1,11 @@
 from app.models import User, Quiz
 from app import db
 
-FINANCE_ANSWERS = {'Q1':'c', 'Q2':'b', 'Q3':'a'}
+FINANCE_ANSWERS = {'Q1':'c', 'Q2':'b', 'Q3':'c'}
 MARKETING_ANSWERS = {'Q1':'a', 'Q2':'d', 'Q3':'d'}
-CHASSIS_ANSWERS = {'Q1':'b', 'Q2':'b', 'Q3':'a'}
-VD_ANSWERS = {'Q1':'d', 'Q2':['a', 'b', 'c'], 'Q3':['c', 'd']}
-POWERTRAIN_ANSWERS = {'Q1':['a', 'c'], 'Q2':'d', 'Q3':'c'}
+CHASSIS_ANSWERS = {'Q1':'b', 'Q2':'a', 'Q3':'a'}
+VD_ANSWERS = {'Q1':'d', 'Q2':['a', 'b', 'c', 'd'], 'Q3':['d']}
+POWERTRAIN_ANSWERS = {'Q1':['a', 'c'], 'Q2':'a', 'Q3':'a'}
 
 FINANCE_MODULE_ANS = {'Q1':'d', 'Q2':'c'}
 MARKETING_MODULE_ANS = {'Q1':'d', 'Q2':'b'}
