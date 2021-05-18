@@ -141,6 +141,7 @@ cython_debug/
 
 #db
 app.db
+test.db
 migrations
 
 #vscode
