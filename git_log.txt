@@ -1,0 +1,842 @@
+commit 3056b6f8b7f0556a6f72e734e65c9f69375527a4
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 15:03:11 2021 +0800
+
+    Added CORRECT answers to constant dictionaries
+
+commit 4f833421868e437401699ca301445e3bf2cb5427
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 14:55:23 2021 +0800
+
+    Moved some css into submissions.html
+
+commit a6f10d8909ca96e69dbe217206769d032a296f00
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 14:55:07 2021 +0800
+
+    Ignore test.db
+
+commit c8de94fc14ef9bf40d284c30e6295db94af568ea
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 14:54:57 2021 +0800
+
+    Add css to submit button
+
+commit fcec9aa0b42265b1c81a0d0f65bcb640f492d0f4
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 14:54:40 2021 +0800
+
+    Add href to the current submission (i.e. /quiz/quiz_id) for 'View Submission' button
+
+commit e4d41ce6693c20cad8836976565c0e492a1033a8
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 14:53:39 2021 +0800
+
+    quiz_id is passed to 'feedback.html' when rendering the template
+
+commit 9b40416a8a93f137e7d4aa5215f93e765ff7eca4
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 14:53:16 2021 +0800
+
+    Changed confirm_password to PasswordField
+
+commit 659105cfc14f7890affe54f650f25ca6700a24a9
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 14:34:44 2021 +0800
+
+    Switching from development to deployment config
+
+commit 057a286b9be0cb7a17b1976e5d24805b1e702ee9
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 14:34:07 2021 +0800
+
+    Added test for the route handler for '/save_answers' and refactored code in unit_test.py
+
+commit 4cdf3c4c494c4280d910d7ecf676f5dfdcb26744
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 14:33:22 2021 +0800
+
+    Fixed potential division by zero
+
+commit 369a182704abe320b9c71d79490ee815a64b89e1
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 13:14:46 2021 +0800
+
+    renamed to avoid circular imports
+
+commit 0c1d93ee8c0a193aeb4e8748070ee15588824aa6
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 12:20:53 2021 +0800
+
+    Created a unittest file. Implemented classes that test database models, functions in controller.py and the logic of route handlers
+
+commit 67cd16f9fa9b83e48a5df39aba43917ce8d1ca2b
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 12:20:08 2021 +0800
+
+    Created unittest file. Created classes to test database models, functions in controller.py and the route handler logic
+
+commit 1aa52cb6b84b2a235dfadc0212d2bc9dac3498f7
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 12:18:55 2021 +0800
+
+    Removed redundant route handler
+
+commit eb2cbf4ca7b7bf0513c2c4805d543c8dd0eb700e
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 12:18:32 2021 +0800
+
+    Added default value to is_admin
+
+commit b75f7329dbd397369f7eb9cde814eedbed034e09
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 06:41:16 2021 +0800
+
+    More pip packages required
+
+commit f489c76b10d489e3648bf679ba259c490bd0a0a4
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 06:39:05 2021 +0800
+
+    Set login.login_view. Redirects user to login page if they access a @loginrequired route
+
+commit e4f6cde5c04cb70d8f510b3bb95c6cc1bfbaaa4a
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 06:32:33 2021 +0800
+
+    The tutorial route handlers now check if the user is authenticated, before updating current_user.current_module and calling db.session.commit()
+
+commit cf44d55fd42870314290e1189551c31c57bc0d5e
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 06:31:51 2021 +0800
+
+    Added accuracy to submissions. The 'department' stat is now color-coded using css
+
+commit 54d7142f1e684e73567baaec73fec6cf60c5a609
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 06:09:02 2021 +0800
+
+    Adding URLs to hyperlinks
+
+commit c407089379b8f7cfa40b6d9b6f4c4f047c70b716
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 05:11:00 2021 +0800
+
+    Changed image path
+
+commit f5771f8b02f49eeca52d2f1630c870f1aaa67536
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 05:10:47 2021 +0800
+
+    Adding margins to the images inside modules
+
+commit 4cfc4d3648e97e45db39617665fae07c9a54cf8f
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 05:09:22 2021 +0800
+
+    Added javascript that uses icons to dynamically indicate whether a selected checkbox has the right answer
+
+commit 77e09b2c7c18378f183fe7c9a971e828ee5aa4c0
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 03:56:22 2021 +0800
+
+    Adjusted the tutorial module view functions so that they render_template with the answer dictionaries as variables
+
+commit 7f1d2a73acd1b4bae3acb9d0fd3396ee6875f166
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 03:55:23 2021 +0800
+
+    Initialised the tutorial answers as constant dictionaries
+
+commit 1bd7e0a1d13f51df4a67f83a48882d8b2f59378d
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 03:54:49 2021 +0800
+
+    Renamed module html documents to html.jinja documents to allow a dictionary to be transferred into a JSON easily using a view function
+
+commit fff3b2a545430fb4a244846f87d897993f4d19f6
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 03:40:58 2021 +0800
+
+    Module routes now update current_user.current_module
+
+commit 548b3cbd5111629c02791a0c918f994edc5b9b31
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 03:38:29 2021 +0800
+
+    Adding classes for css
+
+commit 2ac1e3b8cf84f0bda1c543235b481c1ec02f5555
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 03:38:08 2021 +0800
+
+    Added gold border to 'View Submission' button
+
+commit 91aa9f710b3198b6475aa17e133bdb21801fb0a6
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 03:37:43 2021 +0800
+
+    Added css for final quiz and module quizzes
+
+commit e634010e0998b73432a824845136a5de0d8f4cc5
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 03:37:25 2021 +0800
+
+    Removed Tutorial model. Added curent_module column to User, which tracks the current tutorial page the user is on
+
+commit b51db8283be5634575100272849b0bf4b1b085f8
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 03:36:38 2021 +0800
+
+    Added html and css for end-of-module questions
+
+commit 9b7e9184b6f5b7955d9b4f7848c5b63557e88a53
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 01:51:42 2021 +0800
+
+    Redundant content
+
+commit 79c416b2af316e10b1c02da36d0808ce399145d0
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 01:51:31 2021 +0800
+
+    New flagship photo
+
+commit 1c5c4761234125ae5fbb1569bb5e069bb0a99ed2
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 01:51:20 2021 +0800
+
+    Fixed situation where quiz_id == 0 causes an error (as bool(quiz_id) evaluates to True)
+
+commit 6190d71f5374a1150a6659bf1e1d9d2a67a117b7
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 01:50:23 2021 +0800
+
+    Added welcome message and changed background image
+
+commit 0fbd33958397bb5c0a70706a3091dd7a0d2e7e61
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 18 01:50:09 2021 +0800
+
+    Added css styling to tutorial modules
+
+commit 16a937e5b68edc5d1ab959caa3727c8119de734c
+Merge: 1896335 7392d94
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Mon May 17 22:58:08 2021 +0800
+
+    Merge branch 'main' of https://github.com/Allenator1/CITS3403-web-project into main
+
+commit 7392d94c8258a7897646f20a0c2af2c34c8a80a5
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 22:48:41 2021 +0800
+
+    Updated to ignore pycache and .vscode
+
+commit 8d06b56eaf8fcbbda624a29d23cb93cce2d4a432
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 22:48:07 2021 +0800
+
+    Stopped tracking pycache files
+
+commit d6c1613f08aed28e37e98c15fc9bc63b3c64115a
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 21:20:58 2021 +0800
+
+    AJAX requests cannot be used to GET new pages. Hence, the AJAX requests are updated to receive url information and redirect using window.location.href
+
+commit 46816d896ba8dbc011c93d9553aadd5b1842dec4
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 21:19:54 2021 +0800
+
+    Created route handler for '/del_quiz' which deletes the given quiz from the database. Also updated the route handler for '/quiz' to take a parameter (quiz_id) which allows it to load old submissions
+
+commit 711ce55abcfd1f9849141a7cf9347bb9383e7b90
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 21:18:23 2021 +0800
+
+    Changed quiz.html to quiz.html.jinja as it easily converts from python dictionary to json without any external methods
+
+commit 0f698f8f773dd1918ef5782eedeec8b740aefac4
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 19:13:04 2021 +0800
+
+    Added route to '/save_answer' which is the route that the website sends AJAX requests to update the Quiz table on the change of an input (radiobox or checkbox)
+
+commit ff86e678236c4e763476fb9476c6dac2ffc8febf
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 19:11:46 2021 +0800
+
+    Added answers to the answer dictionaries. Gave get_total function the ability to equate unordered lists.
+
+commit 53eb37bcd0965531dd0ed1994e19404db418b23f
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 19:10:26 2021 +0800
+
+    placed jquery script link before bootstrap script link
+
+commit f18d3f65e4b1395961b0e34d1860c29e9d3e9922
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 19:09:49 2021 +0800
+
+    Created html for quiz page and added javascript which updates the database whenever an input is changed (using AJAX)
+
+commit 189633524b8066a4aadace0db03a5d3a63e236cc
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Mon May 17 16:18:51 2021 +0800
+
+    added images to the web pages
+
+commit 8a1d32ec9c692809694058a583cd6175f1e6cce3
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Mon May 17 14:55:33 2021 +0800
+
+    uploaded images
+
+commit 354fd2db109123ed82d60e9a48d2464835ea6c21
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 02:44:51 2021 +0800
+
+    Changed title
+
+commit a90c15b524a48f54195ee423dadf8d0990a12adc
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon May 17 02:44:38 2021 +0800
+
+    Added html for quiz
+
+commit 4c4d78f26c4314c36bfa8bd817ac850fbbea106e
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 23:25:39 2021 +0800
+
+    Uploaded powertrain module
+
+commit 1bd76353622c2639f2c0cea84359b77e34b934ca
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 23:18:43 2021 +0800
+
+    Added Jinja to only check if username and email is in database only for registration
+
+commit 02022ed0be3bda8d3fc05663ebb538a1b091e848
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 23:17:56 2021 +0800
+
+    Added route handlers for '/old_quiz' (old submission) and '/quiz' (current or new quiz)
+
+commit 54d2109c559fbade9698c07e4676258dbe805d7c
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 23:17:17 2021 +0800
+
+    Added column current_quiz to User. Stores id of current unfinished quiz.
+
+commit 7f4bb5abf356820456e19632294934d5311da99f
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 23:16:51 2021 +0800
+
+    Using PasswordField instead of StringField for password and using Email() validator for email
+
+commit ef052222f6099f168f3c385a3e8521a4aa881ff5
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 23:16:06 2021 +0800
+
+    Added function to check if quiz has been completed
+
+commit d3e5cb4d275c3372ef202dc533d3e7f06bd06bce
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 22:58:36 2021 +0800
+
+    Added the vehicle dynamics learning module
+
+commit e4b12950eab8e23fc42dc8f4f5499fa4416e531f
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 22:34:02 2021 +0800
+
+    added the chassis learning  module
+
+commit 3542f7894e539368d1edcdc66b66baa92957a665
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 21:21:06 2021 +0800
+
+    updated the marketing page
+
+commit 82d6c9fc5a4a1423f21fcdd7844f600daad2fd18
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 21:19:19 2021 +0800
+
+    Relocated prospectus image
+
+commit 9c12b8d34bdaf5387f15dcfa5776bb77b993cab3
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 21:18:28 2021 +0800
+
+    Updated the names of existing html files, and uploaded the marketing module page, and the prospectus image
+
+commit c053199a18fa2f8c09053b59f684a3a0507efd78
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 21:00:31 2021 +0800
+
+    Added the finance module
+
+commit cc11c8ed8671cfd51862e092973e079b12361bef
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 20:12:09 2021 +0800
+
+    Finished the Introductory page
+
+commit a267f4b04070d1576bb767d0e84b0e37134d9d60
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 19:39:49 2021 +0800
+
+    Updated file locations of selected files
+
+commit 601e58f28ae8433fae415d847dc42d06e53b229c
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 19:21:40 2021 +0800
+
+    Uploaded welcome page to the project
+
+commit 95e3102e3207356f231c2d39da91fc331caaf174
+Merge: d5560d4 7233353
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Sun May 16 19:10:55 2021 +0800
+
+    Merge branch 'main' of https://github.com/Allenator1/CITS3403-web-project into main
+    Extracting latest versions of all files
+
+commit 72333537b2abc5eb40fedcfc8041b794c3677f27
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 15:51:03 2021 +0800
+
+    Removed vscode ignore files
+
+commit a171904d5eea32bd81bcdbeda83415656883f0ca
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 15:50:26 2021 +0800
+
+    Refactoring
+
+commit 8dadfec8b55a2e53283cb20e7b514463e0543372
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 15:50:03 2021 +0800
+
+    Refactoring
+
+commit 646e5b8e88cc3209f47f4d2f667385338e1846d9
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 15:49:41 2021 +0800
+
+    Changing Jinja to adjust for section_proportions changing from list to dictionary
+
+commit e45c7f9601cf1f62375e0f2f2fda005a6ae77868
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 15:48:39 2021 +0800
+
+    Added functionalities to allow submissions to be deleted and allow user to be routed to old submission
+
+commit 43abc92c94f9b139e1ebb0739859eaafa3912ee0
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 15:47:24 2021 +0800
+
+    changed section n\ames from section1, section2, etc. to finance, marketing, chassis, vehicle_dynamics and powertrain
+
+commit d7ffe0c50f38c027f4798de0270d4ae525e7df4f
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 01:02:37 2021 +0800
+
+    Refactoring and bug fixing
+
+commit 570328be918358d8b3069e055b19a762d63604af
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 01:01:57 2021 +0800
+
+    Refactoring
+
+commit 4f76d513585e8aa5e8852bfc29464bba57f88787
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 01:01:39 2021 +0800
+
+    Created a class to apply css to the progress bars used in /feedback and /submissions
+
+commit 7fe36f6a9c6c9f76de07784d77081da756741850
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 16 00:58:58 2021 +0800
+
+    Added a progress bar showing aggregate section marks
+
+commit bbb6fd4b47fb363efe23d091f4fc996f0d3392ad
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 15 16:21:10 2021 +0800
+
+    Updated route to 'feedback.html'
+
+commit 0dee51c920d147160d73b98ab7d2286dc2bc4525
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 15 16:20:47 2021 +0800
+
+    Added function to return proportion of correct questions answered in each section of quiz
+
+commit 333820558eacd583d3a790dc68a8c11243456339
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 15 16:19:52 2021 +0800
+
+    Added Jinja to change the chosen section and the progress bar based on the user's latest quiz result
+
+commit 2b9999727a7813656d6d8232d59d7eb50af8c15f
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 15 02:21:05 2021 +0800
+
+    Added additional class for refactorisation
+
+commit 1b31d6fcd97dc5f9d1b3a5091881a2b03443095b
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 15 02:20:51 2021 +0800
+
+    Added additional classes for re-factorisation
+
+commit a2d61052f7df440f4fbc405c6373d2d500c8c656
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 15 02:20:28 2021 +0800
+
+    Added id and class tags for css to function
+
+commit 37c77450e5fd8fe876f19bba5d46cf5ab4808f85
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 15 02:20:04 2021 +0800
+
+    css for feedback.html added
+
+commit c2faef879599b62674a8b6eec6be876a893f88fe
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 15 00:13:51 2021 +0800
+
+    Made JSON objects stored in the database columns mutable using MutableDict.as_mutable
+
+commit 7912f38ce21fc9b876643b1d8a04ca9d66ec85eb
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 13 22:15:11 2021 +0800
+
+    Added route handler for '/feedback' and '/tutorial'. Extended submissions to use data from the database instead of mock data.
+
+commit 5c40cc39f1fb106a5c23493655862771e4a84b3f
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 13 22:13:43 2021 +0800
+
+    Used a list instead of a dictionary in get_section_totals()
+
+commit c79034205fa64012f6d8383a48bf59f6d52b8476
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 13 22:12:45 2021 +0800
+
+    Added finish_date to Quiz to calculate time taken for completion. Refactored Tutorial and Quiz
+
+commit b621f08aa2a2ef58710e07b0fcf24f528ddd1607
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 13 17:28:02 2021 +0800
+
+    Added model for a quiz, which has a one-to-one relationship with a user
+
+commit e62778920c725e865f7ae449127f695a242c250c
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 13 17:00:55 2021 +0800
+
+    Fixed equal to validation
+
+commit 3575862e3d45ca7502272fe241bb7e4493a3b2a6
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 13 17:00:41 2021 +0800
+
+    Added columns to Quiz: one JSON column for each section ({'Q1': val, 'Q2': val, etc..})
+
+commit 0aab767f5f319c70968a3522eb6b66bf4d8f8871
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 13 16:59:55 2021 +0800
+
+    Making validation functions registration specific.
+
+commit 4bec1bac4d9dccc02dc5789dc2d2502fe43b061f
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 13 16:59:15 2021 +0800
+
+    Basic template for feedback page
+
+commit 3079d18147a01d6a7498c60faa0d71dfbec45957
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 13 16:58:55 2021 +0800
+
+    Added functions to get total number of correct answers for each section in the quiz
+
+commit d5560d4ccdc69b7cd8b15e5aa058b80a9d60318c
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Mon May 10 23:04:01 2021 +0800
+
+    Fixed formatting issues between word to txt transitioning
+
+commit 7d8255fa94a50c4c5a080c3aacb402e0e08a7683
+Author: m-aliyev <22712583@student.uwa.edu.au>
+Date:   Mon May 10 23:02:30 2021 +0800
+
+    Uploaded the introductory content for the tutorial
+
+commit f7d2eeb537acc6a8a8b392e5004d7a5ea62b3c64
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 9 01:02:39 2021 +0800
+
+    Adjusted css in login_page to left-align all elements.
+
+commit 46769d67b986d2758bf3d9c5e6d22cc7a9beebc9
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 9 01:01:52 2021 +0800
+
+    Added client side validation using jquery-validation and AJAX calls to the server
+
+commit 17a46c83c3ba4eb5bd6cf3ac96e4d65fa91d7acc
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 9 01:00:42 2021 +0800
+
+    Added function for '/validate_registration', used to check whether a username or email already exists on the database via AJAX.
+
+commit 283e301190c7bc7b689b802b2aa8627d73a37d72
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 9 00:59:04 2021 +0800
+
+    Changed email to be non-nullable
+
+commit f1f3cc1f8fa9d3303c1e6b0c92164dd9d60c2de8
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 9 00:58:45 2021 +0800
+
+    Added additional server-side validation for RegisterForm
+
+commit 2a933a16be820f1a084e03639e55f78e39961149
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun May 9 00:58:03 2021 +0800
+
+    Added additional server-side validation for RegisterForm
+
+commit c0879155d22ca8c233b5e39c3c50be6d062c9c57
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 8 00:39:24 2021 +0800
+
+    Added requirements file
+
+commit b391d7a1f3ffd3112fd434c7e4af073c0781d4f5
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 8 00:37:21 2021 +0800
+
+    misc files
+
+commit 2abde51a955a1a46b2d152a5778fe0a45ddbce50
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 8 00:36:50 2021 +0800
+
+    Cleaned up css and added css for submissions.html
+
+commit 544829613e67bf6ad610419b7f074e3f6f51c2ea
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 8 00:36:29 2021 +0800
+
+     Used for users to see and access their top 8 submissions
+
+commit f45d044891d9807b9aaafec7f03b71172e0af771
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 8 00:34:15 2021 +0800
+
+    Added registration view
+
+commit bbbe179cdae3bf23cf8602a3283a619f7502d3fe
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 8 00:33:49 2021 +0800
+
+    Added a link to submissions on the top banner.
+
+commit f7ddf1ca57fe4d281aa637945afb4d5627aab38c
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 8 00:33:11 2021 +0800
+
+    Added route to '/submissions' - using a dictionary as a mock Quiz object.  Need to query database to reference actual submissions.
+
+commit 6ca56f57d50add3e4247aa1f9b55e06af3cfc8a7
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 8 00:31:20 2021 +0800
+
+    Added route to '/register', allowing users to add their details to the database
+
+commit cd4367a48f71d3a03a00a19bd0e563759d51c3b2
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 8 00:28:53 2021 +0800
+
+    Added form for registration
+
+commit 8b764446c93b3156404a340d26a8c4427cecd335
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat May 8 00:28:35 2021 +0800
+
+    Changed column name for all models: primary_id -> id
+
+commit 1e33b285839d6213398dcb4e06b90d0559ac1b50
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 23:20:09 2021 +0800
+
+    updated css for .btn
+
+commit ae4569911dfe258da038bbb12e7e02902af3e017
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 23:19:38 2021 +0800
+
+    Created function for '/logout'. Changed login function to query the database (for validation) and use flask_login to set current_user
+
+commit 4118f0d454f55d311c704bd923cca4f6b9087408
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 23:18:24 2021 +0800
+
+    Added support for flask_login module
+
+commit a9b9bd770ccbb39f2b3a58c2a7aeccc05f464fc0
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 23:17:48 2021 +0800
+
+    Changed Jinja to use current_user variable
+
+commit 1daafbbfe4e0004eb8b4e08742de01311923a6e3
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 23:16:50 2021 +0800
+
+    Name change
+
+commit a4cfdccd63cf66afdac362d27a561b1f9663ea58
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 18:34:30 2021 +0800
+
+    Added 'make_shell_context' function to automatically import items in the flask shell
+
+commit 0a1fa040360f4cc0c8bf38806c25ac95544be68d
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 18:33:22 2021 +0800
+
+    Created new db using SQLAlchemy and configured testing URL
+
+commit 94d97cfa7f80cf64801d3e7ffe576db38ca1b19c
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 18:31:30 2021 +0800
+
+    Added User, Quiz and Tutorial models
+
+commit 1b307aee1e8fc1741f20818a6e80a6d39beba344
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 16:52:13 2021 +0800
+
+    Added email field for the registration form
+
+commit 4596a4fd8ca3b4d29ed9cd7ca8cb0f43723677ec
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 02:06:00 2021 +0800
+
+    Added route to /register, routing to the login_or_register.html file
+
+commit 21674d1efe62804f884c03f8934e92552625705a
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 02:05:01 2021 +0800
+
+    Added registration wtform
+
+commit 134ac4bc3f73d8a3295dd27aef9cd6961e718ba7
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 02:02:42 2021 +0800
+
+    Connected <a> tags to actual URLs using Jinga
+
+commit 904e464c10a45787694fd2383f2eb78850d8ab78
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Thu May 6 02:01:47 2021 +0800
+
+    added more css for index.html
+
+commit dcb34cbdce0297aa48a74b572b8ba8830c2847be
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Wed May 5 02:41:23 2021 +0800
+
+    Added login page to routes. Used flask-wtf to create and validate login form.
+
+commit 22df607e8ee6327bbf8fb1fc4206ddd9f9d78b59
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Wed May 5 01:59:47 2021 +0800
+
+    Added basic flask functionality - routes to '/' and '/login', basic form handling for login
+
+commit 7df581f37c0df00486412c5dd4df4db66cc70a3a
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Wed May 5 01:45:46 2021 +0800
+
+    Added two views depending on the user that is logged in
+
+commit 8b431d9582595627a7efce514d1c265accaa7d58
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 4 20:34:36 2021 +0800
+
+    added css from index and login_or_register - now compiling css from all pages
+
+commit 16a940f8b33e6d02181d1f4012af8b1273803c38
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 4 20:33:42 2021 +0800
+
+    moved css to main.css
+
+commit 9833f9a430febcbba873533fcff7da1947ec485d
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 4 20:32:27 2021 +0800
+
+    Changed parallax to only trigger when window is maximised and moved css to main.css
+
+commit 4263f47404a93dd84d1cfd9862114f5170c6eeae
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 4 16:23:39 2021 +0800
+
+    Initialised flask related files
+
+commit 1e5743818278119212227127e95626f6abd17c61
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 4 15:38:16 2021 +0800
+
+    Created login page (html and css) - this template will also be used for registration of new users.
+
+commit 8034ec9f6933c56e161888e86e97521202cdc9e6
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Tue May 4 15:36:52 2021 +0800
+
+    Added page specific css to style tags within <head>
+
+commit 290ec4509d285e0f4252a4c014dcc1de6414f495
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Wed Apr 28 23:04:13 2021 +0800
+
+    Added 'login', 'signup' and 'start tutorial' links as well as information for new users. This was added to the 'new user' view of the home page.
+
+commit 5146512d866d8e0fcfbc12c7be1677c2a2fb767c
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Wed Apr 28 19:51:24 2021 +0800
+
+    Added css to change font-sizes according to display size
+
+commit 1b0d4a6975167470930bf4d1cc367e9242982da2
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Mon Apr 26 20:34:55 2021 +0800
+
+    Created persistent theme and applied it to home page. Added parallax effect for the home page background image
+
+commit f1640a89c3b30980b3435c5c82125a9105e42da9
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun Apr 25 21:26:03 2021 +0800
+
+    added static css file and moved index.html to templates
+
+commit 2b4534e33b816e4069de2a4e39de3cbebea7ec89
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sun Apr 25 13:24:11 2021 +0800
+
+    Created home page (index.html)
+
+commit 67eeb136e9c5a5007b7138b72c397652bade926b
+Author: Allen Antony <22706998@student.uwa.edu.au>
+Date:   Sat Apr 24 22:22:19 2021 +0800
+
+    first commit: created README file
