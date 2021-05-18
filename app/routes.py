@@ -73,19 +73,6 @@ def validate_registration():
     return redirect(url_for('register'))
 
 
-@app.route('/tutorial', methods=['GET', 'POST'])
-def tutorial():
-    json = request.form
-    tutorial = current_user.tutorial
-    if json and 'fresh_tutorial' in json.keys():
-        tutorial.new_tutorial()
-    elif json:
-        question = list(json.keys())[0]
-        tutorial.questions[question] = json[question]
-        return
-    return render_template('tutorial.html', questions=tutorial.questions)
-
-
 @app.route('/feedback', methods=['GET'])
 @login_required
 def feedback():
