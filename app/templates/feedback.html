@@ -49,37 +49,60 @@
             </div>
         
             <div class="black_jumbo jumbotron" id="feedback_box">
-                <p style>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce malesuada quam pretium, scelerisque est 
-                    sodales, malesuada felis. Nunc ullamcorper, risus non rutrum accumsan, augue mauris volutpat nibh, et 
-                    pharetra eros lectus vel neque. Phasellus in purus eget elit tempus tempus non vitae magna. Etiam finibus 
-                    vulputate fermentum. Suspendisse potenti. Duis lorem felis, dignissim et molestie ac, auctor id libero. 
-                    Morbi quis risus nisl. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; 
-                    Morbi vel quam libero. Nulla facilisi. Fusce vel ipsum at mauris pharetra ultrices at quis ex. Donec sed imperdiet 
-                    libero, ut sodales orci.
-                </p>
 
                 <div class="black_jumbo jumbotron" id="congratz_box">
                     <p> <span id="congratz"> Congratulations </span>, we believe you are suited for </p>
                     <p id="given_section"> {{section}} </p>
                 </div>
 
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Pellentesque ullamcorper magna vitae risus imperdiet lobortis. Phasellus ullamcorper nisi sed ultrices malesuada. 
-                    Nullam porta augue vel purus ultrices, eu iaculis est tempor. Proin quis odio vitae nisl condimentum pulvinar nec 
-                    quis ligula. Nulla nec lobortis tortor. Donec pretium eleifend eros. Quisque ornare turpis a mauris elementum, ut 
-                    pretium nunc egestas. Donec auctor vulputate ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices 
-                    posuere cubilia curae; Nulla auctor, libero eu imperdiet mollis, metus magna interdum libero, ac scelerisque ipsum metus 
-                    non turpis. Sed nec ex tellus. Fusce in malesuada ex. Suspendisse accumsan tortor at felis ultrices pulvinar. Nulla arcu orci, 
-                    sollicitudin sed commodo id, gravida id neque. Donec tincidunt nisl nibh, id iaculis dui viverra ac. In a hendrerit risus, in 
-                    ullamcorper ex.
-                    <br>
-                    Vivamus egestas, dolor et sollicitudin aliquet, lorem velit condimentum odio, id mollis ante libero eget lacus. Morbi tincidunt 
-                    massa dolor, vitae scelerisque tellus porttitor id. Duis facilisis mattis magna, non euismod neque finibus vitae. Nullam ut dignissim quam. 
-                    Integer eros lorem, scelerisque eu dolor quis, aliquet tristique urna. Duis euismod dolor sed nunc aliquam, et feugiat leo gravida. Nulla quis 
-                    ex metus. Nulla pharetra dictum tellus fermentum gravida. Ut aliquam ipsum eu lorem porta, mollis bibendum eros vestibulum. Mauris in ultricies 
-                    mauris, vitae laoreet arcu. Duis hendrerit enim eget fringilla tincidunt. Duis a elit faucibus, aliquet leo a, eleifend mauris. Praesent commodo 
-                    ex sit amet vehicula auctor. Nullam tellus nisi, accumsan a tellus ac, porttitor ultricies sem. 
-                </p>
+                {% if section == "Finance" %}
+                <p> Congratulations, through your answers, you have the closest matches with the Finance Department. 
+                    As a new member of the finance team, it will be your responsibility to compute through the teams financial statements, 
+                    extract income and expenditures, tabulate trends, and communicate them to the finance team, and the relevant area which 
+                    the finances pertain to! </p><br>
+                <p> To get started, please get in touch with the following person: <p>
+                <p> Title: Business Manager</p>
+                <p> Name: James Ismail </p>
+                <p id="lead_contact_details"> Contact: 22876212@student.uwa.edu.au </p>
+                {% endif %}
+                {% if section == "Marketing" %}
+                <p> Congratulations, through your answers, you have the closest matches with the Marekting Department. As a new member of the 
+                    marketing team, it will be your responsibility to become and active member in taking photographic content of the team, contributing 
+                    to the social media team pages, and working with the senior team members to maintain a healthy working relationship between the team 
+                    and our sponsors! </p><br>
+                <p> To get started, please get in touch with the following person: <p>
+                <p> Title: Business Manager</p>
+                <p> Name: James Ismail </p>
+                <p id="lead_contact_details"> Contact: 22876212@student.uwa.edu.au </p>
+                {% endif %}
+                {% if section == "Chassis" %}
+                <p> Congratulations, through your answers, you have the closest matches with the Chassis Department. As a new member of the chassis team, 
+                    it will be your responsibility to actively assist in the manufacturing of the carbon fibre monocoque, and the assembly of the chassis supporting 
+                    structures and tubular frames! </p><br>
+                <p> To get started, please get in touch with the following person: <p>
+                <p> Title: Chassis Lead</p>
+                <p> Name: Julian Blair </p>
+                <p id="lead_contact_details"> Contact: 22508461@student.uwa.edu.au </p>
+                {% endif %}
+                {% if section == "Vehicle Dynamics" %}
+                <p> Congratulations, through your answers, you have the closest matches with the Vehicle Dynamics Department. As a new member of the vehicle 
+                    dynamics team, it will be your responsibility to actively assist in the manufacturing of the suspension, steering and corner assemblies, and 
+                    installing them all on the car. Additional responsibilities may include tuning the suspension parameters, and actively being involved in the 
+                    testing of the vehicle and the above systems. </p><br>
+                <p> To get started, please get in touch with the following person: <p>
+                <p> Title: Vehicle Dynamics Lead</p>
+                <p> Name: Mikayil Aliyev </p>
+                <p id="lead_contact_details"> Contact: 22712583@student.uwa.edu.au </p>
+                {% endif %}
+                {% if section == "Powertrain" %}
+                <p> Congratulations, through your answers, you have the closest matches with the Powertrain Department. As a new member of the powertrain team,
+                    it will be your responsibility to assist in the assembly and manufacture of each powertrain component, as well as the testing if all those 
+                    components. </p><br>
+                <p> To get started, please get in touch with the following person: <p>
+                <p> Title: Powertrain Lead </p>
+                <p> Name: Joshua Perin </p>
+                <p id="lead_contact_details"> Contact: 22495069@student.uwa.edu.au </p>
+                {% endif %}
                 
                 <a class="gold_border submission_btn black_button btn btn-block" href="/quiz/{{ quiz_id }}"> 
                     View Submission 
