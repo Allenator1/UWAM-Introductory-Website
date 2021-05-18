@@ -1,7 +1,7 @@
 # UWA Motorsports Department Quiz
 
 <h2> Purpose of Application </h2>
-<p>This web application is a formative assessment targeted for new members of the UWA Motorsports Team. The website aims to introduce new members
+<p>This web application is a formative assessment targeted for new and prospective members of the UWA Motorsports Team. The website aims to introduce new members
 to each of the available departments in the team, discussing what their primary role is, as well as the relevance of the department to sustaining the 
 club. The website offers 5 tutorial modules - one for each department (Finance, Marketing, Chassis, Vehicle Dynamics, Powertrain), which consists of content
 followed by questions, the answers of which are dynamically evaluated by the client side. The website also provides a quiz at the end which asks questions related
